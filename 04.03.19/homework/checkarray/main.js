@@ -6,7 +6,6 @@ function checkArray(array) {
     if (typeof array[i] != "number"){
       return false;
     }
-    console.log("i = " + i);
   }
   return true;
 }
