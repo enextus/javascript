@@ -1,5 +1,6 @@
 var strOne = null;
 var strTwo = null;
+var str = null;
 
 function delSpaces(str){
   str = str.replace(/\s/g, ''); //delete the spaces
