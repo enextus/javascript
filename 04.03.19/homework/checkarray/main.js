@@ -1,8 +1,8 @@
-var i = null;
+var i = 0;
 var array = [ 1, 2, 3, 4, 5, 6, "d" ];
 
 function checkArray(array) {
-  for ( i = 0; i < array.length; i++){
+  for ( var i = 0; i < array.length; i++){
     if (typeof array[i] != "number"){
       return false;
     }
