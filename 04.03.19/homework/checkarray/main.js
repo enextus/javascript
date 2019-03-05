@@ -1,14 +1,14 @@
-//var array = [ 1, 2, 3 ];
-var array = ["a", 2, 3];
+var i = null;
+var array = [ 1, 2, 3, 4, 5, 6, "d" ];
 
 function checkArray(array) {
   for ( i = 0; i < array.length; i++){
     if (typeof array[i] != "number"){
       return false;
-    } else {
-      return true;
     }
+    console.log("i = " + i);
   }
+  return true;
 }
 
 var check = checkArray(array);
