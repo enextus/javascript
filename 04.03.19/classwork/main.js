@@ -1,4 +1,4 @@
-// Sergey, [04.03.19 20:14]
+// [04.03.19 20:14]
 var people = [
   { sex: 'M', name: 'Andrew' },
   { sex: 'M', name: 'John' },
@@ -23,7 +23,7 @@ for (var i = 0; i < people.length; i++) {
   }
 }
 
-// Sergey, [04.03.19 22:11]
+// [04.03.19 22:11]
 // function declaration
 function getPersonAge(person) {
   if (person && person.age) {
