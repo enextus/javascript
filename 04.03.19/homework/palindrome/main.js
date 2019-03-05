@@ -9,19 +9,16 @@ function delSpaces(str){
 
 function getRevert(str) {
   str = delSpaces(str);
-  str = str.split(""); //convert str to array
-  str = str.reverse(); //revers the arrays elements
-  str = str.join(""); //join the values together
-	return str;
+	return str.split("").str.reverse().str.join("");
 }
 
 function getCheckPalindrome(strOne, strTwo) {
   strOne = delSpaces(strOne);
   if (strOne == strTwo){
     return true;
-  } else {
-    return false;
-  }
+    } else {
+      return false;
+    }
 }
 
 var userInput = prompt("Please enter the word/words to check palindrome.");
@@ -29,6 +26,6 @@ var revertInput = getRevert(userInput);
 
 if (getCheckPalindrome(userInput, revertInput)){
     alert(":) This was a palindrome!");
-  } else {
-    alert(":( This was't a palindrome!");
+    } else {
+      alert(":( This was't a palindrome!");
 }
