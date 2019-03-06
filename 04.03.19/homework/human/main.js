@@ -9,7 +9,7 @@ human.firstName = prompt("What's your firstname? (char)");
 human.lastName = prompt("What's your lastname? (char)");
 human.age = parseInt(prompt("What's your age? (number)"), 10);
 human.sex = prompt("What's your sex? (M/W/N)");
-human.height = parseInt(prompt("What's your height? (number)"), 10);
+human.height = parseFloat(prompt("What's your height? (number)"));
 human.weight = parseInt(prompt("What's your weight? (number)"), 10);
 human.maritalStatus = prompt("What's your marital status? (yes/no)");
 
