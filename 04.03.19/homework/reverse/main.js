@@ -11,7 +11,6 @@ function getReverse(str) {
 
 function getReverse(str) {
   var newStr = '';
-  var i = 0;
 
   for (var i = str.length - 1; i >= 0; i--) {
     newStr += str[i];
