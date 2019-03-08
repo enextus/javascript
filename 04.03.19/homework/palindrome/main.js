@@ -41,5 +41,5 @@ var revertInput = getReverse(userInput);
 if ( getCheckPalindrome(userInput, revertInput) ) {
     alert(":) This was a palindrome!");
     } else {
-      alert(":( This was't a palindrome!");
+    alert(":( This was't a palindrome!");
 }
