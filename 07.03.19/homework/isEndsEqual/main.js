@@ -5,10 +5,10 @@ function isEndEqual( strOne, strTwo ) {
 
   var lengthOfStrOne = strOne.length;
   var lengthOfStrTwo = strTwo.length;
-  var arrOneEnd = [];
 
   if ( lengthOfStrOne >= lengthOfStrTwo ) {
 
+    var arrOneEnd = [];
     var begin = lengthOfStrOne - lengthOfStrTwo;
     var strOneArr = strOne.split("");
 
