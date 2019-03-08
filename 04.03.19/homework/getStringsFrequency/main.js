@@ -7,7 +7,7 @@ function getStringsFrequency(arr) {
 
   while (i < arr.length) {
     if ( obj[arr[i]] ) {
-        obj[arr[i]] += 1;
+          obj[arr[i]] += 1;
         } else {
           obj[arr[i]] = 1;
         }
