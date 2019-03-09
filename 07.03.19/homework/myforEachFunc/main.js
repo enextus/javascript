@@ -1,3 +1,5 @@
+// forEach() method list each item in the array
+
 var myArr = [1, 2, 3, 'a', 'b', 'c', NaN, true, [false, true, 1, 3]];
 
 function myOwnFunction ( elem, index ) {
@@ -6,7 +8,7 @@ function myOwnFunction ( elem, index ) {
 
 function myforEachFunc( myArr, myOwnFunction ) {
   
-    for (index = 0; index < myArr.length; ++index) {
+    for ( var index = 0; index < myArr.length; ++index ) {
       myOwnFunction( myArr[index], index );
     }
   }
