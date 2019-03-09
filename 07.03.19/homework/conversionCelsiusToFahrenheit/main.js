@@ -8,10 +8,9 @@ function convertToFahrenheit( celsius ) {
     var fahrenheit = celsius * 9 / 5 + 32;
 
     return fahrenheit + ' \xB0F';
-  } else {
-
-    return 0;
   }
+
+  return 0;
 }
 
 var celsius = parseInt( prompt( "Please enter the worth of celsius temperature to convert it in to fahrenheit." ), 10 );
