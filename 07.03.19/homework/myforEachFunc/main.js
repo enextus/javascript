@@ -5,9 +5,7 @@ function myOwnFunction ( elem, index ) {
   }
 
 function myforEachFunc( myArr, myOwnFunction ) {
-
-    // myArr.forEach(myFunction);
-
+  
     for (index = 0; index < myArr.length; ++index) {
       myOwnFunction( myArr[index], index );
     }
