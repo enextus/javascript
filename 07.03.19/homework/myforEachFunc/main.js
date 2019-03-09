@@ -15,4 +15,4 @@ function myforEachFunc( myArr, myOwnFunction ) {
     }
   }
 
-console.log( myforEachFunc( myArr, myFunction ) );
+console.log( myforEachFunc( myArr, myOwnFunction ) );
