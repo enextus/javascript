@@ -3,6 +3,9 @@ var strTwo = null;
 
 function isEndEqual( strOne, strTwo ) {
 
+  strOne = strOne.toLowerCase();
+  strTwo = strTwo.toLowerCase();
+
   var lengthOfStrOne = strOne.length;
   var lengthOfStrTwo = strTwo.length;
 
@@ -29,8 +32,8 @@ function isEndEqual( strOne, strTwo ) {
   }
 }
 
-var strOne = prompt("Please enter the first word/words to check the end.").toLowerCase();
-var strTwo = prompt("Please enter the second word/words to check the end.").toLowerCase();
+var strOne = prompt("Please enter the first word/words to check the end.");
+var strTwo = prompt("Please enter the second word/words to check the end.");
 
 var result = isEndEqual( strOne, strTwo );
 
