@@ -12,7 +12,7 @@ function mySpliceFunc( start, deleteCount ) {
     if ( !isNaN( start ) && !isNaN( deleteCount ) && ( ( typeof start && typeof deleteCount ) === 'number' ) ) {
     
         if ( ( start === 0 && deleteCount === 0 ) || deleteCount <= 0  ) {
-            
+
             return myNewArray; 
         }
 
@@ -38,12 +38,8 @@ function mySpliceFunc( start, deleteCount ) {
             }
         }
 
-        console.log( 'deleteCount = ' + deleteCount ); 
-
         var otherBegin = myArr.length - deleteCount + begin - 1;
         var otherEnd = myArr.length;
-
-        console.log( 'otherBegin = ' + otherBegin ); 
 
         for ( var index = otherBegin; index < myArr.length; index++) {
 
@@ -67,5 +63,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( -8, 3 );
+var result = mySpliceFunc( 2, 3 );
 console.log( result );
