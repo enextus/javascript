@@ -1,7 +1,7 @@
 // The slice() method returns the selected elements in an array, 
 // as a new array object.
 
-var myArr = [1, 2, 'a', 'b', NaN, true, [false, 3, 6]]; // seed array
+var myArr = ['a0', 'b1', 'c2', 'd3', 'e4']; // seed array
 
 var startElemNum = null;
 var endElemNum = null;
@@ -56,5 +56,5 @@ function mySliceFunc( startElemNum, endElemNum ) {
   return myNewArray;
 }
 
-var result = mySliceFunc( -1, 2);
+var result = mySliceFunc( 0, 1);
 console.log( result );
