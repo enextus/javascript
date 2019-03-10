@@ -30,20 +30,18 @@ function mySpliceFunc( start, deleteCount ) {
         for ( var index = begin; index < myArr.length; index++ ) {
       
             myNewArray.push( myArr[index] );
-            
-            console.log( 'index, end = ' + index + " " + end ); 
 
             if ( index === ( end - 1 ) ) {
               break;
             }
         }
 
-        var otherBegin = myArr.length - deleteCount + begin - 1;
+        var otherBegin = begin + deleteCount;
         var otherEnd = myArr.length;
 
         for ( var index = otherBegin; index < myArr.length; index++) {
 
-            myTempArray.push( myArr[index] );
+            myTempEndArray.push( myArr[index] );
       
             if ( index === otherEnd ) {
               break;
@@ -53,7 +51,7 @@ function mySpliceFunc( start, deleteCount ) {
           console.log( " myArr.length = " + myArr.length );
           console.log( " myArr = " + myArr );
           console.log( " myNewArray = " + myNewArray );
-          console.log( " myTempArray = " + myTempArray );
+          console.log( " myTempEndArray = " + myTempEndArray );
 
         return myNewArray;
 
@@ -63,5 +61,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( 2, 3 );
+var result = mySpliceFunc( 1, 5 );
 console.log( result );
