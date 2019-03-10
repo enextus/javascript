@@ -5,15 +5,17 @@ var myArr = ['a0', 'b1', 'c2', 'd3', 'e4', 'f5', 'g6', 'h7']; // seed array
 
 function mySpliceFunc( start, deleteCount ) {
 
-    var myNewArray = [];
-    var myTempArray = [];
+    var myTempStartArr = [];
+    var mySplicedArr = [];
+    var myTempEndArr = [];
+    var myArrAfterSplice = [];
     var begin = null;
 
     if ( !isNaN( start ) && !isNaN( deleteCount ) && ( ( typeof start && typeof deleteCount ) === 'number' ) ) {
     
         if ( ( start === 0 && deleteCount === 0 ) || deleteCount <= 0  ) {
 
-            return myNewArray; 
+            return mySplicedArr; 
         }
 
         if ( start < 0 ) {
@@ -25,11 +27,23 @@ function mySpliceFunc( start, deleteCount ) {
             begin = start;
         }
 
+        var arrBegin = 0;
+        var beginPartEnd = begin;
+
+        for ( var index = arrBegin; index < myArr.length; index++) {
+
+            myTempStartArr.push( myArr[index] );
+      
+            if ( index === beginPartEnd - 1 ) {
+              break;
+            }
+        }
+
         var end = begin + deleteCount;
 
         for ( var index = begin; index < myArr.length; index++ ) {
       
-            myNewArray.push( myArr[index] );
+            mySplicedArr.push( myArr[index] );
 
             if ( index === ( end - 1 ) ) {
               break;
@@ -41,19 +55,18 @@ function mySpliceFunc( start, deleteCount ) {
 
         for ( var index = otherBegin; index < myArr.length; index++) {
 
-            myTempEndArray.push( myArr[index] );
+            myTempEndArr.push( myArr[index] );
       
             if ( index === otherEnd ) {
               break;
             }
         }
 
-          console.log( " myArr.length = " + myArr.length );
-          console.log( " myArr = " + myArr );
-          console.log( " myNewArray = " + myNewArray );
-          console.log( " myTempEndArray = " + myTempEndArray );
+        myArrAfterSplice = myTempStartArr.concat(myTempEndArr);
 
-        return myNewArray;
+        console.log('myArrAfterSplice = ' + myArrAfterSplice );
+
+        return mySplicedArr;
 
     } else if ( !startElemNum && !endElemNum ) {
   
@@ -61,5 +74,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( 1, 5 );
+var result = mySpliceFunc( 2, 2 );
 console.log( result );
