@@ -6,8 +6,8 @@ var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']; // seed array
 function mySpliceFunc( start, deleteCount ) {
 
     var myTempStartArr = [];
-    var mySplicedArr = [];
     var myTempEndArr = [];
+    var myResultSpliceArr = [];
     var myArrAfterSplice = [];
     var begin = null;
 
@@ -31,7 +31,7 @@ function mySpliceFunc( start, deleteCount ) {
         
         if ( ( start === 0 && deleteCount === 0 ) || deleteCount <= 0  ) {
 
-            return mySplicedArr; 
+            return myResultSpliceArr; 
         }
 
         if ( start < 0 ) {
@@ -53,7 +53,7 @@ function mySpliceFunc( start, deleteCount ) {
 
         var end = begin + deleteCount;
 
-        mySplicedArr = walkThroughArray( begin, end );
+        myResultSpliceArr = walkThroughArray( begin, end );
 
         var otherBegin = begin + deleteCount;
         var otherEnd = myArr.length + 1;
@@ -63,13 +63,13 @@ function mySpliceFunc( start, deleteCount ) {
 
         console.log('myArrAfterSplice = ' + myArrAfterSplice );
         
-        return mySplicedArr;
-
+        return myResultSpliceArr;
+        
     } else if ( !startElemNum && !endElemNum ) {
   
         myArr = [];
     }
 }
-
-var result = mySpliceFunc( -1, 2 );
+console.log('myArr = ' + myArr );
+var result = mySpliceFunc( -4, 3 );
 console.log( result );
