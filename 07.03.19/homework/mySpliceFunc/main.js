@@ -43,7 +43,6 @@ function mySpliceFunc( start, deleteCount ) {
             }
         }
 
-
         var end = begin + deleteCount;
 
         for ( var index = begin; index < myArr.length; index++ ) {
@@ -66,10 +65,6 @@ function mySpliceFunc( start, deleteCount ) {
               break;
             }
         }
-
-        console.log('myTempStartArr = ' + myTempStartArr )
-
-        console.log('myTempEndArr = ' + myTempEndArr )
 
         myArrAfterSplice = myTempStartArr.concat(myTempEndArr);
 
