@@ -1,7 +1,7 @@
 // The splice() method adds/removes items to/from an array, and returns the removed item(s).
 // Note: This method changes the original array.
 
-var myArr = ['a0', 'b1', 'c2', 'd3', 'e4', 'f5', 'g6', 'h7']; // seed array
+var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']; // seed array
 
 function mySpliceFunc( start, deleteCount ) {
 
@@ -11,7 +11,7 @@ function mySpliceFunc( start, deleteCount ) {
     var myArrAfterSplice = [];
     var begin = null;
 
-    function loopThroughArray( start, end ) {
+    function walkThroughArray( start, end ) {
 
         var arr = [];
         
@@ -49,20 +49,12 @@ function mySpliceFunc( start, deleteCount ) {
             var arrBegin = 0;
             var beginPartEnd = begin;
 
-            myTempStartArr = loopThroughArray( arrBegin, beginPartEnd );
-
+            myTempStartArr = walkThroughArray( arrBegin, beginPartEnd );
         }
 
         var end = begin + deleteCount;
 
-        for ( var index = begin; index < myArr.length; index++ ) {
-      
-            mySplicedArr.push( myArr[index] );
-
-            if ( index === ( end - 1 ) ) {
-              break;
-            }
-        }
+        mySplicedArr = walkThroughArray( begin, end );
 
         var otherBegin = begin + deleteCount;
         var otherEnd = myArr.length;
@@ -88,5 +80,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( 2, 2 );
+var result = mySpliceFunc( 3, 2 );
 console.log( result );
