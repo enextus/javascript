@@ -7,28 +7,28 @@ var startElemNum = null;
 var endElemNum = null;
 
 
-function mySliceFunc( startElemNum, endElemNum ) {
+function mySliceFunc(startElemNum, endElemNum) {
 
   var myNewArray = [];
   var end = null;
   var start = null;
 
-  if ( !isNaN( startElemNum ) && !isNaN( endElemNum ) && ( ( typeof startElemNum && typeof endElemNum ) === 'number' ) ) {
+  if (!isNaN(startElemNum) && !isNaN(endElemNum) && ((typeof startElemNum && typeof endElemNum) === 'number')) {
 
-    if ( endElemNum > 0 ) {
+    if (endElemNum > 0) {
 
       end = endElemNum - 1;
 
-    } else if ( endElemNum < 0 && ( myArr.length + endElemNum ) > 0  ) {
+    } else if (endElemNum < 0 && (myArr.length + endElemNum) > 0) {
 
       end = myArr.length - 1 + endElemNum;
 
-    } else if ( myArr.length + endElemNum  <= 0 ) {
+    } else if (myArr.length + endElemNum <= 0) {
 
       return myNewArray;
     }
 
-    if ( startElemNum >= 0 && !( startElemNum >= endElemNum ) ) {
+    if (startElemNum >= 0 && !(startElemNum >= endElemNum)) {
 
       start = startElemNum;
 
@@ -37,18 +37,18 @@ function mySliceFunc( startElemNum, endElemNum ) {
       return myNewArray;
     }
 
-    for ( var index = start; index < myArr.length; ++index) {
-      
-      myNewArray.push( myArr[index] );
+    for (var index = start; index < myArr.length; ++index) {
 
-      if ( index === end ) {
+      myNewArray.push(myArr[index]);
+
+      if (index === end) {
         break;
       }
     }
 
     return myNewArray;
 
-  } else if ( !startElemNum && !endElemNum ) {
+  } else if (!startElemNum && !endElemNum) {
 
     myNewArray = [];
   }
@@ -56,5 +56,5 @@ function mySliceFunc( startElemNum, endElemNum ) {
   return myNewArray;
 }
 
-var result = mySliceFunc( 0, 1);
-console.log( result );
+var result = mySliceFunc(0, 1);
+console.log(result);
