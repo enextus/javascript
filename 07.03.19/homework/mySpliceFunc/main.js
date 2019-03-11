@@ -21,23 +21,28 @@ function mySpliceFunc( start, deleteCount ) {
         if ( start < 0 ) {
 
             begin = myArr.length + start;
+            console.log('begin = ' + begin );
 
         } else {
 
             begin = start;
+            console.log('you see it ONLY if start = 0 ' + begin );
         }
 
-        var arrBegin = 0;
-        var beginPartEnd = begin;
+        if ( begin != 0 ) {
+            var arrBegin = 0;
+            var beginPartEnd = begin;
 
-        for ( var index = arrBegin; index < myArr.length; index++) {
+            for ( var index = arrBegin; index < myArr.length; index++) {
 
-            myTempStartArr.push( myArr[index] );
-      
-            if ( index === beginPartEnd - 1 ) {
-              break;
+                myTempStartArr.push( myArr[index] );
+        
+                if ( index === beginPartEnd - 1 ) {
+                break;
+                }
             }
         }
+
 
         var end = begin + deleteCount;
 
@@ -62,6 +67,10 @@ function mySpliceFunc( start, deleteCount ) {
             }
         }
 
+        console.log('myTempStartArr = ' + myTempStartArr )
+
+        console.log('myTempEndArr = ' + myTempEndArr )
+
         myArrAfterSplice = myTempStartArr.concat(myTempEndArr);
 
         console.log('myArrAfterSplice = ' + myArrAfterSplice );
@@ -74,5 +83,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( 2, 2 );
+var result = mySpliceFunc( 0, 2 );
 console.log( result );
