@@ -11,6 +11,22 @@ function mySpliceFunc( start, deleteCount ) {
     var myArrAfterSplice = [];
     var begin = null;
 
+    function loopThroughArray( start, end ) {
+
+        var arr = [];
+        
+        for ( var index = start; index < myArr.length; index++) {
+
+            arr.push( myArr[index] );
+    
+            if ( index === ( end - 1 ) ) {
+            break;
+            }
+        }
+
+        return arr;
+    }
+
     if ( !isNaN( start ) && !isNaN( deleteCount ) && ( ( typeof start && typeof deleteCount ) === 'number' ) ) {
     
         if ( ( start === 0 && deleteCount === 0 ) || deleteCount <= 0  ) {
@@ -26,21 +42,15 @@ function mySpliceFunc( start, deleteCount ) {
         } else {
 
             begin = start;
-            console.log('you see it ONLY if start = 0 ' + begin );
         }
 
         if ( begin != 0 ) {
+
             var arrBegin = 0;
             var beginPartEnd = begin;
 
-            for ( var index = arrBegin; index < myArr.length; index++) {
+            myTempStartArr = loopThroughArray( arrBegin, beginPartEnd );
 
-                myTempStartArr.push( myArr[index] );
-        
-                if ( index === beginPartEnd - 1 ) {
-                break;
-                }
-            }
         }
 
         var end = begin + deleteCount;
@@ -78,5 +88,5 @@ function mySpliceFunc( start, deleteCount ) {
     }
 }
 
-var result = mySpliceFunc( 0, 2 );
+var result = mySpliceFunc( 2, 2 );
 console.log( result );
