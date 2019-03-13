@@ -1,7 +1,7 @@
 // The splice() method adds/removes items to/from an array, and returns the removed item(s).
 // Note: This method changes the original array.
 
-var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']; // seed array
+var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']; // seed  array
 
 function mySpliceFunc(myArr, start, deleteCount) {
     var myTempStartArr = [];
