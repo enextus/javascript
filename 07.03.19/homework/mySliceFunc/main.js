@@ -1,7 +1,7 @@
 // The slice() method returns the selected elements in an array, 
 // as a new array object.
 
-var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ']; // seed array
+var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ']; //seed array
 var startElemNum = null;
 var endElemNum = null;
 
