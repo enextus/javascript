@@ -1,5 +1,3 @@
-
-
 var calculator = {
   getSum: function() {
     var sum = this.firstOperand + this.lastOperand;
