@@ -11,10 +11,8 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
   var start = null;
 
   function myLoop(arr, start, end) {
-    // console.log('arr = ' + arr + ', ' + 'start = ' + start + ', ' + 'end = ' + end);
     for (var index = start; index < arr.length; index++) {
       myNewArray.push(arr[index]);
-
       if (index === end) {
         break;
       }
@@ -24,64 +22,63 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
 
   if (!isNaN(startElemNum) && !isNaN(endElemNum) && (typeof startElemNum === 'number') && (typeof endElemNum === 'number')) {
 
-    //1. case: (myArr, 0, 1) (myArr, 0, 0) (myArr, 1, 0) (myArr, 1, -1) (myArr, -1, 1)  (myArr, 1, 1) (myArr, -1, -1) OK
-
-    console.log('//1. case, (myArr, 1, -1) (myArr, -1, 1)  (myArr, 1, 1) (myArr, -1, -1)');
-
+    //1. case: (myArr, 0, 0 ОК) (myArr, 1, 0 ОК) (myArr, 0, 1 ОК)  (myArr, 1, 1 ОК) (myArr, 1, -1 ОК) (myArr, -1, 1 OK)
+    //   (myArr, -1, -1) 
     if (endElemNum > 0) {
       end = endElemNum - 1;
     } else if (endElemNum < 0 && (arr.length + endElemNum) > 0) {
 
-      console.log('here1');
-      end = arr.length + endElemNum;
-      console.log('start = ' + start + ', end = ' + end);
+      end = arr.length + endElemNum - 1;
+      start = startElemNum;
+      myNewArray = myLoop(arr, start, end);
 
     } else if (arr.length + endElemNum <= 0) {
-
-      console.log('here2');
-
       return myNewArray;
     }
 
-    if (startElemNum >= 0 && !(startElemNum >= endElemNum)) {
-      start = startElemNum;
-    } else {
+    if (startElemNum >= 0 && (startElemNum > endElemNum)) {
+
+      if (startElemNum >= (arr.length + endElemNum)) {
+        return myNewArray = [];
+      }
+      
       return myNewArray;
+    } else if (startElemNum < 0 && (startElemNum < endElemNum)) {
+
+      start = arr.length + startElemNum;
+
+      if (start < 0) {
+        start = 0;
+      }
+
+      if ((arr.length + startElemNum) >= endElemNum) {
+        return myNewArray = [];
+      }
     }
 
-    console.log('start = ' + start + 'end = ' + end);
     myNewArray = myLoop(arr, start, end);
     return myNewArray;
 
   } else if (typeof startElemNum === 'undefined' && typeof endElemNum === 'undefined') {
-
-    // 2. case: (myArr) OK
-    console.log('2. case: (myArr)');
     myNewArray = arr;
 
-  } else if ( !isNaN(startElemNum) && (typeof startElemNum === 'number') && !endElemNum ) {
+  } else if (!isNaN(startElemNum) && (typeof startElemNum === 'number') && !endElemNum) {
 
-    // 3. case: (myArr, 0) (myArr, 1) (myArr, -1)
-    console.log('3. case: (myArr, 0) (myArr, 1) (myArr, -1)');
     if (startElemNum >= 0) {
       start = startElemNum;
-    } else if  (startElemNum < 0) {
+    } else if (startElemNum < 0) {
       arr.length + startElemNum >= 0 ? start = arr.length + startElemNum : start = 0;
     }
 
-    for (var index = start; index < arr.length; index++) {
-      myNewArray.push(arr[index]);
+    myNewArray = myLoop(arr, start, arr.length);
 
-      if (index === arr.length) {
-        break;
-      }
-    }
+  } else if ((typeof startElemNum === 'string') && !endElemNum) {
+
+    return myArr;
   }
 
-  // case: (myArr, "sdfsdf") (myArr, "sdfsdf", "sdfsdf") ОК
-  console.log('myArr = ' + myArr);
-  return myArr;
+  return myNewArray;
 }
 
-var result = mySliceFunc(myArr, -1);
+var result = mySliceFunc(myArr, -8, -3);
 console.log(result);
