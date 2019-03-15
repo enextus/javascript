@@ -1,7 +1,7 @@
 var operationList = ["sum", "difference", "division", "multiply"];
 
 function print_r(arr) {
-  var dumped_text = "Default operation by uncorrect input will be a sum.\n\n";
+  var dumped_text = "Notice: A default operation by uncorrect input will be a sum.\n\n";
 
   for (var item in arr) {
     var value = arr[item];
@@ -33,9 +33,9 @@ var calculator = {
 
 alert(print_r(operationList));
 
-calculator.whichOperation = parseInt(prompt("which Operation?"), 10);
-calculator.firstOperand = parseInt(prompt("firstOperand"), 10);
-calculator.lastOperand = parseInt(prompt("lastOperand"), 10);
+calculator.whichOperation = parseInt(prompt("Please input a opetation code here:"), 10);
+calculator.firstOperand = parseInt(prompt("Please input a first operand here:"), 10);
+calculator.lastOperand = parseInt(prompt("Please input a last operand here:"), 10);
 
 switch (calculator.whichOperation) {
   case 0:
@@ -55,4 +55,4 @@ switch (calculator.whichOperation) {
     break;
 }
 
-alert(calculator.value);
+alert("The result of " + operationList[calculator.whichOperation] + " is: " + calculator.value);
