@@ -55,4 +55,4 @@ switch (calculator.whichOperation) {
     break;
 }
 
-alert("The result of " + operationList[calculator.whichOperation] + " is: " + calculator.value);
+alert("The result of " + operationList[calculator.whichOperation] + " of " + calculator.firstOperand + " and " + calculator.lastOperand + " is " + calculator.value);
