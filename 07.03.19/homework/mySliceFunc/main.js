@@ -32,6 +32,10 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
         start = startElemNum;
         end = endElemNum - 1;
 
+        if (start > end) {
+          return myNewArray;
+        }
+
       } else if (startElemNum >= 0 && endElemNum < 0) {
 
         start = startElemNum;
@@ -94,5 +98,5 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
   return myNewArray;
 }
 
-var result = mySliceFunc(myArr, 1, 10);
+var result = mySliceFunc(myArr, 1, 1);
 console.log(result);
