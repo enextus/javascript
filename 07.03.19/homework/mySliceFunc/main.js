@@ -1,7 +1,7 @@
 // The slice() method returns the selected elements in an array, 
 // as a new array object.
 
-var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' 4 ', ' 5 ']; // seed array
+var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ']; // seed array
 var startElemNum = null;
 var endElemNum = null;
 
@@ -21,7 +21,6 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
   }
 
   if (!isNaN(startElemNum) && !isNaN(endElemNum) && (typeof startElemNum === 'number') && (typeof endElemNum === 'number')) {
-
     if ((startElemNum === 0 && endElemNum === 0) || (startElemNum != 0 && endElemNum === 0)) {
 
       return myNewArray;
@@ -57,7 +56,7 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
         }
 
       } else if (startElemNum < 0 && endElemNum < 0) {
-        
+
         start = arr.length + startElemNum;
         end = arr.length + endElemNum - 1;
 
@@ -72,7 +71,6 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
 
       myNewArray = myLoop(arr, start, end);
     }
-
 
   } else if (typeof startElemNum === 'undefined' && typeof endElemNum === 'undefined') {
 
