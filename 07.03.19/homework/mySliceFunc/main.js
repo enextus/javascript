@@ -98,5 +98,5 @@ function mySliceFunc(arr, startElemNum, endElemNum) {
   return myNewArray;
 }
 
-var result = mySliceFunc(myArr, -2, -1);
+var result = mySliceFunc(myArr, 0, 1);
 console.log(result);
