@@ -1,7 +1,7 @@
 var operationList = ["sum", "difference", "division", "multiply"];
 
 function print_r(arr) {
-  var dumped_text = "";
+  var dumped_text = "Default operation by uncorrect input will be a sum.\n\n";
 
   for (var item in arr) {
     var value = arr[item];
@@ -12,24 +12,16 @@ function print_r(arr) {
 
 var calculator = {
   getSum: function () {
-    var sum = this.firstOperand + this.lastOperand;
-    this.value = sum;
-    // return 
+    this.value = this.firstOperand + this.lastOperand;
   },
   getDifference: function () {
-    var dif = this.firstOperand - this.lastOperand;
-    this.value = dif;
-    // return 
+    this.value = this.firstOperand - this.lastOperand;
   },
   getDivision: function () {
-    var div = this.firstOperand / this.lastOperand;
-    this.value = div;
-    // return 
+    this.value = this.firstOperand / this.lastOperand;
   },
   getMultiply: function () {
-    var mult = this.firstOperand * this.lastOperand;
-    this.value = mult;
-    // return 
+    this.value = this.firstOperand * this.lastOperand;
   },
   getValues: function (firstOperand, lastOperand) {
     this.whichOperation = whichOperation;
