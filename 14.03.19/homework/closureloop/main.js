@@ -15,3 +15,4 @@ function sum(firstOperand) {
 }
 
 console.log(sum(0)(1)(2)(3)(4)(5)(6)); // 15
+console.log(sum(1)(2)(5)(44)); // 
