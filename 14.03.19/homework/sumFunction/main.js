@@ -1,4 +1,4 @@
-function sum(firstOperand) {
+function sumFunction(firstOperand) {
 
     var currentSum = firstOperand;
 
