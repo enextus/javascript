@@ -7,6 +7,7 @@ function sum(firstOperand) {
 
         currentSum += secondOperand;
         console.log("2. currentSum = " + currentSum);
+        console.log("2. f = " + f);
 
         return f;
     }
@@ -16,7 +17,7 @@ function sum(firstOperand) {
         console.log("3. currentSum = " + currentSum);
         return currentSum;
     };
-
+    console.log("3. f = " + f);
     return f;
 }
 
