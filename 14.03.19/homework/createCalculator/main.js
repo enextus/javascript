@@ -5,36 +5,36 @@ function createCalculator() {
 
         sum: function (a, b) {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
-                param = a + b;
-                this.setCalculation(param);
-                return param;
+                result = a + b;
+                this.setCalculation(result);
+                return result;
             } else {
                 return alert('Input error.');
             }
         },
         difference: function (a, b) {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
-                param = a - b;
-                this.setCalculation(param);
-                return param;
+                result = a - b;
+                this.setCalculation(result);
+                return result;
             } else {
                 return alert('Input error.');
             }
         },
         division: function (a, b) {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
-                param = a / b;
-                this.setCalculation(param);
-                return param;
+                result = a / b;
+                this.setCalculation(result);
+                return result;
             } else {
                 return alert('Input error.');
             }
         },
         multiply: function (a, b) {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
-                param = a * b;
-                this.setCalculation(param);
-                return param;
+                result = a * b;
+                this.setCalculation(result);
+                return result;
             } else {
                 return alert('Input error.');
             }
