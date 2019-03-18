@@ -1,20 +1,29 @@
-function sumFunction(firstOperand) {
+function sumFunction(operator) {
 
-    var currentSum = firstOperand;
+    var currentSum = operator;
+    console.log("0. currentSum = " + currentSum);
 
-    function funcSum(secondOperand) {
+    // ..................................................
 
-        if (secondOperand === undefined) {
+    function f(parameter) {
+
+        if (parameter === undefined) {
             return "Result = " + currentSum;
         }
 
-        currentSum += secondOperand;
-        return funcSum;
+        console.log("1a. currentSum = " + currentSum);
+        currentSum += parameter;
+        console.log("1b. currentSum = " + currentSum);
+        console.log("1. f = " + f);
+
+        return f;
     }
 
-    funcSum.toString = function () {
+    // ..................................................
+
+    f.toString = function () {
         return currentSum;
     };
 
-    return funcSum;
+    return f;
 }
