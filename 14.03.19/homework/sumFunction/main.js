@@ -12,6 +12,8 @@ function sumFunction(operator) {
         return f;
     }
 
+    console.log("1. typeof f = " + typeof f);
+
     f.toString = function () {
          return currentSum;
      };
