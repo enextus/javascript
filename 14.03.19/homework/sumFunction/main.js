@@ -13,8 +13,8 @@ function sumFunction(operator) {
     }
 
     f.toString = function () {
-        return currentSum;
-    };
+         return currentSum;
+     };
 
     return f;
 }
