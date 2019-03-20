@@ -22,12 +22,6 @@ var calculator = {
   },
   getMultiply: function () {
     this.value = this.firstOperand * this.lastOperand;
-  },
-  getValues: function (firstOperand, lastOperand) {
-    this.whichOperation = whichOperation;
-    this.firstOperand = firstOperand;
-    this.lastOperand = lastOperand;
-    this.value = value;
   }
 }
 
