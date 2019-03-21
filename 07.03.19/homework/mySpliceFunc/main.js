@@ -2,6 +2,7 @@
 // Note: This method changes the original array.
 
 var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ']; // seed  array
+var result = null;
 
 function mySpliceFunc(myArr, start, deleteCount) {
     var myTempStartArr = [];
@@ -9,6 +10,16 @@ function mySpliceFunc(myArr, start, deleteCount) {
     var myResultSpliceArr = [];
     var myArrAfterSplice = [];
     var begin = null;
+
+    const args = ['p0', 'p1', 'p2'];
+    
+    call_me.apply(this, args);
+
+    function call_me(params) {
+        for (i=0; i<params.length; i++) {
+          console.log(params[i]);
+        }
+      }
 
     function walkThroughArray(start, end) {
         var arr = [];
@@ -24,21 +35,25 @@ function mySpliceFunc(myArr, start, deleteCount) {
         return arr;
     }
     if (!isNaN(start) && !isNaN(deleteCount) && (typeof start === 'number') && (typeof deleteCount === 'number')) {
+
         if ((start === 0 && deleteCount === 0) || deleteCount <= 0) {
 
             return myResultSpliceArr;
         }
+
         if (start < 0) {
             begin = myArr.length + start;
 
         } else {
             begin = start;
         }
+
         if (begin != 0) {
             var arrBegin = 0;
             var beginPartEnd = begin;
             myTempStartArr = walkThroughArray(arrBegin, beginPartEnd);
         }
+
         var end = begin + deleteCount;
         myResultSpliceArr = walkThroughArray(begin, end);
 
@@ -49,12 +64,17 @@ function mySpliceFunc(myArr, start, deleteCount) {
 
         console.log('myArrAfterSplice = ' + myArrAfterSplice);
 
+
+
         return myResultSpliceArr;
 
     } else if (!startElemNum && !endElemNum) {
+
         myArr = [];
     }
 }
+
 console.log('myArr = ' + myArr);
-var result = mySpliceFunc(myArr, -1, -2);
-console.log(result);
+
+result = mySpliceFunc(myArr, 0, 2);
+console.log("result = " + result);
