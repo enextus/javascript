@@ -137,17 +137,9 @@ function mySpliceFunc(myArr, ...args) {
         return arr;
     }
 
-    // if (!isNaN(start) && !isNaN(deleteCount) && (typeof start === 'number') && (typeof deleteCount === 'number')) {
 
-    //     console.log('myArrAfterSplice = ' + myArrAfterSplice);
-    //     return myResultSpliceArr;
-
-    // } else if (!startElemNum && !endElemNum) {
-
-    //     myArr = [];
-    // }
 }
 
 console.log('myArr = ' + myArr + "\n  ");
-mySpliceFunc(myArr, 1, 2);
+mySpliceFunc(myArr, 1, 2, "s111dfsdf", "s2222dfdsf");
 console.log('myArr = ' + myArr);
