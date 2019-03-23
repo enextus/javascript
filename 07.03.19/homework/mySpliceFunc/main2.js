@@ -9,17 +9,29 @@ function mySpliceFunc(myArr, ...args) {
     var myTempStartArr = [];
     var myTempEndArr = [];
     var myResultSpliceArr = [];
+
     var myArrAfterSplice = [];
     var begin = null;
+    var deleteCount = null;
     var myAddArray = [];
 
-    console.log("All args = " + args);
+    console.log("All args = " + args + "\n ");
+
     walkThroughParameters(args);
+
+    console.log("begin = " + begin);
+    console.log("deleteCount = " + deleteCount + "\n ");
+
+    if (myAddArray.length) {
+        console.log("myAddArray = " + myAddArray);
+    }
+
+
 
     function walkThroughParameters(args) {
         for (i = 0; i < args.length; i++) {
 
-            console.log("args = " + i + "-й , " + args[i]);
+            // console.log("args = " + i + "-й , " + args[i]);
 
             if (  !isNaN(Number(args[0])) && typeof Number(args[0]) === 'number'  ) {
                 begin = Number(args[0]);
@@ -37,25 +49,11 @@ function mySpliceFunc(myArr, ...args) {
                 myAddArray.push(args[i]);
             }
 
-
-
         }
 
-        if (deleteCount === 0) {
-            return myArrAfterSplice;
-        }
-        console.log("begin = " + begin);
-        console.log("deleteCount = " + deleteCount);
-        console.log("myAddArray = " + myAddArray);
-        console.log("myArrAfterSplice = " + myArrAfterSplice);
+
+
     }
-
-
-
-
-
-
-
 
 
 
@@ -86,6 +84,4 @@ function mySpliceFunc(myArr, ...args) {
 }
 
 console.log('myArr = ' + myArr);
-
-result = mySpliceFunc(myArr, "1", "1");
-console.log("result = " + result);
+mySpliceFunc(myArr, 0, 3, 'sdf', 'werwe');
