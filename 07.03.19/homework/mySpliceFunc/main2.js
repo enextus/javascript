@@ -9,12 +9,7 @@ function mySpliceFunc(arr, ...args) {
     var deleteCount = null;
     var myAddArray = [];
 
-    console.log("All args = " + args + "\n ");
-
     walkThroughParameters(args);
-
-    console.log("begin = " + begin);
-    console.log("deleteCount = " + deleteCount + "\n ");
 
     if (begin || begin === 0) {
 
@@ -64,15 +59,10 @@ function mySpliceFunc(arr, ...args) {
         }
 
         return myArr = myTempStartArr.concat(myTempEndArr);
-
-        // console.log("myTempStartArr = " + myTempStartArr);
-        // console.log("myTempArr = " + myTempArr);
-        // console.log("myTempEndArr = " + myTempEndArr + "\n" + "\n");
-        // console.log("444myArr = " + arr + "\n" + "\n");
     }
 
     function addMyAddArray() {
-        myArr = myArr.concat(myAddArray);
+        return myArr = myArr.concat(myAddArray);
     }
 
     function walkThroughParameters(args) {
@@ -119,6 +109,6 @@ function mySpliceFunc(arr, ...args) {
     return myArr = myArr;
 }
 
-console.log('BEGIN myArr = ' + myArr + "\n  " + "\n  ");
-mySpliceFunc(myArr, 3, 4, "сдфд", " хгхх ", "8", 9);
-console.log("\n  \n   \n   \n   " + 'END myArr = ' + myArr);
+console.log('BEGIN myArr = ' + myArr + "\n  ");
+mySpliceFunc(myArr, 2, 2, "сдфд", "8", 9);
+console.log("RESULT myArr = " + myArr);
