@@ -118,26 +118,8 @@ function mySpliceFunc(myArr, ...args) {
             if (i > 1) {
                 myAddArray.push(args[i]);
             }
-
         }
-
     }
-
-    function walkThroughArray(start, end) {
-        var arr = [];
-
-        for (var index = start; index < myArr.length; index++) {
-            arr.push(myArr[index]);
-
-            if (index === (end - 1)) {
-                break;
-            }
-        }
-
-        return arr;
-    }
-
-
 }
 
 console.log('myArr = ' + myArr + "\n  ");
