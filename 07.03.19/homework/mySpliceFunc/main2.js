@@ -1,9 +1,9 @@
 // The splice() method adds/removes items to/from an array, and returns the removed item(s).
 // Note: This method changes the original array.
 
-var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ']; // seed  array
+var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' abc ']; // seed  array
 
-function mySpliceFunc(myArr, ...args) {
+function mySpliceFunc(arr, ...args) {
 
     var begin = null;
     var deleteCount = null;
@@ -13,13 +13,10 @@ function mySpliceFunc(myArr, ...args) {
 
     walkThroughParameters(args);
 
-
     console.log("begin = " + begin);
     console.log("deleteCount = " + deleteCount + "\n ");
 
-   
-
-    if (begin) {
+    if (begin || begin === 0) {
 
         // begin = 0 delete all elements
         // begin = 1.. delete all from 0 (begin) to the begin 1
@@ -28,16 +25,11 @@ function mySpliceFunc(myArr, ...args) {
         // begin = 100 and its lenght > myArr.lenght then it will be nothing deleted from myArray
 
         deleteElementsFromMyArray();
-
     }
 
     if (myAddArray.length) {
-
-        console.log("we have some parameters for add!!!");
-        console.log("myAddArray = " + myAddArray);
         addMyAddArray();
     }
-
 
     function deleteElementsFromMyArray() {
 
@@ -52,45 +44,35 @@ function mySpliceFunc(myArr, ...args) {
 
         var delEnd = begin + deleteCount;
 
-        if (delEnd > myArr.length) {
-            delEnd === myArr.length;
+        if (delEnd > arr.length) {
+            delEnd === arr.length;
         }
 
-        // console.log(' del begin = ' + begin);
-        // console.log(' del delEnd = ' + delEnd);
+        for (var index = 0; index < arr.length; index++) {
 
-        for (var index = 0; index < myArr.length; index++) {
-
-            if ( index < begin) {
-                myTempStartArr.push(myArr[index]);
+            if (index < begin) {
+                myTempStartArr.push(arr[index]);
             }
 
-            if ( index >= begin && index < delEnd) {
-                myTempArr.push(myArr[index]);
+            if (index >= begin && index < delEnd) {
+                myTempArr.push(arr[index]);
             }
 
-            if ( index >= delEnd) {
-                myTempEndArr.push(myArr[index]);
+            if (index >= delEnd) {
+                myTempEndArr.push(arr[index]);
             }
         }
 
-        myArr = myTempStartArr.concat(myTempEndArr);
+        return myArr = myTempStartArr.concat(myTempEndArr);
 
-        console.log("myTempStartArr = " + myTempStartArr);
-        console.log("myTempArr = " + myTempArr);
-        console.log("myTempEndArr = " + myTempEndArr + "\n");
-
+        // console.log("myTempStartArr = " + myTempStartArr);
+        // console.log("myTempArr = " + myTempArr);
+        // console.log("myTempEndArr = " + myTempEndArr + "\n" + "\n");
+        // console.log("444myArr = " + arr + "\n" + "\n");
     }
 
-
-
-    console.log("myArrAfterSplice -> myArr= " + myArr + "\n");
-
-    
     function addMyAddArray() {
-
         myArr = myArr.concat(myAddArray);
-
     }
 
     function walkThroughParameters(args) {
@@ -110,17 +92,15 @@ function mySpliceFunc(myArr, ...args) {
             if (!isNaN(Number(args[1])) && typeof Number(args[1]) === 'number') {
                 // console.log(" args[1] = " + args[1] + " typeof args[1] = " + typeof args[1]);
                 deleteCount = Number(args[1]);
-            } else if ( typeof args[1] === 'string' ) {
-                console.log("!!! deleteCount has not a numerical worth !!!"  );
+            } else if (typeof args[1] === 'string') {
+                console.log("!!! deleteCount has not a numerical worth !!!");
                 deleteCount = 0;
             } // else if we don't have second element then  deleteCount = null; see on top
 
             if (i > 1) {
                 myAddArray.push(args[i]);
             }
-
         }
-
     }
 
     function walkThroughArray(start, end) {
@@ -133,13 +113,12 @@ function mySpliceFunc(myArr, ...args) {
                 break;
             }
         }
-
         return arr;
     }
 
-
+    return myArr = myArr;
 }
 
-console.log('myArr = ' + myArr + "\n  ");
-mySpliceFunc(myArr, 1, 2, "s111dfsdf", "s2222dfdsf");
-console.log('myArr = ' + myArr);
+console.log('BEGIN myArr = ' + myArr + "\n  " + "\n  ");
+mySpliceFunc(myArr, 3, 4, "сдфд", " хгхх ", "8", 9);
+console.log("\n  \n   \n   \n   " + 'END myArr = ' + myArr);
