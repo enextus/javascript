@@ -4,7 +4,6 @@
 var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' abc ']; // seed  array
 
 function mySpliceFunc(arr, ...args) {
-
     var begin = null;
     var deleteCount = null;
     var myAddArray = [];
@@ -12,13 +11,11 @@ function mySpliceFunc(arr, ...args) {
     walkThroughParameters(args);
 
     if (begin || begin === 0) {
-
         // begin = 0 delete all elements
         // begin = 1.. delete all from 0 (begin) to the begin 1
         // begin = -1 delete from the end
         // begin = -10 and its lenght > myArr.lenght then begin = 0 and it will be delete all elements
         // begin = 100 and its lenght > myArr.lenght then it will be nothing deleted from myArray
-
         deleteElementsFromMyArray();
     }
 
@@ -27,7 +24,6 @@ function mySpliceFunc(arr, ...args) {
     }
 
     function deleteElementsFromMyArray() {
-
         var myTempStartArr = [];
         var myTempArr = [];
         var myTempEndArr = [];
@@ -47,11 +43,9 @@ function mySpliceFunc(arr, ...args) {
             if (index < begin) {
                 myTempStartArr.push(arr[index]);
             }
-
             if (index >= begin && index < delEnd) {
                 myTempArr.push(arr[index]);
             }
-
             if (index >= delEnd) {
                 myTempEndArr.push(arr[index]);
             }
