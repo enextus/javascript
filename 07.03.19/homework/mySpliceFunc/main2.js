@@ -6,6 +6,10 @@ var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' abc ']; // seed  array
 function mySpliceFunc(arr, ...args) {
     var begin = null;
     var deleteCount = null;
+    var myTempStartArr = [];
+    var myTempArr = [];
+    var myTempEndArr = [];
+    var myArrAfterSplice = [];
     var myAddArray = [];
     var myOutputArr = [];
 
@@ -17,23 +21,21 @@ function mySpliceFunc(arr, ...args) {
         // begin = -1 delete from the end
         // begin = -10 and its lenght > myArr.lenght then begin = 0 and it will be delete all elements
         // begin = 100 and its lenght > myArr.lenght then it will be nothing deleted from myArray
+
         deleteElementsFromMyArray();
     }
 
     if (myAddArray.length) {
-        addMyAddArray();
+        addMyAddArray(begin);
     }
+
+    // functions
 
     function showOutput(arr) {
         return console.log(arr);
     }
 
     function deleteElementsFromMyArray() {
-        var myTempStartArr = [];
-        var myTempArr = [];
-        var myTempEndArr = [];
-        var myArrAfterSplice = [];
-
         if (deleteCount === 0) {
             myArrAfterSplice;
         }
@@ -60,7 +62,16 @@ function mySpliceFunc(arr, ...args) {
         myArr = myTempStartArr.concat(myTempEndArr);
     }
 
-    function addMyAddArray() {
+    function addMyAddArray(startPos) {
+
+        console.log("\n\n\n\n");
+
+        console.log("myArr = " + myArr);
+        console.log("myTempStartArr = " + myTempStartArr);
+        console.log("myTempEndArr = " + myTempEndArr);
+
+        console.log("\n\n\n\n");
+
         myArr = myArr.concat(myAddArray);
     }
 
@@ -86,4 +97,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, 1, 1, "dfg", "dfg", "dfg", "dfg", "dfg", "dfg", "dfg", "dfg");
+mySpliceFunc(myArr, 0, 0, "ddd", "fff");
