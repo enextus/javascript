@@ -23,14 +23,22 @@ function mySpliceFunc(arr, ...args) {
         addMyAddArray();
     }
 
+
+
+
+
+    function showOutput(arr) {
+        return console.log(arr);
+    }
+
     function deleteElementsFromMyArray() {
         var myTempStartArr = [];
         var myTempArr = [];
         var myTempEndArr = [];
+        var myArrAfterSplice = [];
 
         if (deleteCount === 0) {
-            // if deleteCount = 0  then it will be nothing deleted and the programm will go to stop
-            return myArrAfterSplice;
+            myArrAfterSplice;
         }
 
         var delEnd = begin + deleteCount;
@@ -50,41 +58,38 @@ function mySpliceFunc(arr, ...args) {
                 myTempEndArr.push(arr[index]);
             }
         }
-        return myArr = myTempStartArr.concat(myTempEndArr);
+        
+        myArrAfterSplice = myTempArr;
+        myArr = myTempStartArr.concat(myTempEndArr);
     }
 
     function addMyAddArray() {
-        return myArr = myArr.concat(myAddArray);
+        myArr = myArr.concat(myAddArray);
     }
 
     function walkThroughParameters(args) {
         for (i = 0; i < args.length; i++) {
-            // console.log("args = " + i + "-й , " + args[i]);
             if (!isNaN(Number(args[0])) && typeof Number(args[0]) === 'number') {
                 begin = Number(args[0]);
             } else {
-                // begin = 0;
-                // if deleteCount = 0  then it will be nothing deleted and the programm will go to stop
-                console.log("!!! begin has not a numerical worth !!!");
                 return myArr;
             }
-
             if (!isNaN(Number(args[1])) && typeof Number(args[1]) === 'number') {
-                // console.log(" args[1] = " + args[1] + " typeof args[1] = " + typeof args[1]);
                 deleteCount = Number(args[1]);
             } else if (typeof args[1] === 'string') {
-                console.log("!!! deleteCount has not a numerical worth !!!");
                 deleteCount = 0;
             }
-            // else if we don't have second element then  deleteCount = null; see on top
             if (i > 1) {
                 myAddArray.push(args[i]);
             }
         }
     }
+
+    showOutput(myArrAfterSplice);
+
     return myArr = myArr;
 }
 
-console.log('BEGIN myArr = ' + myArr + "\n  ");
-mySpliceFunc(myArr, 2, 2, "сдфд", "8", 9);
+console.log('myArr = ' + myArr + "\n  ");
+mySpliceFunc(myArr, 1, 2, "сдфд", "8", 9);
 console.log("RESULT myArr = " + myArr);
