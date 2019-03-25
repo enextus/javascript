@@ -3,7 +3,7 @@
 
 var myArr = [' 0 ', ' 1 ', ' 2 ', ' 3 ', ' abc ']; // seed array
 
-function mySpliceFunc(arr, ...args) {
+function mySpliceFunc(arr, ...arguments) {
     var begin = null;
     var deleteCount = null;
     var myTempStartArr = [];
@@ -13,7 +13,7 @@ function mySpliceFunc(arr, ...args) {
     var myAddArray = [];
     var myOutputArr = [];
 
-    walkThroughParameters(args);
+    walkThroughParameters(arguments);
 
     if (begin === 0 && deleteCount === null) {
         deleteCount = myArr.length;
@@ -80,24 +80,24 @@ function mySpliceFunc(arr, ...args) {
         myArr = (myTempStartArr.concat(myAddArray)).concat(myTempEndArr);
     }
 
-    function walkThroughParameters(args) {
-        for (i = 0; i < args.length; i++) {
-            if (!isNaN(Number(args[0])) && typeof Number(args[0]) === 'number') {
-                begin = Number(args[0]);
+    function walkThroughParameters(arguments) {
+        for (i = 0; i < arguments.length; i++) {
+            if (!isNaN(Number(arguments[0])) && typeof Number(arguments[0]) === 'number') {
+                begin = Number(arguments[0]);
             } else {
                 return myArr;
             }
-            if (!isNaN(Number(args[1])) && typeof Number(args[1]) === 'number') {
-                deleteCount = Number(args[1]);
-            } else if (typeof args[1] === 'string') {
+            if (!isNaN(Number(arguments[1])) && typeof Number(arguments[1]) === 'number') {
+                deleteCount = Number(arguments[1]);
+            } else if (typeof arguments[1] === 'string') {
                 deleteCount = 0;
             }
             if (i > 1) {
-                myAddArray.push(args[i]);
+                myAddArray.push(arguments[i]);
             }
         }
     }
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, 1, -2);
+mySpliceFunc(myArr, 1, 2, " 111 ", " 34 ");
