@@ -63,16 +63,7 @@ function mySpliceFunc(arr, ...args) {
     }
 
     function addMyAddArray(startPos) {
-
-        console.log("\n\n\n\n");
-
-        console.log("myArr = " + myArr);
-        console.log("myTempStartArr = " + myTempStartArr);
-        console.log("myTempEndArr = " + myTempEndArr);
-
-        console.log("\n\n\n\n");
-
-        myArr = myArr.concat(myAddArray);
+        myArr = (myTempStartArr.concat(myAddArray)).concat(myTempEndArr);
     }
 
     function walkThroughParameters(args) {
@@ -97,4 +88,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, 0, 0, "ddd", "fff");
+mySpliceFunc(myArr, 1, 2, "ddd", "fff");
