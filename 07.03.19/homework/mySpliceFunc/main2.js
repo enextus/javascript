@@ -18,11 +18,11 @@ function mySpliceFunc(arr, ...args) {
     if (begin || begin === 0) {
 
         // begin = 0 delete all elements
-        if (begin === 0) {
+        if (begin === 0 && deleteCount === "undefined" ) {
             deleteCount = myArr.length;
         }
 
-        // begin = 1.. delete all from 0 (begin) to the begin 1
+        // begin = 1.. delete all from 0 (begin) to begin
         // begin = -1 delete from the end
         // begin = -10 and its lenght > myArr.lenght then begin = 0 and it will be delete all elements
         // begin = 100 and its lenght > myArr.lenght then it will be nothing deleted from myArray
@@ -88,4 +88,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, 0 );
+mySpliceFunc(myArr, 0, 1 );
