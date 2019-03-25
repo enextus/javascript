@@ -16,6 +16,7 @@ function mySpliceFunc(arr, ...args) {
     walkThroughParameters(args);
 
     if (begin || begin === 0) {
+        
         // begin = 0 delete all elements
         // begin = 1.. delete all from 0 (begin) to the begin 1
         // begin = -1 delete from the end
@@ -26,10 +27,8 @@ function mySpliceFunc(arr, ...args) {
     }
 
     if (myAddArray.length) {
-        addMyAddArray(begin);
+        addMyAddArray();
     }
-
-    // functions
 
     function showOutput(arr) {
         return console.log(arr);
@@ -57,12 +56,11 @@ function mySpliceFunc(arr, ...args) {
                 myTempEndArr.push(arr[index]);
             }
         }
-        
         myOutputArr = myTempArr;
         myArr = myTempStartArr.concat(myTempEndArr);
     }
 
-    function addMyAddArray(startPos) {
+    function addMyAddArray() {
         myArr = (myTempStartArr.concat(myAddArray)).concat(myTempEndArr);
     }
 
@@ -83,7 +81,6 @@ function mySpliceFunc(arr, ...args) {
             }
         }
     }
-
     myArr = myArr;
     return showOutput(myOutputArr);
 }
