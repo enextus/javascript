@@ -15,37 +15,23 @@ function mySpliceFunc(arr, ...args) {
 
     walkThroughParameters(args);
 
-    console.log("begin = " + begin);
-    console.log("deleteCount = " + deleteCount);
-
-    // begin = 0 delete all elements OK
     if (begin === 0 && deleteCount === null) {
         deleteCount = myArr.length;
     }
-
-    // begin 1 
     if (begin > 0 && deleteCount === null) {
         begin = begin;
         deleteCount = myArr.length;
     }
-
-    // begin = -1 delete all from with counting end
     if (begin < 0 && deleteCount === null) {
         if (Math.abs(begin) > myArr.length) {
             begin = 0;
         } else {
             begin = myArr.length + begin;
         }
-        console.log("3 begin = " + begin);
         deleteCount = myArr.length;
-        console.log("3 deleteCount = " + deleteCount);
     }
 
-    // begin = -10 and its lenght > myArr.lenght then begin = 0 and it will be delete all elements
-    // begin = 100 and its lenght > myArr.lenght then it will be nothing deleted from myArray
-
     deleteElementsFromMyArray();
-
 
     if (myAddArray.length) {
         addMyAddArray();
@@ -105,4 +91,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, -10);
+mySpliceFunc(myArr, 2, 3);
