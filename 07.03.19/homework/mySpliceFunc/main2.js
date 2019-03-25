@@ -10,7 +10,7 @@ function mySpliceFunc(arr, ...arguments) {
     var myTempArr = [];
     var myTempEndArr = [];
     var myArrAfterSplice = [];
-    var myAddArray = [];
+    var myAddArr = [];
     var myOutputArr = [];
 
     walkThroughParameters(arguments);
@@ -40,7 +40,7 @@ function mySpliceFunc(arr, ...arguments) {
 
     deleteElementsFromMyArray();
 
-    if (myAddArray.length) {
+    if (myAddArr.length) {
         addMyAddArray();
     }
 
@@ -77,7 +77,7 @@ function mySpliceFunc(arr, ...arguments) {
     }
 
     function addMyAddArray() {
-        myArr = (myTempStartArr.concat(myAddArray)).concat(myTempEndArr);
+        myArr = (myTempStartArr.concat(myAddArr)).concat(myTempEndArr);
     }
 
     function walkThroughParameters(arguments) {
@@ -93,7 +93,7 @@ function mySpliceFunc(arr, ...arguments) {
                 deleteCount = 0;
             }
             if (i > 1) {
-                myAddArray.push(arguments[i]);
+                myAddArr.push(arguments[i]);
             }
         }
     }
