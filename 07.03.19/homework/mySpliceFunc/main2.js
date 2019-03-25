@@ -30,6 +30,13 @@ function mySpliceFunc(arr, ...args) {
         }
         deleteCount = myArr.length;
     }
+    if (begin < 0 && deleteCount > 0) {
+        if (Math.abs(begin) > myArr.length) {
+            begin = 0;
+        } else {
+            begin = myArr.length + begin;
+        }
+    }
 
     deleteElementsFromMyArray();
 
@@ -42,11 +49,13 @@ function mySpliceFunc(arr, ...args) {
     }
 
     function deleteElementsFromMyArray() {
+        var delEnd = null;
+
         if (deleteCount === 0) {
             return myArrAfterSplice;
         }
 
-        var delEnd = begin + deleteCount;
+        delEnd = begin + deleteCount;
 
         if (delEnd > arr.length) {
             delEnd === arr.length;
@@ -91,4 +100,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, 2, 3);
+mySpliceFunc(myArr, -2);
