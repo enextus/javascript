@@ -51,7 +51,7 @@ function mySpliceFunc(arr, ...args) {
     function deleteElementsFromMyArray() {
         var delEnd = null;
 
-        if (deleteCount === 0) {
+        if (deleteCount === 0 || deleteCount < 0) {
             return myArrAfterSplice;
         }
 
@@ -100,4 +100,4 @@ function mySpliceFunc(arr, ...args) {
     return showOutput(myOutputArr);
 }
 
-mySpliceFunc(myArr, -2);
+mySpliceFunc(myArr, 1, -2);
