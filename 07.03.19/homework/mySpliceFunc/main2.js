@@ -57,7 +57,6 @@ function mySpliceFunc(arr, ...args) {
         }
         
         myOutputArr = myTempArr;
-
         myArr = myTempStartArr.concat(myTempEndArr);
     }
 
@@ -83,11 +82,8 @@ function mySpliceFunc(arr, ...args) {
         }
     }
 
-    showOutput(myOutputArr);
-
-    return myArr = myArr;
+    myArr = myArr;
+    return showOutput(myOutputArr);
 }
 
-console.log('myArr = ' + myArr + "\n  ");
-mySpliceFunc(myArr, 1, 2, "сдфд", "8", 9);
-console.log("RESULT myArr = " + myArr);
+mySpliceFunc(myArr, 1, 1, "dfg", "dfg", "dfg", "dfg", "dfg", "dfg", "dfg", "dfg");
