@@ -17,11 +17,11 @@ function mySpliceFunc(arr, ...args) {
 
     if (begin || begin === 0) {
 
-        if (begin = 0) {
+        // begin = 0 delete all elements
+        if (begin === 0) {
             deleteCount = myArr.length;
         }
 
-        // begin = 0 delete all elements
         // begin = 1.. delete all from 0 (begin) to the begin 1
         // begin = -1 delete from the end
         // begin = -10 and its lenght > myArr.lenght then begin = 0 and it will be delete all elements
