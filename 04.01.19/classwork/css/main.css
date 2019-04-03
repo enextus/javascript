@@ -1,0 +1,54 @@
+.main__title {
+    font-size: 55px;
+    text-align: center;
+    display: none;
+}
+
+.main__subtitle {
+    font-size: 25px;
+    text-align: center;
+    display: block; 
+}
+
+.main__button {
+    font-size: 20;
+}
+
+.main__second_button {
+    color: brown;
+    font-size: 20;
+}
+
+.main__title--show {
+    display: block;
+}
+
+.main__br {
+    font-size: 12px;
+    display: block;
+}
+
+.main__br--size {
+    font-size: 200px;
+    display: block;
+}
+
+.main__second_button--color {
+    color: rgb(0, 68, 255);
+    font-size: 20;
+}
+
+.main__subtitle--color {
+    color: aquamarine;
+    font-size: 25px;
+    text-align: center;
+    display: block; 
+}
+
+.main__li {
+    color: #000;
+}
+
+.main__li--color {
+    color: rgb(255, 0, 0);
+}
