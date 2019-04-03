@@ -1,5 +1,5 @@
 function createCalculator() {
-    var calculation;
+    var calculation = 0;
 
     var calculator = {
 
@@ -47,5 +47,6 @@ function createCalculator() {
             return calculation;
         }
     }
+    
     return calculator;
 }

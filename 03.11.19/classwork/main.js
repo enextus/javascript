@@ -16,12 +16,12 @@ var obj = {
     age: '42'
 }
 
-obj.aga;
-obj['age'];
-obj.test;
-obj[test]-- -- >
-    var test = 'test';
-OK
+// obj.aga;
+// obj['age'];
+// obj.test;
+// obj[test]-- -- >
+//     var test = 'test';
+// OK
 
 var obj = {
     name: 'Peter',
