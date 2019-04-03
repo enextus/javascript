@@ -11,7 +11,6 @@ function createCalculator() {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
                 result = a + b;
                 this.setCalculation(result);
-                console.log(this.getCalculation());
                 return result;
             } else {
                 return alert('Input error.');
