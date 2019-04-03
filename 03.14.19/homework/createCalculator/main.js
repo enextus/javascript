@@ -1,5 +1,9 @@
 function createCalculator() {
-    var calculation = 0;
+    var calculation;
+
+    if (calculation === undefined) {
+        calculation = 0;
+    }
 
     var calculator = {
 
@@ -7,6 +11,7 @@ function createCalculator() {
             if (typeof (a) === 'number' && typeof (b) === 'number' && !isNaN(a) && !isNaN(b)) {
                 result = a + b;
                 this.setCalculation(result);
+                console.log(this.getCalculation());
                 return result;
             } else {
                 return alert('Input error.');
@@ -47,6 +52,6 @@ function createCalculator() {
             return calculation;
         }
     }
-    
+
     return calculator;
 }
