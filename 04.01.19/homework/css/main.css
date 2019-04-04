@@ -97,11 +97,6 @@ body {
 
 .person-info {
     display: none;
-
-    /* border-style: solid;
-    border-width: thin;
-    border-color: brown; */
-
     margin: 0em 0em 0em 0em;
     padding: 0em 0em 0em 0em;
     text-align: left;

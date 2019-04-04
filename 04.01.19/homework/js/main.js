@@ -3,7 +3,7 @@ var personInfo = document.querySelector('.person-info');
 var toggleBtn = document.querySelector('.button');
 var formData = document.querySelector('.form');
 
-function Person(name, surname, age, sex) {
+function Person(name, surname, age, sex, children) {
     this.noDataMessage = "no data";
     this.name = name || this.noDataMessage;
     this.surname = surname || this.noDataMessage;
@@ -26,6 +26,9 @@ function getData() {
     }
     if (formData.sex.value) {
         person.sex = formData.sex.value;
+    }
+    if (formData.children.value) {
+        person.children = formData.children.value;
     }
 }
 
