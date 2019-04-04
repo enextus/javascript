@@ -1,7 +1,10 @@
 var mainHead = document.querySelector('.main__title');
 var personInfo = document.querySelector('.person-info');
-var toggleBtn = document.querySelector('.button');
+var Btn = document.querySelector('.button');
 var formData = document.querySelector('.form');
+var CheckBox = document.querySelector('#offspring');
+var Amount = document.querySelector('.form__elements-amount');
+
 
 function Person(name, surname, age, sex, children) {
     this.noDataMessage = "no data";
@@ -45,4 +48,9 @@ function showData() {
     personInfo.classList.add('person-info--visibility');
 }
 
-toggleBtn.addEventListener('click', showData);
+function showAmount() {
+    Amount.classList.toggle('form__elements-amount--visibility');
+}
+
+Btn.addEventListener('click', showData);
+CheckBox.addEventListener('change', showAmount);
