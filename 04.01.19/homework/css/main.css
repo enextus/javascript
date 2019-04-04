@@ -6,13 +6,11 @@ body {
 
 .header {
     height: 0px;
-    background-color: rgb(177, 177, 177);
 }
 
 .contentwrap {
     padding: 1em 0em 0em 5em;
     text-align: left;
-    background-color: rgb(177, 177, 177);
 }
 
 .contentwrap:after {
@@ -189,7 +187,6 @@ body {
 }
 
 .footer {
-    background-color: rgb(177, 177, 177);
     height: 30px;
     clear: both;
 }
