@@ -67,11 +67,7 @@ function addElement () {
     childrenDiv.classList.add('form__elements-childrenamount');
     childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children">';
     
-    // formData.appendChild(childrenDiv);
-
     var lastElement = formData.querySelector('#button-div');
-    console.log(childrenDiv);
-    console.log(lastElement);
     lastElement.insertAdjacentElement("beforebegin", childrenDiv); 
   }
 
