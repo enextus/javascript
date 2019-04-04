@@ -4,10 +4,6 @@ body {
     background-color:rgb(177, 177, 177);
 }
 
-.header {
-    height: 0px;
-}
-
 .contentwrap {
     padding: 1em 0em 0em 5em;
     text-align: left;
@@ -184,9 +180,4 @@ body {
     background-color: #4eb5f1;
     text-align: left;
      width: 270px;
-}
-
-.footer {
-    height: 30px;
-    clear: both;
 }
