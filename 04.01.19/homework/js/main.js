@@ -1,9 +1,10 @@
 var mainHead = document.querySelector('.main__title');
 var personInfo = document.querySelector('.person-info');
-var Btn = document.querySelector('.button');
+var showBtn = document.querySelector('.button');
 var formData = document.querySelector('.form');
 var CheckBox = document.querySelector('#offspring');
-var Amount = document.querySelector('.form__elements-amount');
+var amountField = document.querySelector('.form__elements-amount');
+var numberBox = document.querySelector('#childrenamount');
 
 
 function Person(name, surname, age, sex, children) {
@@ -48,9 +49,24 @@ function showData() {
     personInfo.classList.add('person-info--visibility');
 }
 
-function showAmount() {
-    Amount.classList.toggle('form__elements-amount--visibility');
+function showamountField() {
+    amountField.classList.toggle('form__elements-amount--visibility');
 }
 
-Btn.addEventListener('click', showData);
-CheckBox.addEventListener('change', showAmount);
+function reloadData() {
+    // проверяем сколько значение number
+    // проверяем сколъко филдов уже есть
+    // если нумбер больше кол-ва филдов то удаляем лишние с конца
+    // если меньше то добавляем разницу в конец
+    // если нет ни одного то создаем по количеству нумбер
+    // create new 
+
+    // <div class="form__elements">
+    //     <label class="form__elements-label" for="children">Children:</label>
+    //     <input class="input__field" type=text name="children" id="children">
+    // </div>
+}
+
+CheckBox.addEventListener('change', showamountField);
+numberBox.addEventListener('change', reloadData);
+showBtn.addEventListener('click', showData);
