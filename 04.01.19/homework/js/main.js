@@ -1,6 +1,8 @@
 var mainHead = document.querySelector('.main__title');
-var contentArea = document.querySelector('.content__area');
+var contentArea = document.querySelector('.person-info');
 var toggleBtn = document.querySelector('.button');
+
+var formData = document.querySelector('.form');
 
 function Person(name, surname, age, sex) {
     this.noDataMessage = "no data";
@@ -13,28 +15,30 @@ function Person(name, surname, age, sex) {
 var person = new Person();
 
 function getData() {
-    if (document.forms[0].textField__name.value) {
-        person.name = document.forms[0].textField__name.value;
+    if (formData.name.value) {
+        person.name = formData.name.value;
     }
-    if (document.forms[0].textField__surname.value) {
-        person.surname = document.forms[0].textField__surname.value;
+    if (formData.surname.value) {
+        person.surname = formData.surname.value;
     }
-    if (document.forms[0].textField__age.value) {
-        person.age = document.forms[0].textField__age.value;
+    if (formData.age.value) {
+        person.age = formData.age.value;
     }
-    if (document.forms[0].textField__sex.value) {
-        person.sex = document.forms[0].textField__sex.value;
+    if (formData.sex.value) {
+        person.sex = formData.sex.value;
     }
 }
 
 function showData() {
     getData();
     mainHead.classList.add('main__title--visibility');
+    
     contentArea.classList.add('person-info--visibility');
-    contentArea.getElementsByClassName("article__content_name")["0"].innerHTML = person.name;
-    contentArea.getElementsByClassName("article__content_surname")["0"].innerHTML = person.surname;
-    contentArea.getElementsByClassName("article__content_age")["0"].innerHTML = person.age;
-    contentArea.getElementsByClassName("article__content_sex")["0"].innerHTML = person.sex;
+
+    contentArea.getElementsByClassName("person-info__name")["0"].innerHTML = person.name;
+    contentArea.getElementsByClassName("person-info__surname")["0"].innerHTML = person.surname;
+    contentArea.getElementsByClassName("person-info__age")["0"].innerHTML = person.age;
+    contentArea.getElementsByClassName("person-info__sex")["0"].innerHTML = person.sex;
 }
 
 toggleBtn.addEventListener('click', showData);

@@ -22,9 +22,9 @@ body {
     margin: 0 0 2em 0;
 }
 
-.form__titles {
+.form__elements {
     margin: 1.2em 0em 0.5em 0.7em;
-    padding: 0em 0em 0em 0.5em;
+    padding: 0em 0em 0em 0em;
     text-align: left;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -35,12 +35,17 @@ body {
     text-decoration: none;
 }
 
+.form__elements-label {
+    width: 70px;
+    display: inline-block;                  
+}
+
 .button:hover {
     background-color: #000;
 }
 
 .button {
-    margin: 2em 0em 0em 0.7em;
+    margin: 2em 0em 0em 0em;
     padding: 0.5em 0.5em 0.5em 0.5em;
     background-color: #4eb5f1;
     color: #fff;
@@ -50,7 +55,7 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
     opacity: 1;
-    width: 200px;
+   width: 270px;
     text-align: center;
     border-radius: 2px;
 }
@@ -137,7 +142,7 @@ body {
     color: #FFFFFF;
     background-color: #4eb5f1;
     text-align: left;
-     width: 270px;
+    width: 260px;
 }
 
 .person-info__surname {
@@ -151,7 +156,7 @@ body {
     color: #FFFFFF;
     background-color: #4eb5f1;
     text-align: left;
-     width: 270px;
+    width: 260px;
 }
 
 .person-info__age {
@@ -165,7 +170,7 @@ body {
     color: #FFFFFF;
     background-color: #4eb5f1;
     text-align: left;
-     width: 270px;
+    width: 260px;
 }
 
 .person-info__sex {
@@ -179,5 +184,5 @@ body {
     color: #FFFFFF;
     background-color: #4eb5f1;
     text-align: left;
-     width: 270px;
+    width: 260px;
 }

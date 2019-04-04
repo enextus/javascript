@@ -14,28 +14,34 @@
     <main class="main">
         <section class="contentwrap">
             <form class="form">
-                <div class="form__titles">Name:</div>
-                <input class="input__field" type=text name=textField__name size=25>
-                <div class="form__titles">Surname:</div>
-                <input class="input__field" type=text name=textField__surname size=25>
-                <div class="form__titles">Age:</div>
-                <input class="input__field" type=text name=textField__age size=25>
-                <div class="form__titles">Sex:</div>
-                <input class="input__field" type=text name=textField__sex size=25>
-                <div></div>
-                <input class="button" type="button" value="Show personal data">
+                <div class="form__elements">
+                    <label class="form__elements-label" for="name">Name:</label>
+                    <input class="input__field" type=text name="name" id="name">
+                </div>
+                <div class="form__elements">
+                    <label class="form__elements-label" class="form__elements-label for=" surname">Surname:</label>
+                    <input class="input__field" type=text name="surname" id="surname">
+                </div>
+                <div class="form__elements">
+                    <label class="form__elements-label" for="age">Age:</label>
+                    <input class="input__field" type=text name="age" id="age">
+                </div>
+                <div class="form__elements">
+                    <label class="form__elements-label" for="sex">Sex:</label>
+                    <input class="input__field" type=text name="sex" id="sex">
+                </div>
+                <div class="form__elements">
+                    <input class="button" type="button" value="Show personal data">
+                </div>
             </form>
             <h1 class="main__title">Personal data:</h1>
             <article class="person-info">
                 <div class="person-info__field">Name:</div>
                 <div class="person-info__name"></div>
-
                 <div class="person-info__field">Surname:</div>
                 <div class="person-info__surname"></div>
-
                 <div class="person-info__field">Age:</div>
                 <div class="person-info__age"></div>
-
                 <div class="person-info__field">Sex:</div>
                 <div class="person-info__sex"></div>
             </article>
