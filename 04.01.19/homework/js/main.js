@@ -1,7 +1,6 @@
 var mainHead = document.querySelector('.main__title');
-var contentArea = document.querySelector('.person-info');
+var personInfo = document.querySelector('.person-info');
 var toggleBtn = document.querySelector('.button');
-
 var formData = document.querySelector('.form');
 
 function Person(name, surname, age, sex) {
@@ -31,14 +30,14 @@ function getData() {
 
 function showData() {
     getData();
-    mainHead.classList.add('main__title--visibility');
-    
-    contentArea.classList.add('person-info--visibility');
 
-    contentArea.getElementsByClassName("person-info__name")["0"].innerHTML = person.name;
-    contentArea.getElementsByClassName("person-info__surname")["0"].innerHTML = person.surname;
-    contentArea.getElementsByClassName("person-info__age")["0"].innerHTML = person.age;
-    contentArea.getElementsByClassName("person-info__sex")["0"].innerHTML = person.sex;
+    personInfo.querySelector('.person-info__name').textContent = person.name;
+    personInfo.querySelector('.person-info__surname').textContent = person.surname;
+    personInfo.querySelector('.person-info__age').textContent = person.age;
+    personInfo.querySelector('.person-info__sex').textContent = person.sex;
+
+    mainHead.classList.add('main__title--visibility');
+    personInfo.classList.add('person-info--visibility');
 }
 
 toggleBtn.addEventListener('click', showData);
