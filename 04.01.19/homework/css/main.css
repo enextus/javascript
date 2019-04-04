@@ -1,0 +1,194 @@
+body {
+    margin: 0;
+    padding: 0
+}
+
+.header {
+    height: 0px;
+    background-color: rgb(177, 177, 177);
+}
+
+.contentwrap {
+    padding: 1em 0em 0em 5em;
+    text-align: left;
+    background-color: rgb(177, 177, 177);
+}
+
+.contentwrap:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.form {
+    margin: 0 0 2em 0;
+}
+
+.form__titles {
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0.5em;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #000;
+}
+
+.button {
+    margin: 2em 0em 0em 0.7em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #4eb5f1;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+    opacity: 1;
+    width: 200px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.input__field {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+}
+
+.input__field:hover {
+    background-color: #4095c6;
+}
+
+.main__title {
+    display: none;
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0.5em;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+}
+
+.main__title--visibility {
+    display: block;
+}
+
+.content__area {
+    display: none;
+
+    /* border-style: solid;
+    border-width: thin;
+    border-color: brown; */
+
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+}
+
+.content__area--visibility {
+    display: block;
+}
+
+.article__titles {
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0.5em;
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    text-decoration: none;
+}
+
+.article__content_name {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+    width: 400px;
+}
+
+.article__content_surname {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+    width: 400px;
+}
+
+.article__content_age {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+    width: 400px;
+}
+
+.article__content_sex {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+    width: 400px;
+}
+
+.footer {
+    background-color: rgb(177, 177, 177);
+    height: 30px;
+    clear: both;
+}
