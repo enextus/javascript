@@ -186,3 +186,17 @@ body {
     text-align: left;
     width: 260px;
 }
+
+.person-info__children {
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+    width: 260px;
+}

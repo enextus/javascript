@@ -9,6 +9,7 @@ function Person(name, surname, age, sex) {
     this.surname = surname || this.noDataMessage;
     this.age = age || this.noDataMessage;
     this.sex = sex || this.noDataMessage;
+    this.children = children || this.noDataMessage;
 }
 
 var person = new Person();
@@ -35,6 +36,7 @@ function showData() {
     personInfo.querySelector('.person-info__surname').textContent = person.surname;
     personInfo.querySelector('.person-info__age').textContent = person.age;
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
+    personInfo.querySelector('.person-info__children').textContent = person.children;
 
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
