@@ -65,7 +65,7 @@ function reloadData() {
 function addElement () { 
     var childrenDiv = document.createElement('div');
     childrenDiv.classList.add('form__elements-childrenamount');
-    childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children">';
+    childrenDiv.innerHTML = '<label class="form__elements" for="children">Children:</label><input class="input__field" type=text name="children">';
     
     var lastElement = formData.querySelector('#button-div');
     lastElement.insertAdjacentElement("beforebegin", childrenDiv); 
