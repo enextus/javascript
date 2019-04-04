@@ -5,6 +5,7 @@ var formData = document.querySelector('.form');
 var checkBox = document.querySelector('#offspring');
 var amountField = document.querySelector('.form__elements-amount');
 var numberBox = document.querySelector('#childrenamount');
+var numberOfFileds = 0;
 
 
 function Person(name, surname, age, sex, children) {
@@ -53,8 +54,13 @@ function showAmountField() {
     amountField.classList.toggle('form__elements-amount--visibility');
 }
 
-function reloadData() {
-    // проверяем сколько значение number
+function howManyChildren() {
+
+    var childrenAmount = formData.querySelector('#childrenamount').value;
+
+    return childrenAmount;
+
+    // проверяем сколько значение number OK
     // проверяем сколъко филдов уже есть
     // если нумбер больше кол-ва филдов то удаляем лишние с конца
     // если меньше то добавляем разницу в конец 
@@ -63,12 +69,24 @@ function reloadData() {
 }
 
 function addElement() {
+
     var childrenDiv = document.createElement('div');
     childrenDiv.classList.add('form__elements-childrenamount');
-    childrenDiv.innerHTML = '<label class="form__elements" for="children">Children:</label><input class="input__field" type=text name="children">';
+    childrenDiv.innerHTML = '<label class="form__elements" for="children' + numberOfFileds + '">' + (numberOfFileds + 1) + '. Child:</label><input class="input__field" type=text name="children' + numberOfFileds + '">';
 
     var lastElement = formData.querySelector('#button-div');
+
+    numberOfFileds += 1;
+
+    console.log(howManyChildren());
+
+    console.log("numberOfFileds = " + numberOfFileds);
+
     lastElement.insertAdjacentElement("beforebegin", childrenDiv);
+
+    
+
+    
 }
 
 checkBox.addEventListener('change', showAmountField);
