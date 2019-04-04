@@ -30,7 +30,7 @@ function getData() {
 function showData() {
     getData();
     mainHead.classList.add('main__title--visibility');
-    contentArea.classList.add('content__area--visibility');
+    contentArea.classList.add('person-info--visibility');
     contentArea.getElementsByClassName("article__content_name")["0"].innerHTML = person.name;
     contentArea.getElementsByClassName("article__content_surname")["0"].innerHTML = person.surname;
     contentArea.getElementsByClassName("article__content_age")["0"].innerHTML = person.age;
