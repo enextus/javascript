@@ -2,7 +2,7 @@ var mainHead = document.querySelector('.main__title');
 var personInfo = document.querySelector('.person-info');
 var showBtn = document.querySelector('.button');
 var formData = document.querySelector('.form');
-var CheckBox = document.querySelector('#offspring');
+var checkBox = document.querySelector('#offspring');
 var amountField = document.querySelector('.form__elements-amount');
 var numberBox = document.querySelector('#childrenamount');
 
@@ -49,7 +49,7 @@ function showData() {
     personInfo.classList.add('person-info--visibility');
 }
 
-function showamountField() {
+function showAmountField() {
     amountField.classList.toggle('form__elements-amount--visibility');
 }
 
@@ -65,11 +65,11 @@ function reloadData() {
 function addElement () { 
     var childrenDiv = document.createElement('div');
     childrenDiv.classList.add('form__elements-childrenamount');
-    childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children" id="children">';
+    childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children">';
     
      formData.appendChild(childrenDiv);
   }
 
-CheckBox.addEventListener('change', showamountField);
+checkBox.addEventListener('change', showAmountField);
 numberBox.addEventListener('change', addElement);
 showBtn.addEventListener('click', showData);
