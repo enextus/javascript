@@ -57,7 +57,7 @@ function reloadData() {
     // проверяем сколько значение number
     // проверяем сколъко филдов уже есть
     // если нумбер больше кол-ва филдов то удаляем лишние с конца
-    // если меньше то добавляем разницу в конец
+    // если меньше то добавляем разницу в конец 
     // если нет ни одного то создаем по количеству нумбер
     // create new 
 }
@@ -67,7 +67,12 @@ function addElement () {
     childrenDiv.classList.add('form__elements-childrenamount');
     childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children">';
     
-     formData.appendChild(childrenDiv);
+    // formData.appendChild(childrenDiv);
+
+    var lastElement = formData.querySelector('#button-div');
+    console.log(childrenDiv);
+    console.log(lastElement);
+    lastElement.insertAdjacentElement("beforebegin", childrenDiv); 
   }
 
 checkBox.addEventListener('change', showAmountField);
