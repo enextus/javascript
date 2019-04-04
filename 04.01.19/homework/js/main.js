@@ -54,36 +54,20 @@ function showamountField() {
 }
 
 function reloadData() {
-
-    var childrenAmount = amountField.querySelector('#childrenamount').value;
-
     // проверяем сколько значение number
     // проверяем сколъко филдов уже есть
     // если нумбер больше кол-ва филдов то удаляем лишние с конца
     // если меньше то добавляем разницу в конец
     // если нет ни одного то создаем по количеству нумбер
     // create new 
-    // formData.querySelector('#childrenamount');
-    // console.log(formData);
-    // var inputField = createElement('<div class="form__elements-childrenamount"><label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children" id="children"></div>');
-    // formData.appendChild(inputField);
-    // console.log(formData);
-
-    // <div class="form__elements">
-    //     <label class="form__elements-label" for="children">Children:</label>
-    //     <input class="input__field" type=text name="children" id="children">
-    // </div>
 }
 
 function addElement () { 
- 
-    // var currentDiv2 = formData.querySelector('.form__elements');
-
     var childrenDiv = document.createElement('div');
+    childrenDiv.classList.add('form__elements-childrenamount');
     childrenDiv.innerHTML = '<label class="form__elements-label" for="children">Children:</label><input class="input__field" type=text name="children" id="children">';
-    formData.appendChild(childrenDiv);
-
-
+    
+     formData.appendChild(childrenDiv);
   }
 
 CheckBox.addEventListener('change', showamountField);
