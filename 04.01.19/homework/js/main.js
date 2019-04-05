@@ -20,7 +20,18 @@ function Person(name, surname, age, sex, children) {
     this.children = children || this.noDataMessage;
 }
 
+function Children(name, surname, age, sex) {
+    this.noDataMessage = "no data";
+    this.name = name || this.noDataMessage;
+    this.surname = surname || this.noDataMessage;
+    this.age = age || this.noDataMessage;
+    this.sex = sex || this.noDataMessage;
+}
+
 var person = new Person();
+
+var children = new Children();
+
 
 function getData() {
 
@@ -43,6 +54,13 @@ function getData() {
 
 function saveData() {
 
+
+    mainHead.classList.remove('main__title--visibility');
+    personInfo.classList.remove('person-info--visibility');
+
+    mainHead.classList.add('main__title');
+    personInfo.classList.add('person-info');
+
     getData();
 
     personInfo.querySelector('.person-info__name').textContent = person.name;
@@ -51,11 +69,6 @@ function saveData() {
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
     personInfo.querySelector('.person-info__children').textContent = person.children;
 
-    mainHead.classList.remove('main__title--visibility');
-    personInfo.classList.remove('person-info--visibility');
-
-    mainHead.classList.add('main__title');
-    personInfo.classList.add('person-info');
 }
 
 function showData() {
@@ -96,7 +109,6 @@ function addElement() {
     numberOfFileds += 1;
 
     console.log(howManyChildren());
-
     console.log("numberOfFileds = " + numberOfFileds);
 
     lastElement.insertAdjacentElement("beforebegin", childrenDiv);
