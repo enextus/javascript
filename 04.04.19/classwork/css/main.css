@@ -1,0 +1,18 @@
+.main {
+    width: 50%;
+
+    margin: 300px auto;
+}
+.main__text {
+    font-size: 24px;
+}
+.main__label {
+    font-size: 24px;
+}
+.main__input {
+    font-size: 24px;
+}
+
+.main__entered-word {
+    font-size: 24px;
+}

@@ -1,6 +1,9 @@
 var mainHead = document.querySelector('.main__title');
 var personInfo = document.querySelector('.person-info');
-var showBtn = document.querySelector('.button');
+
+var saveBtn = document.querySelector('#button-save');
+var showBtn = document.querySelector('#button-show');
+
 var formData = document.querySelector('.form');
 var checkBox = document.querySelector('#offspring');
 var amountField = document.querySelector('.form__elements-amount');
@@ -20,6 +23,7 @@ function Person(name, surname, age, sex, children) {
 var person = new Person();
 
 function getData() {
+
     if (formData.name.value) {
         person.name = formData.name.value;
     }
@@ -37,7 +41,8 @@ function getData() {
     }
 }
 
-function showData() {
+function saveData() {
+
     getData();
 
     personInfo.querySelector('.person-info__name').textContent = person.name;
@@ -46,9 +51,21 @@ function showData() {
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
     personInfo.querySelector('.person-info__children').textContent = person.children;
 
+    mainHead.classList.remove('main__title--visibility');
+    personInfo.classList.remove('person-info--visibility');
+
+    mainHead.classList.add('main__title');
+    personInfo.classList.add('person-info');
+}
+
+function showData() {
+    
+    getData();
+
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
 }
+
 
 function showAmountField() {
     amountField.classList.toggle('form__elements-amount--visibility');
@@ -74,7 +91,7 @@ function addElement() {
     childrenDiv.classList.add('form__elements-childrenamount');
     childrenDiv.innerHTML = '<label class="form__elements" for="children' + numberOfFileds + '">' + (numberOfFileds + 1) + '. Child:</label><input class="input__field" type=text name="children' + numberOfFileds + '">';
 
-    var lastElement = formData.querySelector('#button-div');
+    var lastElement = formData.querySelector('#div__button-save');
 
     numberOfFileds += 1;
 
@@ -83,12 +100,10 @@ function addElement() {
     console.log("numberOfFileds = " + numberOfFileds);
 
     lastElement.insertAdjacentElement("beforebegin", childrenDiv);
-
-    
-
     
 }
 
 checkBox.addEventListener('change', showAmountField);
 numberBox.addEventListener('change', addElement);
+saveBtn.addEventListener('click', saveData);
 showBtn.addEventListener('click', showData);
