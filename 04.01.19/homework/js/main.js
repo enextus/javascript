@@ -29,7 +29,6 @@ function Children(name, surname, age, sex) {
 }
 
 var person = new Person();
-
 var children = new Children();
 
 
@@ -54,12 +53,7 @@ function getData() {
 
 function saveData() {
 
-
-    mainHead.classList.remove('main__title--visibility');
-    personInfo.classList.remove('person-info--visibility');
-
-    mainHead.classList.add('main__title');
-    personInfo.classList.add('person-info');
+    hideData();
 
     getData();
 
@@ -72,33 +66,46 @@ function saveData() {
 }
 
 function showData() {
-    
+
     getData();
 
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
 }
 
+function hideData() {
+
+    mainHead.classList.remove('main__title--visibility');
+    personInfo.classList.remove('person-info--visibility');
+
+    mainHead.classList.add('main__title');
+    personInfo.classList.add('person-info');
+}
 
 function showAmountField() {
+
+    hideData();
+    
     amountField.classList.toggle('form__elements-amount--visibility');
 }
 
 function howManyChildren() {
-
     var childrenAmount = formData.querySelector('#childrenamount').value;
-
     return childrenAmount;
-
-    // проверяем сколько значение number OK
-    // проверяем сколъко филдов уже есть
-    // если нумбер больше кол-ва филдов то удаляем лишние с конца
-    // если меньше то добавляем разницу в конец 
-    // если нет ни одного то создаем по количеству нумбер
-    // create new 
 }
 
+
+// проверяем сколько значение number OK
+// проверяем сколъко филдов уже есть
+// если нумбер больше кол-ва филдов то удаляем лишние с конца
+// если меньше то добавляем разницу в конец 
+// если нет ни одного то создаем по количеству нумбер
+// create new 
+
+
 function addElement() {
+
+    hideData();
 
     var childrenDiv = document.createElement('div');
     childrenDiv.classList.add('form__elements-childrenamount');
@@ -112,7 +119,6 @@ function addElement() {
     console.log("numberOfFileds = " + numberOfFileds);
 
     lastElement.insertAdjacentElement("beforebegin", childrenDiv);
-    
 }
 
 checkBox.addEventListener('change', showAmountField);
