@@ -13,6 +13,7 @@ var numberOfFileds = 0;
 
 function Person(name, surname, age, sex, children) {
     this.noDataMessage = "no data";
+
     this.name = name || this.noDataMessage;
     this.surname = surname || this.noDataMessage;
     this.age = age || this.noDataMessage;
@@ -20,7 +21,9 @@ function Person(name, surname, age, sex, children) {
     this.children = children || this.noDataMessage;
 }
 
-function Children(name, surname, age, sex) {
+var person = new Person();
+
+function Child(name, surname, age, sex) {
     this.noDataMessage = "no data";
     this.name = name || this.noDataMessage;
     this.surname = surname || this.noDataMessage;
@@ -28,12 +31,9 @@ function Children(name, surname, age, sex) {
     this.sex = sex || this.noDataMessage;
 }
 
-var person = new Person();
-var children = new Children();
+var child = new Child();
 
-
-function getData() {
-
+function getPersonData() {
     if (formData.name.value) {
         person.name = formData.name.value;
     }
@@ -51,11 +51,24 @@ function getData() {
     }
 }
 
+function getChildData() {
+    if (formData.name.value) {
+        children.name = formData.name.value;
+    }
+    if (formData.surname.value) {
+        children.surname = formData.surname.value;
+    }
+    if (formData.age.value) {
+        children.age = formData.age.value;
+    }
+    if (formData.sex.value) {
+        children.sex = formData.sex.value;
+}
+
 function saveData() {
 
     hideData();
-
-    getData();
+    getPersonData();
 
     personInfo.querySelector('.person-info__name').textContent = person.name;
     personInfo.querySelector('.person-info__surname').textContent = person.surname;
@@ -63,11 +76,16 @@ function saveData() {
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
     personInfo.querySelector('.person-info__children').textContent = person.children;
 
+    // for ( var i = 0; i < ..console..console..lenght; i ++ ){
+    // // ````
+    // }
+
+    personInfo.querySelector('.person-info__children').textContent = children.child1;
 }
 
 function showData() {
 
-    getData();
+    getPersonData();
 
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
@@ -94,14 +112,12 @@ function howManyChildren() {
     return childrenAmount;
 }
 
-
 // проверяем сколько значение number OK
 // проверяем сколъко филдов уже есть
 // если нумбер больше кол-ва филдов то удаляем лишние с конца
 // если меньше то добавляем разницу в конец 
 // если нет ни одного то создаем по количеству нумбер
 // create new 
-
 
 function addElement() {
 
