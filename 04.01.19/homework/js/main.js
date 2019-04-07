@@ -19,6 +19,7 @@ function Person(name, surname, age, sex, children) {
     this.sex = sex || this.noDataMessage;
     this.children = children || [];
 }
+
 var person = new Person();
 
 function getPersonDataFromInput() {
@@ -49,11 +50,6 @@ function getChildDataFromInput(num, child) {
 
     var shiftcoefficient = 2 + (num * 4);
 
-    console.log("shiftcoefficient = " + shiftcoefficient);
-
-    console.log(formData.elements[4].value);
-    console.log(formData.elements[5].value);
-
     if (formData.elements[shiftcoefficient + 0].value) {
         child.name = formData.elements[shiftcoefficient + 0].value;
     }
@@ -80,8 +76,6 @@ function saveData() {
             person.children.push(child);
         }
     }
-
-    console.log(person);
 }
 
 function showData() {
@@ -112,15 +106,11 @@ function howManyChildren() {
 }
 
 function createChildDivElement() {
-
     hideData();
     numberOfFields += 1;
 
-    // outer DIV start
     var childiv = document.createElement('div');
     childiv.classList.add('form__elements-child');
-
-    // inner DIVs start
 
     var elemchildiv = document.createElement('div');
     elemchildiv.classList.add('form__elements-child');
@@ -198,14 +188,10 @@ function createChildDivElement() {
 
     elemchildiv4.appendChild(input4);
 
-    // inner DIVs stop
-
     childiv.appendChild(elemchildiv);
     childiv.appendChild(elemchildiv2);
     childiv.appendChild(elemchildiv3);
     childiv.appendChild(elemchildiv4);
-
-    // outer DIV stop
 
     return childiv;
 }
