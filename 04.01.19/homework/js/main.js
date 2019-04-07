@@ -48,18 +48,27 @@ function Child(name, surname, age, sex) {
 
 function getChildDataFromInput(num, child) {
     var shiftcoefficient = 2 + (num * 4);
+    var noData = "no data";
 
     if (formData.elements[shiftcoefficient + 0].value) {
         child.name = formData.elements[shiftcoefficient + 0].value;
+    } else {
+        child.name = noData;
     }
     if (child.surname = formData.elements[shiftcoefficient + 1].value) {
         child.surname = formData.elements[shiftcoefficient + 1].value;
+    } else {
+        child.surname = noData;
     }
     if (child.age = formData.elements[shiftcoefficient + 2].value) {
         child.age = formData.elements[shiftcoefficient + 2].value;
+    } else {
+        child.age = noData;
     }
     if (child.sex = formData.elements[shiftcoefficient + 3].value) {
         child.sex = formData.elements[shiftcoefficient + 3].value;
+    } else {
+        child.sex = noData;
     }
     return child;
 }
