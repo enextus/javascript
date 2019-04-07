@@ -11,6 +11,8 @@ var numberBox = document.querySelector('#childrenamount');
 var numberOfFileds = 0;
 
 
+
+
 function Person(name, surname, age, sex, children) {
     this.noDataMessage = "no data";
 
@@ -20,18 +22,7 @@ function Person(name, surname, age, sex, children) {
     this.sex = sex || this.noDataMessage;
     this.children = children || this.noDataMessage;
 }
-
 var person = new Person();
-
-function Child(name, surname, age, sex) {
-    this.noDataMessage = "no data";
-    this.name = name || this.noDataMessage;
-    this.surname = surname || this.noDataMessage;
-    this.age = age || this.noDataMessage;
-    this.sex = sex || this.noDataMessage;
-}
-
-var child = new Child();
 
 function getPersonData() {
     if (formData.name.value) {
@@ -51,18 +42,28 @@ function getPersonData() {
     }
 }
 
+function Child(name, surname, age, sex) {
+    this.noDataMessage = "no data";
+    this.name = name || this.noDataMessage;
+    this.surname = surname || this.noDataMessage;
+    this.age = age || this.noDataMessage;
+    this.sex = sex || this.noDataMessage;
+}
+var child = new Child();
+
 function getChildData() {
     if (formData.name.value) {
-        children.name = formData.name.value;
+        child.name = formData.name.value;
     }
     if (formData.surname.value) {
-        children.surname = formData.surname.value;
+        child.surname = formData.surname.value;
     }
     if (formData.age.value) {
-        children.age = formData.age.value;
+        child.age = formData.age.value;
     }
     if (formData.sex.value) {
-        children.sex = formData.sex.value;
+        child.sex = formData.sex.value;
+    }
 }
 
 function saveData() {
@@ -70,17 +71,17 @@ function saveData() {
     hideData();
     getPersonData();
 
-    personInfo.querySelector('.person-info__name').textContent = person.name;
-    personInfo.querySelector('.person-info__surname').textContent = person.surname;
-    personInfo.querySelector('.person-info__age').textContent = person.age;
-    personInfo.querySelector('.person-info__sex').textContent = person.sex;
-    personInfo.querySelector('.person-info__children').textContent = person.children;
+    console.log(personInfo.querySelector('.person-info__name').textContent = person.name);
+    console.log(personInfo.querySelector('.person-info__surname').textContent = person.surname);
+    console.log(personInfo.querySelector('.person-info__age').textContent = person.age);
+    console.log(personInfo.querySelector('.person-info__sex').textContent = person.sex);
+    console.log(personInfo.querySelector('.person-info__children').textContent = person.children);
 
     // for ( var i = 0; i < ..console..console..lenght; i ++ ){
     // // ````
     // }
 
-    personInfo.querySelector('.person-info__children').textContent = children.child1;
+    // personInfo.querySelector('.person-info__children').textContent = children.child1;
 }
 
 function showData() {
@@ -103,7 +104,7 @@ function hideData() {
 function showAmountField() {
 
     hideData();
-    
+
     amountField.classList.toggle('form__elements-amount--visibility');
 }
 
@@ -123,18 +124,34 @@ function addElement() {
 
     hideData();
 
-    var childrenDiv = document.createElement('div');
-    childrenDiv.classList.add('form__elements-childrenamount');
-    childrenDiv.innerHTML = '<label class="form__elements" for="children' + numberOfFileds + '">' + (numberOfFileds + 1) + '. Child:</label><input class="input__field" type=text name="children' + numberOfFileds + '">';
+    var childDiv = document.createElement('div');
+    childDiv.classList.add('form__elements-child');
+
+    var newlabel = document.createElement('label');
+    newlabel.setAttribute("for", id_from_input);
+
+    newlabel.innerHTML = "Here goes the text";
+
+    childDiv.appendChild(newlabel);
+
+
+ 
+    childDiv.classList.add('form__elements-label');
+
+
+    childDiv.innerHTML = '<label class="form__elements-label" for="child-' + numberOfFileds + '">' + (numberOfFileds + 1) + '. Child:</label><input class="input__field" type=text name="child-' + numberOfFileds + '">';
+
+
+
+
+
+
 
     var lastElement = formData.querySelector('#div__button-save');
-
     numberOfFileds += 1;
-
     console.log(howManyChildren());
     console.log("numberOfFileds = " + numberOfFileds);
-
-    lastElement.insertAdjacentElement("beforebegin", childrenDiv);
+    lastElement.insertAdjacentElement("beforebegin", childDiv);
 }
 
 checkBox.addEventListener('change', showAmountField);
