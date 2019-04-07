@@ -84,6 +84,7 @@ function saveData() {
             person.children.push(child);
         }
     }
+    showShowButton();
 }
 
 function createShowChildDivElement(childnumber) {
@@ -165,6 +166,11 @@ function hideData() {
 function showAmountField() {
     hideData();
     amountField.classList.toggle('form__elements-amount--visibility');
+}
+
+
+function showShowButton() {
+    showBtn.classList.add('button_show--visibility');
 }
 
 function howManyChildren() {
