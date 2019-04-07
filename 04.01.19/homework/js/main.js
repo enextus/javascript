@@ -47,7 +47,6 @@ function Child(name, surname, age, sex) {
 }
 
 function getChildDataFromInput(num, child) {
-
     var shiftcoefficient = 2 + (num * 4);
 
     if (formData.elements[shiftcoefficient + 0].value) {
@@ -78,9 +77,8 @@ function saveData() {
     }
 }
 
-function createShowChildDivElement() {
-
-    // numberOfFields += 1;
+function createShowChildDivElement(childnumber) {
+    var child = childnumber + 1;
 
     var childivshow = document.createElement('div');
     childivshow.classList.add('person-info__field');
@@ -89,7 +87,7 @@ function createShowChildDivElement() {
 
     var childivshow2 = document.createElement('div');
     childivshow2.classList.add('person-info__childname');
-    var text = document.createTextNode("child name");
+    var text = document.createTextNode(person.children[childnumber].name);
     childivshow2.appendChild(text);
 
     var childivshow3 = document.createElement('div');
@@ -99,7 +97,7 @@ function createShowChildDivElement() {
 
     var childivshow4 = document.createElement('div');
     childivshow4.classList.add('person-info__childsurname');
-    var text = document.createTextNode("child surname");
+    var text = document.createTextNode(person.children[childnumber].surname);
     childivshow4.appendChild(text);
 
     var childivshow5 = document.createElement('div');
@@ -109,7 +107,7 @@ function createShowChildDivElement() {
 
     var childivshow6 = document.createElement('div');
     childivshow6.classList.add('person-info__childage');
-    var text = document.createTextNode("child age");
+    var text = document.createTextNode(person.children[childnumber].age);
     childivshow6.appendChild(text);
 
     var childivshow7 = document.createElement('div');
@@ -119,55 +117,38 @@ function createShowChildDivElement() {
 
     var childivshow8 = document.createElement('div');
     childivshow8.classList.add('person-info__childsex');
-    var text = document.createTextNode("child sex");
+    var text = document.createTextNode(person.children[childnumber].sex);
     childivshow8.appendChild(text);
 
     return [childivshow, childivshow2, childivshow3, childivshow4, childivshow5, childivshow6, childivshow7, childivshow8];
 }
 
 function showData() {
-
     personInfo.querySelector('.person-info__name').textContent = person.name;
     personInfo.querySelector('.person-info__surname').textContent = person.surname;
     personInfo.querySelector('.person-info__age').textContent = person.age;
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
 
     if (person.children.length) {
-
-        console.log("person.children.length = " + person.children.length);
-
-        var codes = createShowChildDivElement();
-
-        var childivshow1 = codes[0];
-        var childivshow2 = codes[1];
-        var childivshow3 = codes[2];
-        var childivshow4 = codes[3];
-        var childivshow5 = codes[4];
-        var childivshow6 = codes[5];
-        var childivshow7 = codes[6];
-        var childivshow8 = codes[7];
-
-        personInfo.appendChild(childivshow1);
-        personInfo.appendChild(childivshow2);
-        personInfo.appendChild(childivshow3);
-        personInfo.appendChild(childivshow4);
-        personInfo.appendChild(childivshow5);
-        personInfo.appendChild(childivshow6);
-        personInfo.appendChild(childivshow7);
-        personInfo.appendChild(childivshow8);
-
-
+        for (i = 0; i < person.children.length; i++) {
+            var divs = createShowChildDivElement(i);
+            personInfo.appendChild(divs[0]);
+            personInfo.appendChild(divs[1]);
+            personInfo.appendChild(divs[2]);
+            personInfo.appendChild(divs[3]);
+            personInfo.appendChild(divs[4]);
+            personInfo.appendChild(divs[5]);
+            personInfo.appendChild(divs[6]);
+            personInfo.appendChild(divs[7]);
+        }
     }
-
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
 }
 
 function hideData() {
-
     mainHead.classList.remove('main__title--visibility');
     personInfo.classList.remove('person-info--visibility');
-
     mainHead.classList.add('main__title');
     personInfo.classList.add('person-info');
 }
@@ -272,7 +253,6 @@ function createInputChildDivElement() {
 
     return childiv;
 }
-
 
 function addElement() {
     var childiv = createInputChildDivElement();
