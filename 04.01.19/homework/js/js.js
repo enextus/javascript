@@ -5,7 +5,6 @@ a = function (e, o) {
     n && n.parentNode.removeChild(n), document.head.appendChild(t)
 }
 
-
 function createInput() {
     var input = document.createElement("input");
     input.className = "input__field";

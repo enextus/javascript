@@ -10,9 +10,6 @@ var amountField = document.querySelector('.form__elements-amount');
 var numberBox = document.querySelector('#childrenamount');
 var numberOfFileds = 0;
 
-
-
-
 function Person(name, surname, age, sex, children) {
     this.noDataMessage = "no data";
 
@@ -20,7 +17,7 @@ function Person(name, surname, age, sex, children) {
     this.surname = surname || this.noDataMessage;
     this.age = age || this.noDataMessage;
     this.sex = sex || this.noDataMessage;
-    this.children = children || this.noDataMessage;
+    this.children = children || [];
 }
 var person = new Person();
 
@@ -49,37 +46,49 @@ function Child(name, surname, age, sex) {
     this.age = age || this.noDataMessage;
     this.sex = sex || this.noDataMessage;
 }
-var child = new Child();
 
-function getChildData() {
-    if (formData.name.value) {
-        child.name = formData.name.value;
+function getChildData(num) {
+
+
+
+    var shiftcoefficient = 2 + num * 4;
+
+    if (formData.elements[shiftcoefficient + 0].value) {
+        child.name = formData.elements[shiftcoefficient + 0].value;
     }
-    if (formData.surname.value) {
-        child.surname = formData.surname.value;
+    if (child.surname = formData.elements[shiftcoefficient + 1].value) {
+        child.surname = formData.elements[shiftcoefficient + 1].value;
     }
-    if (formData.age.value) {
-        child.age = formData.age.value;
+    if (child.age = formData.elements[shiftcoefficient + 2].value) {
+        child.age = formData.elements[shiftcoefficient + 2].value;
     }
-    if (formData.sex.value) {
-        child.sex = formData.sex.value;
+    if (child.sex = formData.elements[shiftcoefficient + 3].value) {
+        child.sex = formData.elements[shiftcoefficient + 3].value;
     }
 }
 
 function saveData() {
 
+
+
     hideData();
     getPersonData();
+    getChildData(numberOfFileds);
 
-    console.log(personInfo.querySelector('.person-info__name').textContent = person.name);
-    console.log(personInfo.querySelector('.person-info__surname').textContent = person.surname);
-    console.log(personInfo.querySelector('.person-info__age').textContent = person.age);
-    console.log(personInfo.querySelector('.person-info__sex').textContent = person.sex);
-    console.log(personInfo.querySelector('.person-info__children').textContent = person.children);
+    console.log('child = ' + child);
+
+    console.log(child.name);
+    console.log(child.surname);
+    console.log(child.age);
+    console.log(child.sex);
 
     // for ( var i = 0; i < ..console..console..lenght; i ++ ){
     // // ````
     // }
+    console.log(person);
+    console.log(person.children);
+
+    person.children.push(child);
 
     // personInfo.querySelector('.person-info__children').textContent = children.child1;
 }
@@ -113,13 +122,6 @@ function howManyChildren() {
     return childrenAmount;
 }
 
-// проверяем сколько значение number OK
-// проверяем сколъко филдов уже есть
-// если нумбер больше кол-ва филдов то удаляем лишние с конца
-// если меньше то добавляем разницу в конец 
-// если нет ни одного то создаем по количеству нумбер
-// create new 
-
 function createChildDivElement() {
 
     hideData();
@@ -137,7 +139,7 @@ function createChildDivElement() {
     var label = document.createElement("label");
     label.classList.add('form__elements-label');
     label.htmlFor = 'name' + numberOfFileds;
-    var text = document.createTextNode("name");
+    var text = document.createTextNode(numberOfFileds + ". name");
     label.appendChild(text);
 
     elemchildiv.appendChild(label);
@@ -156,7 +158,7 @@ function createChildDivElement() {
     var label2 = document.createElement("label");
     label2.classList.add('form__elements-label');
     label2.htmlFor = 'surname' + numberOfFileds;
-    var text2 = document.createTextNode("surname");
+    var text2 = document.createTextNode(numberOfFileds + ". surname");
     label2.appendChild(text2);
 
     elemchildiv2.appendChild(label2);
@@ -175,7 +177,7 @@ function createChildDivElement() {
     var label3 = document.createElement("label");
     label3.classList.add('form__elements-label');
     label3.htmlFor = 'age' + numberOfFileds;
-    var text3 = document.createTextNode("age");
+    var text3 = document.createTextNode(numberOfFileds + ". age");
     label3.appendChild(text3);
 
     elemchildiv3.appendChild(label3);
@@ -194,7 +196,7 @@ function createChildDivElement() {
     var label4 = document.createElement("label");
     label4.classList.add('form__elements-label');
     label4.htmlFor = 'sex' + numberOfFileds;
-    var text4 = document.createTextNode("sex");
+    var text4 = document.createTextNode(numberOfFileds + ". sex");
     label4.appendChild(text4);
 
     elemchildiv4.appendChild(label4);
@@ -219,18 +221,11 @@ function createChildDivElement() {
     return childiv;
 }
 
-
 function addElement() {
-var   childiv =   createChildDivElement();
-var lastElement = formData.querySelector('#div__button-save');
-
-console.log(howManyChildren());
-console.log("numberOfFileds = " + numberOfFileds);
-
-lastElement.insertAdjacentElement("beforebegin", childiv);
+    var childiv = createChildDivElement();
+    var lastElement = formData.querySelector('#div__button-save');
+    lastElement.insertAdjacentElement("beforebegin", childiv);
 }
-
-
 
 checkBox.addEventListener('change', showAmountField);
 numberBox.addEventListener('change', addElement);
