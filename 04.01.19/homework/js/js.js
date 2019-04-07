@@ -6,17 +6,6 @@ a = function (e, o) {
 }
 
 
-function createDiv(text, o) {
-    var t = document.createElement("div");
-    t.classList.add('form__elements');
-
-    t.innerHTML = text;
-    
-    o ? o.parentNode.insertBefore(t, o) : document.body.appendChild(t)
-    
-    return t;
-}
-
 function createInput() {
     var input = document.createElement("input");
     input.className = "input__field";
@@ -24,6 +13,22 @@ function createInput() {
     input.name = "child";
     input.id = "child";
     return input;
+}
+
+function createChildInputDiv(innerHTML, o) {
+    var div = document.createElement("div");
+
+    div.className = 'form__elements';
+
+    // div.classList.add('form__elements');
+
+    // var i = createInput();
+
+    // t.innerHTML = i;
+
+    // o ? o.parentNode.insertBefore(t, o) : document.body.appendChild(t)
+    // document.body.appendChild(t);
+
 }
 
 function createLabel(text) {
@@ -36,10 +41,8 @@ function createLabel(text) {
 }
 
 var text = "Child";
+var innerHTML = createLabel(text);
 
-// createDiv(text);
-// createLabel(text);
-// createInput();
 
 // t.style.cssText = "color:white;background-color:red;padding:5em;font-weight:bold;text-align:center;"
 

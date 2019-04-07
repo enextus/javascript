@@ -123,35 +123,34 @@ function howManyChildren() {
 function addElement() {
 
     hideData();
-
-    var childDiv = document.createElement('div');
-    childDiv.classList.add('form__elements-child');
-
-    var newlabel = document.createElement('label');
-    newlabel.setAttribute("for", id_from_input);
-
-    newlabel.innerHTML = "Here goes the text";
-
-    childDiv.appendChild(newlabel);
+    numberOfFileds += 1;
 
 
- 
-    childDiv.classList.add('form__elements-label');
+    var childiv = document.createElement('div');
+    childiv.classList.add('form__elements-child');
 
+    var label = document.createElement("label");
+    label.classList.add('form__elements-label');
+    label.htmlFor = 'child' + numberOfFileds;
+    var text = document.createTextNode(numberOfFileds + ". Child");
+    label.appendChild(text);
 
-    childDiv.innerHTML = '<label class="form__elements-label" for="child-' + numberOfFileds + '">' + (numberOfFileds + 1) + '. Child:</label><input class="input__field" type=text name="child-' + numberOfFileds + '">';
+    childiv.appendChild(label);
 
+    var input = document.createElement("input");
+    input.className = "input__field";
+    input.type = "text";
+    input.name = "child" + numberOfFileds;
+    input.id = "child" + numberOfFileds;
 
-
-
-
-
+    childiv.appendChild(input);
 
     var lastElement = formData.querySelector('#div__button-save');
-    numberOfFileds += 1;
+
     console.log(howManyChildren());
     console.log("numberOfFileds = " + numberOfFileds);
-    lastElement.insertAdjacentElement("beforebegin", childDiv);
+
+    lastElement.insertAdjacentElement("beforebegin", childiv);
 }
 
 checkBox.addEventListener('change', showAmountField);
