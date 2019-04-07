@@ -50,3 +50,57 @@ var innerHTML = createLabel(text);
 // <label class="form__elements-label" for="sex">Sex:</label>
 // <input class="input__field" type=text name="sex" id="sex">
 // </div>
+
+
+
+
+
+
+
+var label = document.createElement("label");
+label.classList.add('form__elements-label');
+label.htmlFor = 'surname' + numberOfFileds;
+var text = document.createTextNode("Surname");
+label.appendChild(text);
+
+childiv.appendChild(label);
+
+var input = document.createElement("input");
+input.className = "input__field";
+input.type = "text";
+input.name = "surname" + numberOfFileds;
+input.id = "surname" + numberOfFileds;
+
+childiv.appendChild(input);
+
+var label = document.createElement("label");
+label.classList.add('form__elements-label');
+label.htmlFor = 'age' + numberOfFileds;
+var text = document.createTextNode("Age");
+label.appendChild(text);
+
+childiv.appendChild(label);
+
+var input = document.createElement("input");
+input.className = "input__field";
+input.type = "text";
+input.name = "age" + numberOfFileds;
+input.id = "age" + numberOfFileds;
+
+childiv.appendChild(input);
+
+var label = document.createElement("label");
+label.classList.add('form__elements-label');
+label.htmlFor = 'sex' + numberOfFileds;
+var text = document.createTextNode("Sex");
+label.appendChild(text);
+
+childiv.appendChild(label);
+
+var input = document.createElement("input");
+input.className = "input__field";
+input.type = "text";
+input.name = "sex" + numberOfFileds;
+input.id = "sex" + numberOfFileds;
+
+childiv.appendChild(input);

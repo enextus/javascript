@@ -120,38 +120,117 @@ function howManyChildren() {
 // если нет ни одного то создаем по количеству нумбер
 // create new 
 
-function addElement() {
+function createChildDivElement() {
 
     hideData();
     numberOfFileds += 1;
 
-
+    // outer DIV start
     var childiv = document.createElement('div');
     childiv.classList.add('form__elements-child');
 
+    // inner DIVs start
+
+    var elemchildiv = document.createElement('div');
+    elemchildiv.classList.add('form__elements-child');
+
     var label = document.createElement("label");
     label.classList.add('form__elements-label');
-    label.htmlFor = 'child' + numberOfFileds;
-    var text = document.createTextNode(numberOfFileds + ". Child");
+    label.htmlFor = 'name' + numberOfFileds;
+    var text = document.createTextNode("name");
     label.appendChild(text);
 
-    childiv.appendChild(label);
+    elemchildiv.appendChild(label);
 
     var input = document.createElement("input");
     input.className = "input__field";
     input.type = "text";
-    input.name = "child" + numberOfFileds;
-    input.id = "child" + numberOfFileds;
+    input.name = "name" + numberOfFileds;
+    input.id = "name" + numberOfFileds;
 
-    childiv.appendChild(input);
+    elemchildiv.appendChild(input);
 
-    var lastElement = formData.querySelector('#div__button-save');
+    var elemchildiv2 = document.createElement('div');
+    elemchildiv2.classList.add('form__elements-child');
 
-    console.log(howManyChildren());
-    console.log("numberOfFileds = " + numberOfFileds);
+    var label2 = document.createElement("label");
+    label2.classList.add('form__elements-label');
+    label2.htmlFor = 'surname' + numberOfFileds;
+    var text2 = document.createTextNode("surname");
+    label2.appendChild(text2);
 
-    lastElement.insertAdjacentElement("beforebegin", childiv);
+    elemchildiv2.appendChild(label2);
+
+    var input2 = document.createElement("input");
+    input2.className = "input__field";
+    input2.type = "text";
+    input2.name = "surname" + numberOfFileds;
+    input2.id = "surname" + numberOfFileds;
+
+    elemchildiv2.appendChild(input2);
+
+    var elemchildiv3 = document.createElement('div');
+    elemchildiv3.classList.add('form__elements-child');
+
+    var label3 = document.createElement("label");
+    label3.classList.add('form__elements-label');
+    label3.htmlFor = 'age' + numberOfFileds;
+    var text3 = document.createTextNode("age");
+    label3.appendChild(text3);
+
+    elemchildiv3.appendChild(label3);
+
+    var input3 = document.createElement("input");
+    input3.className = "input__field";
+    input3.type = "text";
+    input3.name = "age" + numberOfFileds;
+    input3.id = "age" + numberOfFileds;
+
+    elemchildiv3.appendChild(input3);
+
+    var elemchildiv4 = document.createElement('div');
+    elemchildiv4.classList.add('form__elements-child');
+
+    var label4 = document.createElement("label");
+    label4.classList.add('form__elements-label');
+    label4.htmlFor = 'sex' + numberOfFileds;
+    var text4 = document.createTextNode("sex");
+    label4.appendChild(text4);
+
+    elemchildiv4.appendChild(label4);
+
+    var input4 = document.createElement("input");
+    input4.className = "input__field";
+    input4.type = "text";
+    input4.name = "sex" + numberOfFileds;
+    input4.id = "sex" + numberOfFileds;
+
+    elemchildiv4.appendChild(input4);
+
+    // inner DIVs stop
+
+    childiv.appendChild(elemchildiv);
+    childiv.appendChild(elemchildiv2);
+    childiv.appendChild(elemchildiv3);
+    childiv.appendChild(elemchildiv4);
+
+    // outer DIV stop
+
+    return childiv;
 }
+
+
+function addElement() {
+var   childiv =   createChildDivElement();
+var lastElement = formData.querySelector('#div__button-save');
+
+console.log(howManyChildren());
+console.log("numberOfFileds = " + numberOfFileds);
+
+lastElement.insertAdjacentElement("beforebegin", childiv);
+}
+
+
 
 checkBox.addEventListener('change', showAmountField);
 numberBox.addEventListener('change', addElement);
