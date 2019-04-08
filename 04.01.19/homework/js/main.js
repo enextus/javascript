@@ -139,7 +139,7 @@ function showData() {
     personInfo.querySelector('.person-info__age').textContent = person.age;
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
 
-    if (person.children.length) {
+    if (person.children.length && !personInfo.querySelector('.person-info__childname')) {
         for (i = 0; i < person.children.length; i++) {
             var divs = createShowChildDivElement(i);
             personInfo.appendChild(divs[0]);
@@ -152,6 +152,7 @@ function showData() {
             personInfo.appendChild(divs[7]);
         }
     }
+
     mainHead.classList.add('main__title--visibility');
     personInfo.classList.add('person-info--visibility');
 }
