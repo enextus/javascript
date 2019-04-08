@@ -153,12 +153,12 @@ function showData() {
         }
     }
 
-    mainHead.classList.add('main__title--visibility');
+    mainHead.classList.add('main__title--visible');
     personInfo.classList.add('person-info--visibility');
 }
 
 function hideData() {
-    mainHead.classList.remove('main__title--visibility');
+    mainHead.classList.remove('main__title--visible');
     personInfo.classList.remove('person-info--visibility');
     mainHead.classList.add('main__title');
     personInfo.classList.add('person-info');
@@ -175,13 +175,13 @@ function showShowButton() {
 }
 
 function howManyChildren() {
-    var childrenAmount = formData.querySelector('#childrenamount').value;
-    return childrenAmount;
+    return numberBox.value;
 }
 
 function createInputChildDivElement() {
     hideData();
     numberOfFields += 1;
+    // numberOfFields = howManyChildren();
 
     var childiv = document.createElement('div');
     childiv.classList.add('form__elements-child');
@@ -270,13 +270,38 @@ function createInputChildDivElement() {
     return childiv;
 }
 
-function addElement() {
+function addOrRemoveElement() {
+
+    // hier wird entschieden was soll gemacht werden
+    // проверяем сколько естъ уже елементов?
+    // и смотрим сколько выбрано в поле ввода
+    // возвращаем true если добавитъ
+    // false если убрать
+
     var childiv = createInputChildDivElement();
     var lastElement = formData.querySelector('#div__button-save');
-    lastElement.insertAdjacentElement("beforebegin", childiv);
+
+
+    numberOfInputFields = howManyChildren();
+
+    for (i = 0; i < numberOfInputFields; i++) {
+
+        // console.log(i);
+        lastElement.insertAdjacentElement("beforebegin", childiv);
+    }
+
+
+}
+
+function addElement() {
+    //
+}
+
+function RemoveElement() {
+    // 
 }
 
 checkBox.addEventListener('change', showAmountField);
-numberBox.addEventListener('change', addElement);
+numberBox.addEventListener('change', addOrRemoveElement);
 saveBtn.addEventListener('click', saveData);
 showBtn.addEventListener('click', showData);
