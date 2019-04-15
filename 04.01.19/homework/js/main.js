@@ -12,6 +12,8 @@ let numberBox = document.querySelector('#childrenamount');
 let fieldNumber = 0;
 let noDataMessage = "no data";
 
+console.log("1. fieldNumber = " + fieldNumber);
+
 let howManyChildInputBlocksArePresentNowLink;
 
 function Person(name, surname, age, sex, children) {
@@ -76,6 +78,10 @@ function getChildDataFromInput(num, child) {
 function saveData() {
     hideData();
     person = getPersonDataFromInput();
+
+    console.log("2. fieldNumber = " + fieldNumber);
+    console.log(" howManyChildren() = " + howManyChildren());
+
 
     if (fieldNumber > 0) {
         for (let i = 0; i < fieldNumber; i++) {
@@ -189,12 +195,18 @@ function showShowButton() {
 }
 
 function howManyChildren() {
-    return numberBox.value;
+    if (numberBox.value !== "") {
+        return numberBox.value;
+    } else {
+        return 0;
+    }
 }
 
 function createInputChildDivElement(i) {
     hideData();
     fieldNumber = i + 1;
+
+    console.log("3. fieldNumber = " + fieldNumber);
 
     // input div wrapper
     let childDiv = document.createElement('div');
@@ -203,12 +215,15 @@ function createInputChildDivElement(i) {
     // input name
     let elemChildDiv = document.createElement('div');
     elemChildDiv.classList.add('form__elements-child');
+
     let inputLabelName = document.createElement("label");
     inputLabelName.classList.add('form__elements-label');
     inputLabelName.htmlFor = 'name' + fieldNumber;
+
     let textLabelName = document.createTextNode(fieldNumber + ". name");
     inputLabelName.appendChild(textLabelName);
     elemChildDiv.appendChild(inputLabelName);
+
     let inputChildName = document.createElement("input");
     inputChildName.className = "input__field";
     inputChildName.type = "text";
@@ -219,12 +234,15 @@ function createInputChildDivElement(i) {
     // input surname
     let elemChildDivSurname = document.createElement('div');
     elemChildDivSurname.classList.add('form__elements-child');
+
     let inputLabelSurname = document.createElement("label");
     inputLabelSurname.classList.add('form__elements-label');
     inputLabelSurname.htmlFor = 'surname' + fieldNumber;
+
     let textLabelSurame = document.createTextNode(fieldNumber + ". surname");
     inputLabelSurname.appendChild(textLabelSurame);
     elemChildDivSurname.appendChild(inputLabelSurname);
+
     let inputChildSurame = document.createElement("input");
     inputChildSurame.className = "input__field";
     inputChildSurame.type = "text";
@@ -235,12 +253,15 @@ function createInputChildDivElement(i) {
     // input age
     let elemChildDivAge = document.createElement('div');
     elemChildDivAge.classList.add('form__elements-child');
+
     let inputLabelAge = document.createElement("label");
     inputLabelAge.classList.add('form__elements-label');
     inputLabelAge.htmlFor = 'age' + fieldNumber;
+
     let textLabelAge = document.createTextNode(fieldNumber + ". age");
     inputLabelAge.appendChild(textLabelAge);
     elemChildDivAge.appendChild(inputLabelAge);
+
     let inputChildAge = document.createElement("input");
     inputChildAge.className = "input__field";
     inputChildAge.type = "text";
@@ -251,12 +272,15 @@ function createInputChildDivElement(i) {
     // input sex
     let elemChildDivSex = document.createElement('div');
     elemChildDivSex.classList.add('form__elements-child');
+
     let inputLabelSex = document.createElement("label");
     inputLabelSex.classList.add('form__elements-label');
     inputLabelSex.htmlFor = 'sex' + fieldNumber;
+
     let textLabelSex = document.createTextNode(fieldNumber + ". sex");
     inputLabelSex.appendChild(textLabelSex);
     elemChildDivSex.appendChild(inputLabelSex);
+
     let inputChildSex = document.createElement("input");
     inputChildSex.className = "input__field";
     inputChildSex.type = "text";
