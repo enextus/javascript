@@ -12,6 +12,8 @@ let numberBox = document.querySelector('#childrenamount');
 let numberOfFields = 0;
 let noDataMessage = "no data";
 
+let howManyChildInputBlocksArePresentNowLink;
+
 function Person(name, surname, age, sex, children) {
     this.name = name || noDataMessage;
     this.surname = surname || noDataMessage;
@@ -47,27 +49,26 @@ function Child(name, surname, age, sex) {
 
 function getChildDataFromInput(num, child) {
     let shiftCoefficient = 2 + (num * 4);
-    let noData = "no data";
 
     if (formData.elements[shiftCoefficient + 0].value) {
         child.name = formData.elements[shiftCoefficient + 0].value;
     } else {
-        child.name = noData;
+        child.name = noDataMessage;
     }
     if (child.surname = formData.elements[shiftCoefficient + 1].value) {
         child.surname = formData.elements[shiftCoefficient + 1].value;
     } else {
-        child.surname = noData;
+        child.surname = noDataMessage;
     }
     if (child.age = formData.elements[shiftCoefficient + 2].value) {
         child.age = formData.elements[shiftCoefficient + 2].value;
     } else {
-        child.age = noData;
+        child.age = noDataMessage;
     }
     if (child.sex = formData.elements[shiftCoefficient + 3].value) {
         child.sex = formData.elements[shiftCoefficient + 3].value;
     } else {
-        child.sex = noData;
+        child.sex = noDataMessage;
     }
     return child;
 }
@@ -86,59 +87,59 @@ function saveData() {
     showShowButton();
 }
 
-function createShowChildDivElement(childnumber) {
+function viewChildDivElement(childnumber) {
 
     let child = childnumber + 1;
 
-    let childivshow = document.createElement('div');
-    childivshow.classList.add('person-info__field');
-    let textNameLabel = document.createTextNode("child name");
-    childivshow.appendChild(textNameLabel);
-
-    let childivshow2 = document.createElement('div');
-    childivshow2.classList.add('person-info__childname');
-    let textName = document.createTextNode(person.children[childnumber].name);
-    childivshow2.appendChild(textName);
-
     // name
 
-    let childivshow3 = document.createElement('div');
-    childivshow3.classList.add('person-info__field');
-    let textSurnameLabel = document.createTextNode("child surname");
-    childivshow3.appendChild(textSurnameLabel);
+    let childDivShowLabelNameData = document.createElement('div');
+    childDivShowLabelNameData.classList.add('person-info__field');
+    let textNameLabel = document.createTextNode("child name");
+    childDivShowLabelNameData.appendChild(textNameLabel);
 
-    let childivshow4 = document.createElement('div');
-    childivshow4.classList.add('person-info__childsurname');
-    let textSurname = document.createTextNode(person.children[childnumber].surname);
-    childivshow4.appendChild(textSurname);
+    let childDivShowNameData = document.createElement('div');
+    childDivShowNameData.classList.add('person-info__childname');
+    let textName = document.createTextNode(person.children[childnumber].name);
+    childDivShowNameData.appendChild(textName);
 
     // surname
 
-    let childivshow5 = document.createElement('div');
-    childivshow5.classList.add('person-info__field');
-    let textAgeLabel = document.createTextNode("child age");
-    childivshow5.appendChild(textAgeLabel);
+    let childDivShowLabelSurnameData = document.createElement('div');
+    childDivShowLabelSurnameData.classList.add('person-info__field');
+    let textSurnameLabel = document.createTextNode("child surname");
+    childDivShowLabelSurnameData.appendChild(textSurnameLabel);
 
-    let childivshow6 = document.createElement('div');
-    childivshow6.classList.add('person-info__childage');
-    let textAge = document.createTextNode(person.children[childnumber].age);
-    childivshow6.appendChild(textAge);
+    let childDivShowSurnameData = document.createElement('div');
+    childDivShowSurnameData.classList.add('person-info__childsurname');
+    let textSurname = document.createTextNode(person.children[childnumber].surname);
+    childDivShowSurnameData.appendChild(textSurname);
 
     // age
 
-    let childivshow7 = document.createElement('div');
-    childivshow7.classList.add('person-info__field');
-    let textSexLabel = document.createTextNode("child sex");
-    childivshow7.appendChild(textSexLabel);
+    let childDivShowLabelAgeData = document.createElement('div');
+    childDivShowLabelAgeData.classList.add('person-info__field');
+    let textAgeLabel = document.createTextNode("child age");
+    childDivShowLabelAgeData.appendChild(textAgeLabel);
 
-    let childivshow8 = document.createElement('div');
-    childivshow8.classList.add('person-info__childsex');
-    let textSex = document.createTextNode(person.children[childnumber].sex);
-    childivshow8.appendChild(textSex);
+    let childDivShowAgeData = document.createElement('div');
+    childDivShowAgeData.classList.add('person-info__childage');
+    let textAge = document.createTextNode(person.children[childnumber].age);
+    childDivShowAgeData.appendChild(textAge);
 
     // sex
 
-    return [childivshow, childivshow2, childivshow3, childivshow4, childivshow5, childivshow6, childivshow7, childivshow8];
+    let childDivShowLabelSexData = document.createElement('div');
+    childDivShowLabelSexData.classList.add('person-info__field');
+    let textSexLabel = document.createTextNode("child sex");
+    childDivShowLabelSexData.appendChild(textSexLabel);
+
+    let childDivShowSexData = document.createElement('div');
+    childDivShowSexData.classList.add('person-info__childsex');
+    let textSex = document.createTextNode(person.children[childnumber].sex);
+    childDivShowSexData.appendChild(textSex);
+
+    return [childDivShowLabelNameData, childDivShowNameData, childDivShowLabelSurnameData, childDivShowSurnameData, childDivShowLabelAgeData, childDivShowAgeData, childDivShowLabelSexData, childDivShowSexData];
 }
 
 function showData() {
@@ -148,8 +149,8 @@ function showData() {
     personInfo.querySelector('.person-info__sex').textContent = person.sex;
 
     if (person.children.length && !personInfo.querySelector('.person-info__childname')) {
-        for (i = 0; i < person.children.length; i++) {
-            let divs = createShowChildDivElement(i);
+        for (let i = 0; i < person.children.length; i++) {
+            let divs = viewChildDivElement(i);
             personInfo.appendChild(divs[0]);
             personInfo.appendChild(divs[1]);
             personInfo.appendChild(divs[2]);
@@ -186,16 +187,16 @@ function howManyChildren() {
     return numberBox.value;
 }
 
-function createInputChildDivElement() {
+function createInputChildDivElement(i) {
 
     hideData();
-    numberOfFields += 1;
+    numberOfFields = i + 1;
     // numberOfFields = howManyChildren();
 
     // input div wrapper
 
     let childDiv = document.createElement('div');
-    childDiv.classList.add('form__elements-child');
+    childDiv.classList.add('form__elements-child-wrapper');
 
     // input name
 
@@ -297,25 +298,41 @@ function createInputChildDivElement() {
 
 function checkAddOrRemoveElement() {
 
-    // hier wird entschieden was soll gemacht werden
-    // проверяем сколько естъ уже елементов?
-    let howManyElementsArePresent;
+    // сколько есть элементов?
 
-    // и смотрим сколько выбрано в поле ввода
-    // возвращаем true если добавитъ
-    // false если убрать
+    console.log(" document.querySelectorAll('.form__elements-child-wrapper').length = " + document.querySelectorAll('.form__elements-child-wrapper').length);
 
+    let howManyChildrenInputsAreThere = document.querySelectorAll('.form__elements-child-wrapper').length;
+
+
+    if (howManyChildrenInputsAreThere) {
+        for (let i = 0; i < howManyChildrenInputsAreThere; i++) {
+            document.querySelector('.form__elements-child-wrapper').remove();
+        }
+    }
+
+
+
+    // и смотрим сколько выбрано детей в поле ввода
 
     numberOfInputFields = howManyChildren();
+
+
+    // перерисовываем панель ввода для детей в зависимости от количества
+
+    let lastElement = formData.querySelector('#div__button-save');
+    let childDiv = createInputChildDivElement();
+
     console.log("numberOfInputFields = " + numberOfInputFields);
 
-    // for (i = 0; i < numberOfInputFields; i++) {
 
-    //     // console.log(i);
-    //     lastElement.insertAdjacentElement("beforebegin", childDiv);
-    // }
 
-    console.log("HIER");
+    for (let i = 0; i < numberOfInputFields; i++) {
+
+        lastElement.insertAdjacentElement("beforebegin", createInputChildDivElement(i));
+    }
+
+
 }
 
 function addElement() {
