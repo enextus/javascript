@@ -20,6 +20,13 @@ body {
 
 .form {
     margin: 0 0 2em 0;
+    visibility: visible;
+}
+
+.form--hidden {
+    margin: 0 0 2em 0;
+    height: 0;
+    visibility: hidden;
 }
 
 .form__elements {
@@ -82,7 +89,7 @@ body {
     border-radius: 2px;
 }
 
-.button_show--visibility {
+.button_show--visible {
     display: inline-block;
     margin: 2em 0em 0em 0em;
     padding: 0.5em 0.5em 0.5em 0.5em;
@@ -170,7 +177,7 @@ body {
     text-decoration: none;
 }
 
-.form__elements-amount--visibility {
+.form__elements-amount--visible {
     display: inline-block;
 }
 
@@ -206,7 +213,7 @@ body {
     text-decoration: none;
 }
 
-.person-info--visibility {
+.person-info--visible {
     display: block;
 }
 
