@@ -298,12 +298,7 @@ function createInputChildDivElement(i) {
 
 function checkAddOrRemoveElement() {
 
-    // сколько есть элементов?
-
-    console.log(" document.querySelectorAll('.form__elements-child-wrapper').length = " + document.querySelectorAll('.form__elements-child-wrapper').length);
-
     let howManyChildrenInputsAreThere = document.querySelectorAll('.form__elements-child-wrapper').length;
-
 
     if (howManyChildrenInputsAreThere) {
         for (let i = 0; i < howManyChildrenInputsAreThere; i++) {
@@ -311,38 +306,15 @@ function checkAddOrRemoveElement() {
         }
     }
 
-
-
-    // и смотрим сколько выбрано детей в поле ввода
-
     numberOfInputFields = howManyChildren();
-
-
-    // перерисовываем панель ввода для детей в зависимости от количества
 
     let lastElement = formData.querySelector('#div__button-save');
     let childDiv = createInputChildDivElement();
-
-    console.log("numberOfInputFields = " + numberOfInputFields);
-
-
 
     for (let i = 0; i < numberOfInputFields; i++) {
 
         lastElement.insertAdjacentElement("beforebegin", createInputChildDivElement(i));
     }
-
-
-}
-
-function addElement() {
-    //
-    let childDiv = createInputChildDivElement();
-    let lastElement = formData.querySelector('#div__button-save');
-}
-
-function RemoveElement() {
-    // 
 }
 
 checkBox.addEventListener('change', showAmountField);
