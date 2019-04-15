@@ -1,18 +1,19 @@
-let mainHead = document.querySelector('.main__title');
-let personInfo = document.querySelector('.person-info');
+const mainHead = document.querySelector('.main__title');
+const personInfo = document.querySelector('.person-info');
 
-let saveBtn = document.querySelector('#button-save');
-let showBtn = document.querySelector('#button-show');
+const saveBtn = document.querySelector('#button-save');
+const showBtn = document.querySelector('#button-show');
 
-let formData = document.querySelector('.form');
-let checkBox = document.querySelector('#offspring');
-let amountField = document.querySelector('.form__elements-amount');
-let numberBox = document.querySelector('#childrenamount');
+const formData = document.querySelector('.form');
+const checkBox = document.querySelector('#offspring');
+const amountField = document.querySelector('.form__elements-amount');
+const numberBox = document.querySelector('#childrenamount');
+
+const noDataMessage = "no data";
 
 let fieldNumber = 0;
 let number = 0;
 let childrenamount = 0;
-let noDataMessage = "no data";
 
 let howManyChildInputBlocksArePresentNowLink;
 

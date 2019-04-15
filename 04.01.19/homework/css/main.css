@@ -1,7 +1,6 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: rgb(177, 177, 177);
+    background-repeat: no-repeat;
+    background-color: rgb(37, 99, 119);
 }
 
 .contentwrap {
