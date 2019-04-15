@@ -8,15 +8,15 @@ let formData = document.querySelector('.form');
 let checkBox = document.querySelector('#offspring');
 let amountField = document.querySelector('.form__elements-amount');
 let numberBox = document.querySelector('#childrenamount');
+
 let numberOfFields = 0;
+let noDataMessage = "no data";
 
 function Person(name, surname, age, sex, children) {
-    this.noDataMessage = "no data";
-
-    this.name = name || this.noDataMessage;
-    this.surname = surname || this.noDataMessage;
-    this.age = age || this.noDataMessage;
-    this.sex = sex || this.noDataMessage;
+    this.name = name || noDataMessage;
+    this.surname = surname || noDataMessage;
+    this.age = age || noDataMessage;
+    this.sex = sex || noDataMessage;
     this.children = children || [];
 }
 
@@ -39,11 +39,10 @@ function getPersonDataFromInput() {
 }
 
 function Child(name, surname, age, sex) {
-    this.noDataMessage = "no data";
-    this.name = name || this.noDataMessage;
-    this.surname = surname || this.noDataMessage;
-    this.age = age || this.noDataMessage;
-    this.sex = sex || this.noDataMessage;
+    this.name = name || noDataMessage;
+    this.surname = surname || noDataMessage;
+    this.age = age || noDataMessage;
+    this.sex = sex || noDataMessage;
 }
 
 function getChildDataFromInput(num, child) {
