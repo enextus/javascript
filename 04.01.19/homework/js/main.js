@@ -270,31 +270,33 @@ function createInputChildDivElement() {
     return childiv;
 }
 
-function addOrRemoveElement() {
+function checkAddOrRemoveElement() {
 
     // hier wird entschieden was soll gemacht werden
     // проверяем сколько естъ уже елементов?
+    var howManyElementsArePresent;
+
     // и смотрим сколько выбрано в поле ввода
     // возвращаем true если добавитъ
     // false если убрать
 
-    var childiv = createInputChildDivElement();
-    var lastElement = formData.querySelector('#div__button-save');
-
 
     numberOfInputFields = howManyChildren();
+    console.log("numberOfInputFields = " + numberOfInputFields);
 
-    for (i = 0; i < numberOfInputFields; i++) {
+    // for (i = 0; i < numberOfInputFields; i++) {
 
-        // console.log(i);
-        lastElement.insertAdjacentElement("beforebegin", childiv);
-    }
+    //     // console.log(i);
+    //     lastElement.insertAdjacentElement("beforebegin", childiv);
+    // }
 
-
+    console.log("HIER");
 }
 
 function addElement() {
     //
+    var childiv = createInputChildDivElement();
+    var lastElement = formData.querySelector('#div__button-save');
 }
 
 function RemoveElement() {
@@ -302,6 +304,6 @@ function RemoveElement() {
 }
 
 checkBox.addEventListener('change', showAmountField);
-numberBox.addEventListener('change', addOrRemoveElement);
+numberBox.addEventListener('change', checkAddOrRemoveElement);
 saveBtn.addEventListener('click', saveData);
 showBtn.addEventListener('click', showData);
