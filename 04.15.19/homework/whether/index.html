@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Weather in the World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css">
+    <script src="./js/main.js" defer></script>
+    <script src="./js/json.js" defer></script>
+</head>
+
+<body>
+    <main class="main">
+        <section class="contentwrap">
+            <form class="form">
+                <div class="form__elements">
+                    <label class="form__elements-label" for="name">City:</label>
+                    <input class="input__field" type=text name="name" id="name">
+                </div>
+                <div class="form__elements" id="div__button-save">
+                    <input class="button" type="button" value="Do query by city name" id="button-save">
+                </div>
+            </form>
+            <div class="form__elements" id="div__button-show">
+                <input class="button_show" type="button" value="What is Weather?" id="button-show">
+            </div>
+            <h1 class="main__title">The Weather </h1>
+            <article class="city-info">
+                <div class="city-info__field">City:</div>
+                <div class="city-info__name"></div>
+                <div class="city-info__field">Temp:</div>
+                <div class="city-info__temp"></div>
+                <div class="city-info__field">Pressure:</div>
+                <div class="city-info__pressure"></div>
+                <div class="city-info__field">Humidity:</div>
+                <div class="city-info__humidity"></div>
+                <div class="city-info__field">Temp min:</div>
+                <div class="city-info__temp_min"></div>
+                <div class="city-info__field">Temp max:</div>
+                <div class="city-info__temp_max"></div>
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>

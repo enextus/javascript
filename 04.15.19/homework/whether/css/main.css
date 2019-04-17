@@ -206,7 +206,7 @@ body {
     display: block;
 }
 
-.person-info {
+.city-info {
     display: none;
     margin: 0em 0em 0em 0em;
     padding: 0em 0em 0em 0em;
@@ -220,11 +220,11 @@ body {
     text-decoration: none;
 }
 
-.person-info--visible {
+.city-info--visible {
     display: block;
 }
 
-.person-info__field {
+.city-info__field {
     margin: 1.2em 0em 0.5em 0.7em;
     padding: 0em 0em 0em 0.5em;
     text-align: left;
@@ -237,7 +237,7 @@ body {
     text-decoration: none;
 }
 
-.person-info__name {
+.city-info__name {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -251,7 +251,7 @@ body {
     width: 260px;
 }
 
-.person-info__childname {
+.city-info__childname {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -265,7 +265,7 @@ body {
     width: 260px;
 }
 
-.person-info__childsurname {
+.city-info__childsurname {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -279,7 +279,7 @@ body {
     width: 260px;
 }
 
-.person-info__childage {
+.city-info__childage {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -293,7 +293,7 @@ body {
     width: 260px;
 }
 
-.person-info__childsex {
+.city-info__childsex {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -307,7 +307,7 @@ body {
     width: 260px;
 }
 
-.person-info__surname {
+.city-info__surname {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -321,7 +321,7 @@ body {
     width: 260px;
 }
 
-.person-info__age {
+.city-info__age {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -335,7 +335,7 @@ body {
     width: 260px;
 }
 
-.person-info__sex {
+.city-info__sex {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -349,7 +349,7 @@ body {
     width: 260px;
 }
 
-.person-info__children {
+.city-info__children {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
