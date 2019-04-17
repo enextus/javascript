@@ -251,7 +251,7 @@ body {
     width: 260px;
 }
 
-.city-info__childname {
+.city-info__temp {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -264,8 +264,7 @@ body {
     text-align: left;
     width: 260px;
 }
-
-.city-info__childsurname {
+.city-info__pressure {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -278,8 +277,7 @@ body {
     text-align: left;
     width: 260px;
 }
-
-.city-info__childage {
+.city-info__humidity {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -292,8 +290,7 @@ body {
     text-align: left;
     width: 260px;
 }
-
-.city-info__childsex {
+.city-info__temp_min {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
@@ -306,50 +303,7 @@ body {
     text-align: left;
     width: 260px;
 }
-
-.city-info__surname {
-    text-decoration: none;
-    text-transform: uppercase;
-    margin: 0em 0em 0em 0.5em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 0.1em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #FFFFFF;
-    background-color: #4eb5f1;
-    text-align: left;
-    width: 260px;
-}
-
-.city-info__age {
-    text-decoration: none;
-    text-transform: uppercase;
-    margin: 0em 0em 0em 0.5em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 0.1em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #FFFFFF;
-    background-color: #4eb5f1;
-    text-align: left;
-    width: 260px;
-}
-
-.city-info__sex {
-    text-decoration: none;
-    text-transform: uppercase;
-    margin: 0em 0em 0em 0.5em;
-    padding: 0.5em 0.5em 0.5em 0.5em;
-    border-radius: 0.1em;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    color: #FFFFFF;
-    background-color: #4eb5f1;
-    text-align: left;
-    width: 260px;
-}
-
-.city-info__children {
+.city-info__temp_max {
     text-decoration: none;
     text-transform: uppercase;
     margin: 0em 0em 0em 0.5em;
