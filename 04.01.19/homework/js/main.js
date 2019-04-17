@@ -51,7 +51,7 @@ function Child(name, surname, age, sex) {
 }
 
 function getChildDataFromInput(num, child) {
-    let shiftCoefficient = 2 + (num * 4);
+    let shiftCoefficient = (num * 4) + 2;
 
     if (formData.elements[shiftCoefficient + 0].value) {
         child.name = formData.elements[shiftCoefficient + 0].value;
@@ -79,7 +79,6 @@ function getChildDataFromInput(num, child) {
 function saveData() {
     hideData();
     person = getPersonDataFromInput();
-
     childrenamount = howManyChildren();
 
     if (childrenamount > 0) {
