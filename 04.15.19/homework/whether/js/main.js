@@ -1,14 +1,10 @@
 const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
-
 const saveBtn = document.querySelector('#button-save');
 const showBtn = document.querySelector('#button-show');
-
 const formData = document.querySelector('.form');
-
 const noDataMessage = "undefinned";
 const token = '4d65d788982dca64aefc93b76839fa60';
-
 const units = "metric";
 
 let city = new City();
@@ -93,6 +89,7 @@ function hideData() {
     mainHead.classList.add('main__title');
     cityInfo.classList.add('city-info');
 }
+
 
 saveBtn.addEventListener('click', saveData);
 showBtn.addEventListener('click', showData);

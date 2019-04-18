@@ -2,12 +2,10 @@ body {
     background-repeat: no-repeat;
     background-color: rgb(37, 99, 119);
 }
-
 .contentwrap {
     padding: 1em 0em 0em 5em;
     text-align: left;
 }
-
 .contentwrap:after {
     content: ".";
     display: block;
@@ -16,18 +14,15 @@ body {
     line-height: 0;
     height: 0;
 }
-
 .form {
     margin: 0 0 2em 0;
     visibility: visible;
 }
-
 .form--hidden {
     margin: 0 0 2em 0;
     height: 0;
     visibility: hidden;
 }
-
 .form__elements {
     margin: 1.2em 0em 0.5em 0.7em;
     padding: 0em 0em 0em 0em;
@@ -40,16 +35,13 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .form__elements-label {
     width: 45px;
     display: inline-block;
 }
-
 .button:hover {
     background-color: #000;
 }
-
 .button {
     margin: 2em 0em 0em 0em;
     padding: 0.5em 0.5em 0.5em 0.5em;
@@ -65,7 +57,6 @@ body {
     text-align: center;
     border-radius: 2px;
 }
-
 .button_show {
     display: none;
     margin: 2em 0em 0em 0em;
@@ -82,7 +73,6 @@ body {
     text-align: center;
     border-radius: 2px;
 }
-
 .button_show--visible {
     display:    block;
     margin: 2em 0em 0em 0em;
@@ -99,7 +89,6 @@ body {
     text-align: center;
     border-radius: 2px;
 }
-
 .input__input {
     padding: 8px;
     display: block;
@@ -107,7 +96,6 @@ body {
     border-bottom: 1px solid #ccc;
     width: 100%
 }
-
 .input__field {
     text-decoration: none;
     text-transform: uppercase;
@@ -121,15 +109,12 @@ body {
     text-align: left;
     width: 194px;
 }
-
 .input__field:hover {
     background-color: #4095c6;
 }
-
 .input__field:focus {
     background-color: #1e5372;
 }
-
 .input__field--small {
     text-decoration: none;
     text-transform: uppercase;
@@ -143,7 +128,6 @@ body {
     text-align: left;
     width: 36px;
 }
-
 .form__elements-amount {
     display: none;
     margin: 1.2em 0em 0.5em 0.7em;
@@ -157,7 +141,6 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .form__elements-child-wrapper {
     margin: 1.2em 0em 0.5em 0.7em;
     padding: 0em 0em 0em 0em;
@@ -170,7 +153,6 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .form__elements-child {
     margin: 1.2em 0em 0.5em 0.7em;
     padding: 0em 0em 0em 0em;
@@ -183,11 +165,9 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .form__elements-amount--visible {
     display: inline-block;
 }
-
 .main__title {
     display: none;
     margin: 1.2em 0em 0em 0.7em;
@@ -201,11 +181,9 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .main__title--visible {
     display: block;
 }
-
 .city-info {
     display: none;
     margin: 0em 0em 0em 0em;
@@ -219,11 +197,9 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .city-info--visible {
     display: block;
 }
-
 .city-info__field {
     margin: 1.2em 0em 0.5em 0.7em;
     padding: 0em 0em 0em 0.5em;
@@ -236,7 +212,6 @@ body {
     letter-spacing: 1.3px;
     text-decoration: none;
 }
-
 .city-info__name {
     text-decoration: none;
     text-transform: uppercase;
@@ -250,7 +225,6 @@ body {
     text-align: left;
     width: 260px;
 }
-
 .city-info__temp {
     text-decoration: none;
     text-transform: uppercase;
