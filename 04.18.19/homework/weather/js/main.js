@@ -21,7 +21,7 @@ const maxPosibleHumidity = 100;
 const wholeRangeHumidity = 100; // max - min  100 - 0
 const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
-const instrumntsArrowsSchadow = '2px 2px 0 grey';
+const instrumntsArrowsSchadow = '2px 2px 0 black';
 
 let city = new City();
 
