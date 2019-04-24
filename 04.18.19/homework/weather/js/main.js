@@ -49,9 +49,8 @@ function saveData() {
     if (city.name === "undefinned") {
         showWarning();
     } else {
-        if (getTheWeather()) {
-            showShowButton();
-        }
+        getTheWeather();
+        showShowButton();
     }
 }
 
