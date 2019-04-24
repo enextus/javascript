@@ -100,7 +100,7 @@ function calculatePressureColor(p) {
         return "gold";
     }
 }
-
+ 
 function calculateTemperatureColor(t) {
     if (t < 17) {
         return "dodgerblue";
