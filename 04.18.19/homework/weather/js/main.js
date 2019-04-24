@@ -55,7 +55,7 @@ function saveData() {
 }
 
 function showWarning() {
-    alert('Please enter a valid city name!!!!!');
+    alert('Please enter a valid city name.');
     formData.name.focus();
     return false;
 }
