@@ -1,0 +1,571 @@
+@charset "UTF-8";
+
+.contentwrap {
+    /*	background-color: khaki;*/
+}
+
+.contentwrap:after {
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+.form {
+    margin: 0 0 2em 0;
+    visibility: visible;
+}
+
+.form--hidden {
+    /*    margin: 0 0 2em 0;*/
+    height: 0;
+    visibility: hidden;
+}
+
+.form__elements {
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.form__elements-label {
+    width: 45px;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #000;
+}
+
+.button {
+    margin: 2em 0em 0em 0em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+    opacity: 1;
+    width: 270px;
+    text-align: center;
+    border-radius: 2px;
+
+    background-color: #4eb5f1;
+}
+
+.button_show {
+    display: none;
+    margin: 2em 0em 0em 0em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #4eb5f1;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+    opacity: 1;
+    width: 270px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.button_show--visible {
+    display: block;
+    margin: 2em 0em 0em 0em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    background-color: #4eb5f1;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+    opacity: 1;
+    width: 270px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.input__input {
+    padding: 8px;
+    display: block;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%
+}
+
+.input__field {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #1e5372;
+    text-align: left;
+    width: 194px;
+}
+
+.input__field:hover {
+    background-color: #4095c6;
+}
+
+.input__field:focus {
+    background-color: #1e5372;
+}
+
+.form__elements-amount {
+    display: none;
+    /*
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0em;
+*/
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.form__elements-child-wrapper {
+    /*
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0em;
+*/
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.form__elements-child {
+    /*
+    margin: 1.2em 0em 0.5em 0.7em;
+    padding: 0em 0em 0em 0em;
+*/
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: .75em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.form__elements-amount--visible {
+    display: inline-block;
+}
+
+.main__title {
+    display: none;
+    /*
+    margin: 1.2em 0em 0em 0.7em;
+    padding: 0em 0em 0em 0.5em;
+*/
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.main__title--visible {
+    display: block;
+}
+
+.city-info {
+    display: none;
+    /*
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
+*/
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.city-info--visible {
+    display: block;
+}
+
+.city-info__field {
+
+    margin: 0.8em 0em 0.1em 0em;
+
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #fff;
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: 0.125em;
+    text-decoration: none;
+}
+
+.city-info__name {
+    text-decoration: none;
+    text-transform: uppercase;
+
+    /*	padding: 0.5em 0em 0.5em 0.5em;*/
+
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+
+}
+
+.city-info__temp {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+
+}
+
+.city-info__pressure {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+
+}
+
+.city-info__humidity {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+
+}
+
+.city-info__temp_min {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+}
+
+.city-info__temp_max {
+    text-decoration: none;
+    text-transform: uppercase;
+    /*
+    margin: 0em 0em 0em 0.5em;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+*/
+    border-radius: 0.1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #FFFFFF;
+    background-color: #4eb5f1;
+    text-align: left;
+
+}
+
+.container {
+	width: 588px;
+	margin-left: auto;
+	margin-right: auto;
+
+	border-bottom-width: 0px;
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+.noDisplay {
+	display: none;
+}
+
+.flex-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+
+	width: 588px;
+	height: auto;
+}
+
+.flex_item_left_side {
+	width: 70px;
+	height: 100%;
+}
+
+.flex_item_right_side {
+	width: 70px;
+	height: 768px;
+}
+
+.flex_item_white {
+	width: 8px;
+	background-color: #FFFFFF;
+}
+
+.flex_item_text_box_white {
+	width: 572px;
+	height: 8px;
+	max-height: 100%;
+	background-color: #FFFFFF;
+}
+
+.flex_item_middle {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	width: 572px;
+	height: 100%;
+
+	background-color: #7fc1ff;
+}
+
+.flex_item {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+
+	width: 100%;
+	height: auto;
+}
+
+
+.flex_item_weather_picture {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: flex-start;
+	align-items: flex-end;
+
+	width: 100%;
+	height: 441px;
+
+	background-image: url("/images/weather-states-imgs/sunny-muster-003.jpg");
+	background-repeat: no-repeat;
+	background-color: #7fc1ff;
+}
+
+.content_weather_city {
+	display: block;
+
+	padding-left: 50px;
+
+	width: auto;
+	height: 75px;
+
+	text-align: left;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	color: #000;
+	font-size: 2.625em;
+	text-transform: uppercase;
+	letter-spacing: 1.3px;
+	text-decoration: none;
+
+}
+
+.flex_item_weather_data {
+	display: flex;
+	flex-direction: row;
+
+	justify-content: center;
+	align-items: flex-start;
+
+	width: 100%;
+	height: auto;
+
+	background-color: #7fc1ff;
+}
+
+.flex_item_instruments {
+	display: none;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+
+	width: 572px;
+	height: auto;
+}
+
+.flex_item_instruments--visible {
+	display: flex;
+}
+
+.flex_instrument_01 {
+	display: flex;
+	justify-content: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	align-items: center;
+
+	width: 190px;
+	height: 190px;
+
+	background-image: url("/images/instruments/instrument-011.png");
+	background-repeat: no-repeat;
+	background-color: #7fc1ff;
+}
+
+.container i {
+	padding: 20px;
+	display: block;
+	font-size: 3.25em;
+	transition: all 0.4s ease;
+	color: #3e497d;
+}
+
+.flex_instrument_02 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+
+	width: 190px;
+	height: 190px;
+	background-image: url("/images/instruments/instrument-022.png");
+	background-repeat: no-repeat;
+	background-color: #7fc1ff;
+}
+
+.flex_instrument_03 {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	width: 190px;
+	height: 190px;
+	background-image: url("/images/instruments/instrument-033.png");
+	background-repeat: no-repeat;
+	background-color: #7fc1ff;
+}
+
+
+
+.flex_item_text_box {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: center;
+
+	background-color: #7fc1ff;
+
+	width: 100%;
+	max-height: 100%;
+}
+
+.flex_item_text {
+
+	width: 300px;
+	background-color: #7fc1ff;
+
+	font-family: "Source Sans Pro";
+	color: #343434;
+	padding-bottom: 15px;
+}
+
+.title {
+	font-weight: bold;
+	font-style: normal;
+	font-family: "Source Sans Pro";
+	text-align: center;
+	color: #FFFFFF;
+	letter-spacing: 2px;
+}
+
+.placeholder {
+	width: 572px;
+	height: auto;
+}
+
+.placeholder-right-side {
+	width: 70px;
+	height: 768px;
+}
+
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 50px;
+	margin-left: 0px;
+
+	background-image: url("/images/bg_main_muster.jpg");
+	background-repeat: repeat;
+	background-color: #98c4e8;
+}
+
+/*
+@media (max-width: 20em) {}
+
+@media (min-width: 20,0625em) and (max-width: 48em) {}
+
+@media (min-width: 48,0625em) and (max-width: 62,5em) {}
+
+@media (min-width: 62,5625em) {}
+*/
