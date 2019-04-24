@@ -21,7 +21,7 @@ const maxPosibleHumidity = 100;
 const wholeRangeHumidity = 100; // max - min  100 - 0
 const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
-const instrumntsArrowsSchadow = '2px 2px 0 black';
+const instrumntsArrowsSchadow = '0.1875em 0.1875em 0 black';
 
 let city = new City();
 
@@ -55,7 +55,7 @@ function saveData() {
 }
 
 function showWarning() {
-    alert('Please enter a valid city name!');
+    alert('Please enter a valid city name!!!!');
     formData.name.focus();
     return false;
 }
