@@ -121,7 +121,7 @@ function calculateHumidityColor(h) {
         return "yellowgreen";
     }
     if (h > 60 && h <= 65) {
-        return "LightGreen";
+        return "lightGreen";
     }
     if (h > 65) {
         return "dodgerblue";
