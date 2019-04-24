@@ -94,7 +94,7 @@ function calculatePressureColor(p) {
         return "dodgerblue";
     }
     if (p >= 1005 && p <= 1020) {
-        return "red";
+        return "orangered";
     }
     if (p > 1020) {
         return "gold";
@@ -109,7 +109,7 @@ function calculateTemperatureColor(t) {
         return "green";
     }
     if (t > 23) {
-        return "red";
+        return "orangered";
     }
 }
 
@@ -118,7 +118,7 @@ function calculateHumidityColor(h) {
         return "orange";
     }
     if (h >= 35 && h <= 60) {
-        return "green";
+        return "yellowgreen";
     }
     if (h > 60 && h <= 65) {
         return "LightGreen";
