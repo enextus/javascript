@@ -83,6 +83,55 @@ function showShowButton() {
   showBtn.classList.add('button_show--visible');
 }
 
+function calculatePressureColor(p) {
+  let value;
+  if (p < 1005) {
+    value = 'dodgerblue';
+  }
+  if (p >= 1005 && p <= 1020) {
+    value = 'orangered';
+  }
+  if (p > 1020) {
+    value = 'gold';
+  }
+  return value;
+}
+
+function calculateTemperatureColor(t) {
+  let value;
+  if (t < 17) {
+    value = 'dodgerblue';
+  }
+  if (t >= 17 && t <= 23) {
+    value = 'green';
+  }
+  if (t > 23) {
+    value = 'orangered';
+  }
+  return value;
+}
+
+function calculateHumidityColor(h) {
+  let value;
+  if (h < 35) {
+    value = 'orange';
+  }
+  if (h >= 35 && h <= 60) {
+    value = 'yellowgreen';
+  }
+  if (h > 60 && h <= 65) {
+    value = 'lightGreen';
+  }
+  if (h > 65) {
+    value = 'dodgerblue';
+  }
+  return value;
+}
+
+function calculateInstrumentsArrowAngle(...args) {
+  return Math.round(((args[1] - (args[2] - args[0])) * args[3]) + args[4]);
+}
+
 function showInstrumentArrow() {
   const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
   const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
@@ -141,55 +190,6 @@ function saveData() {
     getTheWeather();
     showShowButton();
   }
-}
-
-function calculatePressureColor(p) {
-  let value;
-  if (p < 1005) {
-    value = 'dodgerblue';
-  }
-  if (p >= 1005 && p <= 1020) {
-    value = 'orangered';
-  }
-  if (p > 1020) {
-    value = 'gold';
-  }
-  return value;
-}
-
-function calculateTemperatureColor(t) {
-  let value;
-  if (t < 17) {
-    value = 'dodgerblue';
-  }
-  if (t >= 17 && t <= 23) {
-    value = 'green';
-  }
-  if (t > 23) {
-    value = 'orangered';
-  }
-  return value;
-}
-
-function calculateHumidityColor(h) {
-  let value;
-  if (h < 35) {
-    value = 'orange';
-  }
-  if (h >= 35 && h <= 60) {
-    value = 'yellowgreen';
-  }
-  if (h > 60 && h <= 65) {
-    value = 'lightGreen';
-  }
-  if (h > 65) {
-    value = 'dodgerblue';
-  }
-  return value;
-}
-
-function calculateInstrumentsArrowAngle(...args) {
-  return Math.round(((args[1] - (args[2] - args[0])) * args[3]) + args[4]);
 }
 
 saveBtn.addEventListener('click', saveData);
