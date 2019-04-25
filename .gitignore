@@ -1,1 +1,6 @@
 node_modules
+.eslintrc.js
+.eslintrc.json
+=5.4.0/*
+my-app/*
+=5.4.0
