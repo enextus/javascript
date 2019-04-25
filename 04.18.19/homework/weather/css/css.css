@@ -470,9 +470,6 @@
 	font-size: 5em;
 	transition: all 0.4s ease;
     color: #3e497d;
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
 }
 
 .flex_instrument_02 {
