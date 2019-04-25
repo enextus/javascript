@@ -158,11 +158,10 @@ function getTheWeather() {
     if (this.status === 200) {
       data.json = JSON.parse(this.responseText);
       showData();
-      // showShowButton();
       return;
     }
     data.json = false;
-    alert('Please enter a valid city name.');
+    showWarning();
   };
 }
 
