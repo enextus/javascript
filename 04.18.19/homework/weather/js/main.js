@@ -37,7 +37,6 @@ function Data(d) {
 
 function getCityDataFromInput() {
     if (formData.name.value) {
-        console.log('formData.name.value', formData.name.value);
         city.name = formData.name.value;
     }
 }
@@ -85,8 +84,8 @@ function showShowButton() {
     showBtn.classList.add('button_show--visible');
 }
 
-function calculateInstrumentsArrowAngle(...arguments) {
-    return Math.round(((arguments[1] - (arguments[2] - arguments[0])) * arguments[3]) + arguments[4]);
+function calculateInstrumentsArrowAngle(...args) {
+    return Math.round(((args[1] - (args[2] - args[0])) * args[3]) + args[4]);
 }
 
 function calculatePressureColor(p) {
@@ -157,8 +156,8 @@ function showData() {
     weatherContainer.querySelector('.content_weather_city').innerText = data.json.name + ', ' + data.json.sys.country;
 
     cityInfo.querySelector('.city-info__temp').textContent = data.json.main.temp + ' \xB0C';
-    cityInfo.querySelector('.city-info__pressure').textContent = data.json.main.pressure + ' \mb';
-    cityInfo.querySelector('.city-info__humidity').textContent = data.json.main.humidity + ' \%';
+    cityInfo.querySelector('.city-info__pressure').textContent = data.json.main.pressure + ' mb';
+    cityInfo.querySelector('.city-info__humidity').textContent = data.json.main.humidity + ' %';
     cityInfo.querySelector('.city-info__temp_min').textContent = data.json.main.temp_min + ' \xB0C';
     cityInfo.querySelector('.city-info__temp_max').textContent = data.json.main.temp_max + ' \xB0C';
 
