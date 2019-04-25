@@ -83,6 +83,55 @@ function showShowButton() {
   showBtn.classList.add('button_show--visible');
 }
 
+function showInstrumentArrow() {
+  const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
+  const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
+  rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
+  rotatePressure.style.color = calculatePressureColor(data.json.main.pressure);
+  rotatePressure.style.textShadow = arrowsSchadow;
+
+  const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
+  const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
+  rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
+  rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
+  rotateTemperature.style.textShadow = arrowsSchadow;
+
+  const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
+  const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
+  rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
+  rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
+  rotateHumidity.style.textShadow = arrowsSchadow;
+
+  weatherInstruments.classList.add('flex_item_instruments--visible');
+}
+
+function hideInput() {
+  formData.classList.remove('form');
+  formData.classList.add('form--hidden');
+}
+
+function hideButtonShowData() {
+  showBtn.classList.remove('button_show--visible');
+  showBtn.classList.add('button_show');
+}
+
+function showData() {
+  hideInput();
+  hideButtonShowData();
+  cityInfo.querySelector('.city-info__name').textContent = `${data.json.name}, ${data.json.sys.country}`;
+  weatherContainer.querySelector('.content_weather_city').innerText = `${data.json.name}, ${data.json.sys.country}`;
+
+  cityInfo.querySelector('.city-info__temp').textContent = `${data.json.main.temp} \xB0C`;
+  cityInfo.querySelector('.city-info__pressure').textContent = `${data.json.main.pressure} mb`;
+  cityInfo.querySelector('.city-info__humidity').textContent = `${data.json.main.humidity} %`;
+  cityInfo.querySelector('.city-info__temp_min').textContent = `${data.json.main.temp_min} \xB0C`;
+  cityInfo.querySelector('.city-info__temp_max').textContent = `${data.json.main.temp_max} \xB0C`;
+
+  mainHead.classList.add('main__title--visible');
+  cityInfo.classList.add('city-info--visible');
+  showInstrumentArrow();
+}
+
 function saveData() {
   hideData();
   getCityDataFromInput();
@@ -141,55 +190,6 @@ function calculateHumidityColor(h) {
 
 function calculateInstrumentsArrowAngle(...args) {
   return Math.round(((args[1] - (args[2] - args[0])) * args[3]) + args[4]);
-}
-
-function showInstrumentArrow() {
-  const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
-  const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
-  rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
-  rotatePressure.style.color = calculatePressureColor(data.json.main.pressure);
-  rotatePressure.style.textShadow = arrowsSchadow;
-
-  const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
-  const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
-  rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
-  rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
-  rotateTemperature.style.textShadow = arrowsSchadow;
-
-  const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
-  const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
-  rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
-  rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
-  rotateHumidity.style.textShadow = arrowsSchadow;
-
-  weatherInstruments.classList.add('flex_item_instruments--visible');
-}
-
-function hideInput() {
-  formData.classList.remove('form');
-  formData.classList.add('form--hidden');
-}
-
-function hideButtonShowData() {
-  showBtn.classList.remove('button_show--visible');
-  showBtn.classList.add('button_show');
-}
-
-function showData() {
-  hideInput();
-  hideButtonShowData();
-  cityInfo.querySelector('.city-info__name').textContent = `${data.json.name}, ${data.json.sys.country}`;
-  weatherContainer.querySelector('.content_weather_city').innerText = `${data.json.name}, ${data.json.sys.country}`;
-
-  cityInfo.querySelector('.city-info__temp').textContent = `${data.json.main.temp} \xB0C`;
-  cityInfo.querySelector('.city-info__pressure').textContent = `${data.json.main.pressure} mb`;
-  cityInfo.querySelector('.city-info__humidity').textContent = `${data.json.main.humidity} %`;
-  cityInfo.querySelector('.city-info__temp_min').textContent = `${data.json.main.temp_min} \xB0C`;
-  cityInfo.querySelector('.city-info__temp_max').textContent = `${data.json.main.temp_max} \xB0C`;
-
-  mainHead.classList.add('main__title--visible');
-  cityInfo.classList.add('city-info--visible');
-  showInstrumentArrow();
 }
 
 saveBtn.addEventListener('click', saveData);
