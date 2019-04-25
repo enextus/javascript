@@ -390,7 +390,6 @@
 	height: auto;
 }
 
-
 .flex_item_weather_picture {
 	display: flex;
 	flex-direction: row;
@@ -470,7 +469,10 @@
 	display: block;
 	font-size: 5em;
 	transition: all 0.4s ease;
-	color: #3e497d;
+    color: #3e497d;
+    text-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
+    -webkit-text-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
+    -moz-text-shadow: 10px 10px 5px 0px rgba(0,0,0,0.48);
 }
 
 .flex_instrument_02 {

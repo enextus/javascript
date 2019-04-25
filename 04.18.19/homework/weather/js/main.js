@@ -24,7 +24,6 @@ const maxPosibleHumidity = 100;
 const wholeRangeHumidity = 100; // max - min  100 - 0
 const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
-const instrumntsArrowsSchadow = '10px 10px 5px 0px rgba(0,0,0,0.48)';
 
 function City(name) {
   this.name = name || noDataMessage;
@@ -148,19 +147,16 @@ function showInstrumentArrow() {
   const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
   rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
   rotatePressure.style.color = calculatePressureColor(data.json.main.pressure);
-  rotatePressure.style.textShadow = instrumntsArrowsSchadow;
 
   const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
   const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
   rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
   rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
-  rotateTemperature.style.textShadow = instrumntsArrowsSchadow;
 
   const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
   const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
   rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
   rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
-  rotateHumidity.style.textShadow = instrumntsArrowsSchadow;
 
   weatherInstruments.classList.add('flex_item_instruments--visible');
 }
