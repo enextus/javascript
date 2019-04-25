@@ -7,7 +7,6 @@ const weatherInstruments = document.querySelector('.flex_item_instruments');
 const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
 const saveBtn = document.querySelector('#button-save');
-const showBtn = document.querySelector('#button-show');
 const formData = document.querySelector('.form');
 const noDataMessage = 'undefinned';
 const token = '4d65d788982dca64aefc93b76839fa60';
@@ -49,33 +48,6 @@ function showWarning() {
   alert('Please enter a valid city name.');
   formData.name.focus();
   return false;
-}
-
-function showShowButton() {
-  showBtn.classList.add('button_show--visible');
-}
-
-function getTheWeather() {
-  const xhr = new XMLHttpRequest();
-  xhr.open(
-    'GET',
-    `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&APPID=${token}&units=${units}`,
-    true,
-  );
-
-  xhr.send();
-  xhr.onreadystatechange = function statement() {
-    if (this.readyState !== 4) {
-      return;
-    }
-    if (this.status === 200) {
-      data.json = JSON.parse(this.responseText);
-      showShowButton();
-      return;
-    }
-    data.json = false;
-    alert('Please enter a valid city name.');
-  };
 }
 
 function calculatePressureColor(p) {
@@ -154,14 +126,8 @@ function hideInput() {
   formData.classList.add('form--hidden');
 }
 
-function hideButtonShowData() {
-  showBtn.classList.remove('button_show--visible');
-  showBtn.classList.add('button_show');
-}
-
 function showData() {
   hideInput();
-  hideButtonShowData();
   cityInfo.querySelector('.city-info__name').textContent = `${data.json.name}, ${data.json.sys.country}`;
   weatherContainer.querySelector('.content_weather_city').innerText = `${data.json.name}, ${data.json.sys.country}`;
 
@@ -176,6 +142,30 @@ function showData() {
   showInstrumentArrow();
 }
 
+function getTheWeather() {
+  const xhr = new XMLHttpRequest();
+  xhr.open(
+    'GET',
+    `https://api.openweathermap.org/data/2.5/weather?q=${city.name}&APPID=${token}&units=${units}`,
+    true,
+  );
+
+  xhr.send();
+  xhr.onreadystatechange = function statement() {
+    if (this.readyState !== 4) {
+      return;
+    }
+    if (this.status === 200) {
+      data.json = JSON.parse(this.responseText);
+      showData();
+      // showShowButton();
+      return;
+    }
+    data.json = false;
+    alert('Please enter a valid city name.');
+  };
+}
+
 function saveData() {
   getCityDataFromInput();
   if (city.name === 'undefinned') {
@@ -186,4 +176,3 @@ function saveData() {
 }
 
 saveBtn.addEventListener('click', saveData);
-showBtn.addEventListener('click', showData);
