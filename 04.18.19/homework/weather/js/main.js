@@ -38,13 +38,6 @@ function Data(d) {
 
 const data = new Data();
 
-function hideData() {
-  mainHead.classList.remove('main__title--visible');
-  cityInfo.classList.remove('city-info--visible');
-  mainHead.classList.add('main__title');
-  cityInfo.classList.add('city-info');
-}
-
 function getCityDataFromInput() {
   if (formData.name.value) {
     city.name = formData.name.value;
@@ -56,6 +49,10 @@ function showWarning() {
   alert('Please enter a valid city name.');
   formData.name.focus();
   return false;
+}
+
+function showShowButton() {
+  showBtn.classList.add('button_show--visible');
 }
 
 function getTheWeather() {
@@ -73,14 +70,12 @@ function getTheWeather() {
     }
     if (this.status === 200) {
       data.json = JSON.parse(this.responseText);
+      showShowButton();
       return;
     }
     data.json = false;
+    alert('Please enter a valid city name.');
   };
-}
-
-function showShowButton() {
-  showBtn.classList.add('button_show--visible');
 }
 
 function calculatePressureColor(p) {
@@ -182,13 +177,11 @@ function showData() {
 }
 
 function saveData() {
-  // hideData();
   getCityDataFromInput();
   if (city.name === 'undefinned') {
     showWarning();
   } else {
     getTheWeather();
-    showShowButton();
   }
 }
 
