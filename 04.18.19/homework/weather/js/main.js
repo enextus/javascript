@@ -182,7 +182,7 @@ function showData() {
 }
 
 function saveData() {
-  hideData();
+  // hideData();
   getCityDataFromInput();
   if (city.name === 'undefinned') {
     showWarning();
