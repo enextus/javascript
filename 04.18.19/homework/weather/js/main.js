@@ -49,11 +49,8 @@ function saveData() {
     if (city.name === "undefinned") {
         showWarning();
     } else {
-        let check = getTheWeather();
-        console.dir(check);
-        if (check) {
-            showShowButton();
-        }
+        getTheWeather();
+        showShowButton();
     }
 }
 
@@ -74,7 +71,7 @@ function getTheWeather() {
     xhr.send();
     xhr.onreadystatechange = function () {
         if (this.readyState != 4) {
-            return
+            return 
         }
         if (this.status === 200) {
             return data.json = JSON.parse(this.responseText);
@@ -103,7 +100,7 @@ function calculatePressureColor(p) {
         return "gold";
     }
 }
- 
+
 function calculateTemperatureColor(t) {
     if (t < 17) {
         return "dodgerblue";
