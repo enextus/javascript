@@ -24,7 +24,7 @@ const maxPosibleHumidity = 100;
 const wholeRangeHumidity = 100; // max - min  100 - 0
 const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
-const instrumntsArrowsSchadow = '0.3em 0.3em 3 grey';
+const instrumntsArrowsSchadow = '10px 10px 5px 0px rgba(0,0,0,0.48)';
 
 function City(name) {
   this.name = name || noDataMessage;
