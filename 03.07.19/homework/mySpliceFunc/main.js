@@ -81,7 +81,7 @@ function mySpliceFunc(arr, ...arguments) {
     }
 
     function walkThroughParameters(arguments) {
-        for (i = 0; i < arguments.length; i++) {
+        for (var i = 0; i < arguments.length; i++) {
             if (!isNaN(Number(arguments[0])) && typeof Number(arguments[0]) === 'number') {
                 begin = Number(arguments[0]);
             } else {

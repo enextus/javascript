@@ -1,12 +1,31 @@
-// [04.03.19 20:14]
-var people = [
-  { sex: 'M', name: 'Andrew' },
-  { sex: 'M', name: 'John' },
-  { sex: 'W', name: 'Anna' },
-  { sex: 'M', name: 'Andrew' },
-  { sex: 'M', name: 'Ivan' },
-  { sex: 'N', name: 'Eduardo' },
-  { sex: 'W', name: 'Kate' },
+var people = [{
+    sex: 'M',
+    name: 'Andrew'
+  },
+  {
+    sex: 'M',
+    name: 'John'
+  },
+  {
+    sex: 'W',
+    name: 'Anna'
+  },
+  {
+    sex: 'M',
+    name: 'Andrew'
+  },
+  {
+    sex: 'M',
+    name: 'Ivan'
+  },
+  {
+    sex: 'N',
+    name: 'Eduardo'
+  },
+  {
+    sex: 'W',
+    name: 'Kate'
+  },
 ];
 
 var men = [];
@@ -23,13 +42,11 @@ for (var i = 0; i < people.length; i++) {
   }
 }
 
-// [04.03.19 22:11]
 // function declaration
 function getPersonAge(person) {
   if (person && person.age) {
     return person.age;
   }
-
   return 18;
 }
 
@@ -38,6 +55,5 @@ var getPersonAge = function (person) {
   if (person && person.age) {
     return person.age;
   }
-
   return 18;
 };
