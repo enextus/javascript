@@ -25,6 +25,102 @@ const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
 const arrowsSchadow = '2px 2px 2px #7B7B7B';
 
+const gauge_temperature = new Gauge({
+	renderTo    : 'gauge_temperature',
+	width       : 190,
+	height      : 190,
+	glow        : true,
+	units       : '°C',
+	title       : 'Temperature',
+	minValue    : -50,
+	maxValue    : 50,
+	majorTicks  : ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+	minorTicks  : 10,
+	strokeTicks : false,
+	highlights  : [
+		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
+		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+	],
+	colors      : {
+		plate      : '#f5f5f5',
+		majorTicks : '#000',
+		minorTicks : '#222',
+		title      : '#222',
+		units      : '#666',
+		numbers    : '#222',
+		needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+	},
+	animation : {
+		delay : 25,
+		duration: 500,
+		fn : 'bounce'
+	}
+});
+
+const gauge_pressure = new Gauge({
+	renderTo    : 'gauge_pressure',
+	width       : 190,
+	height      : 190,
+	glow        : true,
+	units       : 'mP',
+	title       : 'Pressure',
+	minValue    : -50,
+	maxValue    : 50,
+	majorTicks  : ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+	minorTicks  : 10,
+	strokeTicks : false,
+	highlights  : [
+		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
+		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+	],
+	colors      : {
+		plate      : '#f5f5f5',
+		majorTicks : '#000',
+		minorTicks : '#222',
+		title      : '#222',
+		units      : '#666',
+		numbers    : '#222',
+		needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+	},
+	animation : {
+		delay : 25,
+		duration: 500,
+		fn : 'bounce'
+	}
+});
+
+const gauge_humidity = new Gauge({
+	renderTo    : 'gauge_humidity',
+	width       : 190,
+	height      : 190,
+	glow        : true,
+	units       : 'mP',
+	title       : 'Humidity',
+	minValue    : -50,
+	maxValue    : 50,
+	majorTicks  : ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+	minorTicks  : 10,
+	strokeTicks : false,
+	highlights  : [
+		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
+		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+	],
+	colors      : {
+		plate      : '#f5f5f5',
+		majorTicks : '#000',
+		minorTicks : '#222',
+		title      : '#222',
+		units      : '#666',
+		numbers    : '#222',
+		needle     : { start : 'rgba(240, 128, 128, 1)', end : 'rgba(255, 160, 122, .9)' }
+	},
+	animation : {
+		delay : 25,
+		duration: 500,
+		fn : 'bounce'
+	}
+});
+
 function City(name) {
   this.name = name || noDataMessage;
 }
@@ -173,5 +269,27 @@ function saveData() {
     getTheWeather();
   }
 }
+
+gauge_temperature.onready = function() {
+	setInterval( function() {
+		gauge_temperature.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+	}, 1000);
+};
+
+gauge_pressure.onready = function() {
+	setInterval( function() {
+		gauge_pressure.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+	}, 1000);
+};
+
+gauge_humidity.onready = function() {
+	setInterval( function() {
+		gauge_humidity.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+	}, 1000);
+};
+
+gauge_temperature.draw();
+gauge_pressure.draw();
+gauge_humidity.draw();
 
 saveBtn.addEventListener('click', saveData);
