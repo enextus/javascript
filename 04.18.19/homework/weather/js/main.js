@@ -38,8 +38,9 @@ const gauge_temperature = new Gauge({
 	minorTicks  : 10,
 	strokeTicks : false,
 	highlights  : [
-		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
-		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+    { from : -50, to : 17, color : 'rgba(0,   0, 255, .3)' },
+    { from : 18, to : 23, color : 'rgba(153,   204, 0, .3)' },
+		{ from : 24, to : 50, color : 'rgba(255, 0, 0, .3)' },
 	],
 	colors      : {
 		plate      : '#f5f5f5',
