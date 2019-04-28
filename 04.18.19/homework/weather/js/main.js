@@ -280,7 +280,7 @@ function saveData() {
 
 gauge_temperature.onready = function() {
 	setInterval( function() {
-		gauge_temperature.setValue(data.json.main.temp);
+		gauge_temperature.setValue(Math.round(data.json.main.temp));
 	}, 1000);
 };
 
