@@ -8,21 +8,26 @@ const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
 const saveBtn = document.querySelector('#button-save');
 const formData = document.querySelector('.form');
+
 const noDataMessage = 'undefinned';
 const token = '4d65d788982dca64aefc93b76839fa60';
 const units = 'metric';
+
 const maxPosiblePressure = 1051;
 const wholeRangePressure = 75; // max - min  +++ 976 - 1051
 const coefficientScalePressure = 3.6; // 270grad/75
 const coefficientScalaBeginingPressure = 45;
+
 const maxPosibleTemperature = 55;
 const wholeRangeTemperature = 90; // max - min 55 - -35
 const coefficientScaleTemperature = 2.78; // 250 grad/90
 const coefficientScalaBeginingTemperature = 55;
+
 const maxPosibleHumidity = 100;
 const wholeRangeHumidity = 100; // max - min  100 - 0
 const coefficientScaleHumidity = 2.7; // 208grad / 100
 const coefficientScalaBeginingHumidity = 45;
+
 const arrowsSchadow = '2px 2px 2px #7B7B7B';
 
 const gauge_temperature = new Gauge({
@@ -200,23 +205,22 @@ function calculateInstrumentsArrowAngle(...args) {
 }
 
 function showInstrumentArrow() {
-  const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
-  const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
-  rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
-  rotatePressure.style.color = calculatePressureColor(data.json.main.pressure);
-  rotatePressure.style.textShadow = arrowsSchadow;
+  // const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
+  // const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
+  // rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
+  // rotatePressure.style.textShadow = arrowsSchadow;
 
-  const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
-  const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
-  rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
-  rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
-  rotateTemperature.style.textShadow = arrowsSchadow;
+  // const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
+  // const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
+  // rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
+  // rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
+  // rotateTemperature.style.textShadow = arrowsSchadow;
 
-  const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
-  const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
-  rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
-  rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
-  rotateHumidity.style.textShadow = arrowsSchadow;
+  // const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
+  // const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
+  // rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
+  // rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
+  // rotateHumidity.style.textShadow = arrowsSchadow;
 
   weatherInstruments.classList.add('flex_item_instruments--visible');
 }
@@ -276,7 +280,7 @@ function saveData() {
 
 gauge_temperature.onready = function() {
 	setInterval( function() {
-		gauge_temperature.setValue(Math.round(data.json.main.temp));
+		gauge_temperature.setValue(data.json.main.temp);
 	}, 1000);
 };
 
