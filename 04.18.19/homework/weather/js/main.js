@@ -65,14 +65,15 @@ const gauge_pressure = new Gauge({
 	glow        : true,
 	units       : 'mP',
 	title       : 'Pressure',
-	minValue    : -50,
-	maxValue    : 50,
-	majorTicks  : ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+	minValue    : 970,
+	maxValue    : 1055,
+	majorTicks  : ['970','980','990','1000','1010','1020','1030','1040','1050'],
 	minorTicks  : 10,
 	strokeTicks : false,
 	highlights  : [
-		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
-		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+		{ from : 970, to : 1005, color : 'rgba(0,   0, 255, .3)' },
+    { from : 1006, to : 1020, color : 'rgba(255, 0, 0, .3)' },
+    { from : 1021, to : 1055, color : 'rgba(210, 210, 0, .3)' },
 	],
 	colors      : {
 		plate      : '#f5f5f5',
@@ -97,14 +98,16 @@ const gauge_humidity = new Gauge({
 	glow        : true,
 	units       : 'mP',
 	title       : 'Humidity',
-	minValue    : -50,
-	maxValue    : 50,
-	majorTicks  : ['-50','-40','-30','-20','-10','0','10','20','30','40','50'],
+	minValue    : 0,
+	maxValue    : 100,
+	majorTicks  : ['0','10','20','30','40','50','60','70','80','90','100'],
 	minorTicks  : 10,
 	strokeTicks : false,
 	highlights  : [
-		{ from : -50, to : 0, color : 'rgba(0,   0, 255, .3)' },
-		{ from : 0, to : 50, color : 'rgba(255, 0, 0, .3)' }
+		{ from : 0, to : 35, color : 'rgba(255,   128, 0, .3)' },
+    { from : 36, to : 60, color : 'rgba(0, 128, 0, .3)' },
+    { from : 61, to : 65, color : 'rgba(153,   204, 0, .3)' },
+    { from : 66, to : 100, color : 'rgba(255, 0, 0, .3)' },
 	],
 	colors      : {
 		plate      : '#f5f5f5',
@@ -273,19 +276,19 @@ function saveData() {
 
 gauge_temperature.onready = function() {
 	setInterval( function() {
-		gauge_temperature.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+		gauge_temperature.setValue(Math.round(data.json.main.temp));
 	}, 1000);
 };
 
 gauge_pressure.onready = function() {
 	setInterval( function() {
-		gauge_pressure.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+		gauge_pressure.setValue(Math.round(data.json.main.pressure));
 	}, 1000);
 };
 
 gauge_humidity.onready = function() {
 	setInterval( function() {
-		gauge_humidity.setValue( (Math.random() * 1 > .5 ? -1 : 1) * Math.random() * 50);
+		gauge_humidity.setValue(Math.round(data.json.main.humidity));
 	}, 1000);
 };
 
