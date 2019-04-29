@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 /* eslint-disable linebreak-style */
-const container = document.querySelector('.container');
+// const container = document.querySelector('.container');
 const weatherContainer = document.querySelector('.flex_item_weather_picture');
 const weatherInstruments = document.querySelector('.flex_item_instruments');
 const mainHead = document.querySelector('.main__title');
@@ -13,23 +13,7 @@ const noDataMessage = 'undefinned';
 const token = '4d65d788982dca64aefc93b76839fa60';
 const units = 'metric';
 
-const maxPosiblePressure = 1051;
-const wholeRangePressure = 75; // max - min  +++ 976 - 1051
-const coefficientScalePressure = 3.6; // 270grad/75
-const coefficientScalaBeginingPressure = 45;
-
-const maxPosibleTemperature = 55;
-const wholeRangeTemperature = 90; // max - min 55 - -35
-const coefficientScaleTemperature = 2.78; // 250 grad/90
-const coefficientScalaBeginingTemperature = 55;
-
-const maxPosibleHumidity = 100;
-const wholeRangeHumidity = 100; // max - min  100 - 0
-const coefficientScaleHumidity = 2.7; // 208grad / 100
-const coefficientScalaBeginingHumidity = 45;
-
-const arrowsSchadow = '2px 2px 2px #7B7B7B';
-
+// eslint-disable-next-line no-undef
 const gauge_temperature = new Gauge({
 	renderTo    : 'gauge_temperature',
 	width       : 190,
@@ -63,6 +47,7 @@ const gauge_temperature = new Gauge({
 	}
 });
 
+// eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
 	renderTo    : 'gauge_pressure',
 	width       : 190,
@@ -96,6 +81,7 @@ const gauge_pressure = new Gauge({
 	}
 });
 
+// eslint-disable-next-line no-undef
 const gauge_humidity = new Gauge({
 	renderTo    : 'gauge_humidity',
 	width       : 190,
@@ -155,73 +141,7 @@ function showWarning() {
   return false;
 }
 
-function calculatePressureColor(p) {
-  let value;
-  if (p < 1005) {
-    value = 'dodgerblue';
-  }
-  if (p >= 1005 && p <= 1020) {
-    value = 'orangered';
-  }
-  if (p > 1020) {
-    value = 'gold';
-  }
-  return value;
-}
-
-function calculateTemperatureColor(t) {
-  let value;
-  if (t < 17) {
-    value = 'dodgerblue';
-  }
-  if (t >= 17 && t <= 23) {
-    value = 'green';
-  }
-  if (t > 23) {
-    value = 'orangered';
-  }
-  return value;
-}
-
-function calculateHumidityColor(h) {
-  let value;
-  if (h < 35) {
-    value = 'orange';
-  }
-  if (h >= 35 && h <= 60) {
-    value = 'yellowgreen';
-  }
-  if (h > 60 && h <= 65) {
-    value = 'lightGreen';
-  }
-  if (h > 65) {
-    value = 'dodgerblue';
-  }
-  return value;
-}
-
-function calculateInstrumentsArrowAngle(...args) {
-  return Math.round(((args[1] - (args[2] - args[0])) * args[3]) + args[4]);
-}
-
 function showInstrumentArrow() {
-  // const rotatePressure = container.querySelector('.pointer_01').lastElementChild;
-  // const gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
-  // rotatePressure.style.transform = `rotateZ(${gradRotatePressure}deg)`;
-  // rotatePressure.style.textShadow = arrowsSchadow;
-
-  // const rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
-  // const gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
-  // rotateTemperature.style.transform = `rotateZ(${gradTemperatureInstrument}deg)`;
-  // rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
-  // rotateTemperature.style.textShadow = arrowsSchadow;
-
-  // const rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
-  // const procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
-  // rotateHumidity.style.transform = `rotateZ(${procHumidityInstrument}deg)`;
-  // rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
-  // rotateHumidity.style.textShadow = arrowsSchadow;
-
   weatherInstruments.classList.add('flex_item_instruments--visible');
 }
 
