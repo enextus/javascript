@@ -14,32 +14,32 @@ const token = '4d65d788982dca64aefc93b76839fa60';
 const units = 'metric';
 
 // eslint-disable-next-line no-undef
-const gauge_temperature = new Gauge({
-	renderTo: 'gauge_temperature',
+const gauge_pressure = new Gauge({
+	renderTo: 'gauge_pressure',
 	width: 190,
 	height: 190,
 	glow: true,
-	units: '°C',
-	title: 'Temperature',
-	minValue: -50,
-	maxValue: 50,
-	majorTicks: ['-50', '-40', '-30', '-20', '-10', '0', '10', '20', '30', '40', '50'],
+	units: 'mP',
+	title: 'Pressure',
+	minValue: 970,
+	maxValue: 1055,
+	majorTicks: ['970', '980', '990', '1000', '1010', '1020', '1030', '1040', '1050'],
 	minorTicks: 10,
 	strokeTicks: false,
 	highlights: [{
-			from: -50,
-			to: 17,
-			color: 'rgba(0,   0, 255, .3)'
+			from: 970,
+			to: 1005,
+			color: 'rgba(0, 0, 255, .3)'
 		},
 		{
-			from: 18,
-			to: 23,
-			color: 'rgba(153,   204, 0, .3)'
-		},
-		{
-			from: 24,
-			to: 50,
+			from: 1005,
+			to: 1020,
 			color: 'rgba(255, 0, 0, .3)'
+		},
+		{
+			from: 1020,
+			to: 1055,
+			color: 'rgba(210, 210, 0, .3)'
 		},
 	],
 	colors: {
@@ -62,32 +62,32 @@ const gauge_temperature = new Gauge({
 });
 
 // eslint-disable-next-line no-undef
-const gauge_pressure = new Gauge({
-	renderTo: 'gauge_pressure',
+const gauge_temperature = new Gauge({
+	renderTo: 'gauge_temperature',
 	width: 190,
 	height: 190,
 	glow: true,
-	units: 'mP',
-	title: 'Pressure',
-	minValue: 970,
-	maxValue: 1055,
-	majorTicks: ['970', '980', '990', '1000', '1010', '1020', '1030', '1040', '1050'],
+	units: '°C',
+	title: 'Temperature',
+	minValue: -50,
+	maxValue: 50,
+	majorTicks: ['-50', '-40', '-30', '-20', '-10', '0', '10', '20', '30', '40', '50'],
 	minorTicks: 10,
 	strokeTicks: false,
 	highlights: [{
-			from: 970,
-			to: 1005,
-			color: 'rgba(0,   0, 255, .3)'
+			from: -50,
+			to: 17,
+			color: 'rgba(0, 0, 255, .3)'
 		},
 		{
-			from: 1006,
-			to: 1020,
+			from: 17,
+			to: 24,
+			color: 'rgba(153, 204, 0, .3)'
+		},
+		{
+			from: 24,
+			to: 50,
 			color: 'rgba(255, 0, 0, .3)'
-		},
-		{
-			from: 1021,
-			to: 1055,
-			color: 'rgba(210, 210, 0, .3)'
 		},
 	],
 	colors: {
@@ -125,7 +125,7 @@ const gauge_humidity = new Gauge({
 	highlights: [{
 			from: 0,
 			to: 35,
-			color: 'rgba(255,   128, 0, .3)'
+			color: 'rgba(255, 128, 0, .3)'
 		},
 		{
 			from: 36,
@@ -135,7 +135,7 @@ const gauge_humidity = new Gauge({
 		{
 			from: 61,
 			to: 65,
-			color: 'rgba(153,   204, 0, .3)'
+			color: 'rgba(153, 204, 0, .3)'
 		},
 		{
 			from: 66,
@@ -244,7 +244,23 @@ function saveData() {
 	}
 }
 
-function getNeedleColor(d) {
+function getNeedlePressureColor(d) {
+	if (d >= 970 && d <= 1005) {
+		const needleColor = '0, 0, 255, .3';
+		return needleColor;
+	}
+	if (d > 1005 && d <= 1020) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	if (d > 1020 && d <= 1055) {
+		const needleColor = '210, 210, 0, .3';
+		return needleColor;
+	}
+	return !1;
+}
+
+function getNeedleTemperatureColor(d) {
 	if (d >= -50 && d <= 17) {
 		const needleColor = '0, 0, 255, .3';
 		return needleColor;
@@ -260,17 +276,19 @@ function getNeedleColor(d) {
 	return !1;
 }
 
-gauge_temperature.onready = function () {
-	setInterval(function () {
-		gauge_temperature.setValue(Math.round(data.json.main.temp));
-		gauge_temperature.config.colors.needle.start = `rgba(${getNeedleColor(Math.round(data.json.main.temp))})`;
-		gauge_temperature.config.colors.needle.end = `rgba(${getNeedleColor(Math.round(data.json.main.temp))})`;
-	}, 1000);
-};
-
 gauge_pressure.onready = function () {
 	setInterval(function () {
 		gauge_pressure.setValue(Math.round(data.json.main.pressure));
+		gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
+		gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
+	}, 1000);
+};
+
+gauge_temperature.onready = function () {
+	setInterval(function () {
+		gauge_temperature.setValue(Math.round(data.json.main.temp));
+		gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
+		gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
 	}, 1000);
 };
 
