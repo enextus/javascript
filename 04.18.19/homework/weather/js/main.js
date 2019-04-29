@@ -32,12 +32,12 @@ const gauge_pressure = new Gauge({
 			color: 'rgba(0, 0, 255, .3)'
 		},
 		{
-			from: 1005,
+			from: 1006,
 			to: 1020,
 			color: 'rgba(255, 0, 0, .3)'
 		},
 		{
-			from: 1020,
+			from: 1021,
 			to: 1055,
 			color: 'rgba(210, 210, 0, .3)'
 		},
@@ -76,7 +76,7 @@ const gauge_temperature = new Gauge({
 	strokeTicks: false,
 	highlights: [{
 			from: -50,
-			to: 17,
+			to: 16,
 			color: 'rgba(0, 0, 255, .3)'
 		},
 		{
@@ -85,7 +85,7 @@ const gauge_temperature = new Gauge({
 			color: 'rgba(153, 204, 0, .3)'
 		},
 		{
-			from: 24,
+			from: 25,
 			to: 50,
 			color: 'rgba(255, 0, 0, .3)'
 		},
@@ -276,6 +276,26 @@ function getNeedleTemperatureColor(d) {
 	return !1;
 }
 
+function getNeedleHumidityColor(d) {
+	if (d >= 0 && d <= 35) {
+		const needleColor = '255, 128, 0, .3';
+		return needleColor;
+	}
+	if (d > 35 && d <= 60) {
+		const needleColor = '0, 128, 0, .3';
+		return needleColor;
+	}
+	if (d > 60 && d <= 65) {
+		const needleColor = '153, 204, 0, .3';
+		return needleColor;
+	}
+	if (d > 65 && d <= 100) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	return !1;
+}
+
 gauge_pressure.onready = function () {
 	setInterval(function () {
 		gauge_pressure.setValue(Math.round(data.json.main.pressure));
@@ -295,6 +315,8 @@ gauge_temperature.onready = function () {
 gauge_humidity.onready = function () {
 	setInterval(function () {
 		gauge_humidity.setValue(Math.round(data.json.main.humidity));
+		gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
+		gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
 	}, 1000);
 };
 
