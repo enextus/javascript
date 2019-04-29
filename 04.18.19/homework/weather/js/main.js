@@ -244,11 +244,27 @@ function saveData() {
 	}
 }
 
+function getNeedleColor(d) {
+	if (d >= -50 && d <= 17) {
+		const needleColor = '0, 0, 255, .3';
+		return needleColor;
+	}
+	if (d > 17 && d <= 23) {
+		const needleColor = '153, 204, 0, .3';
+		return needleColor;
+	}
+	if (d > 23 && d <= 50) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	return !1;
+}
+
 gauge_temperature.onready = function () {
 	setInterval(function () {
 		gauge_temperature.setValue(Math.round(data.json.main.temp));
-		gauge_temperature.config.colors.needle.start = 'rgba(0,   0, 255, .3)';
-		gauge_temperature.config.colors.needle.end = 'rgba(0,   0, 255, .3)';
+		gauge_temperature.config.colors.needle.start = `rgba(${getNeedleColor(Math.round(data.json.main.temp))})`;
+		gauge_temperature.config.colors.needle.end = `rgba(${getNeedleColor(Math.round(data.json.main.temp))})`;
 	}, 1000);
 };
 
@@ -263,8 +279,6 @@ gauge_humidity.onready = function () {
 		gauge_humidity.setValue(Math.round(data.json.main.humidity));
 	}, 1000);
 };
-
-
 
 gauge_temperature.draw();
 gauge_pressure.draw();
