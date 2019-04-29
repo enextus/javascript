@@ -235,14 +235,6 @@ function getTheWeather() {
 	};
 }
 
-function saveData() {
-	getCityDataFromInput();
-	if (city.name === 'undefinned') {
-		showWarning();
-	} else {
-		getTheWeather();
-	}
-}
 
 function getNeedlePressureColor(d) {
 	if (d >= 970 && d <= 1005) {
@@ -296,32 +288,38 @@ function getNeedleHumidityColor(d) {
 	return !1;
 }
 
-gauge_pressure.onready = function () {
-	setInterval(function () {
-		gauge_pressure.setValue(Math.round(data.json.main.pressure));
-		gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
-		gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
-	}, 1000);
-};
+function saveData() {
+	getCityDataFromInput();
+	if (city.name === 'undefinned') {
+		showWarning();
+	} else {
+		getTheWeather();
+		gauge_pressure.onready = function () {
+			setInterval(function () {
+				gauge_pressure.setValue(Math.round(data.json.main.pressure));
+				gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
+				gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(Math.round(data.json.main.pressure))})`;
+			}, 500);
+		}
+		gauge_temperature.onready = function () {
+			setInterval(function () {
+					gauge_temperature.setValue(Math.round(data.json.main.temp));
+					gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
+					gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
+				}, 500);
+		};
+		gauge_humidity.onready = function () {
+			setInterval(function () {
+					gauge_humidity.setValue(Math.round(data.json.main.humidity));
+					gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
+					gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
+			}, 500);
+		};
 
-gauge_temperature.onready = function () {
-	setInterval(function () {
-		gauge_temperature.setValue(Math.round(data.json.main.temp));
-		gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
-		gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(Math.round(data.json.main.temp))})`;
-	}, 1000);
-};
-
-gauge_humidity.onready = function () {
-	setInterval(function () {
-		gauge_humidity.setValue(Math.round(data.json.main.humidity));
-		gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
-		gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
-	}, 1000);
-};
-
-gauge_temperature.draw();
-gauge_pressure.draw();
-gauge_humidity.draw();
+		gauge_temperature.draw();
+		gauge_pressure.draw();
+		gauge_humidity.draw();
+	}
+}
 
 saveBtn.addEventListener('click', saveData);
