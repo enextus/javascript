@@ -288,12 +288,14 @@ function getNeedleHumidityColor(d) {
 	return !1;
 }
 
-function saveData() {
+function visualizeData() {
 	getCityDataFromInput();
+
 	if (city.name === 'undefinned') {
 		showWarning();
 	} else {
 		getTheWeather();
+
 		gauge_pressure.onready = function () {
 			setInterval(function () {
 				gauge_pressure.setValue(Math.round(data.json.main.pressure));
@@ -322,4 +324,4 @@ function saveData() {
 	}
 }
 
-saveBtn.addEventListener('click', saveData);
+saveBtn.addEventListener('click', visualizeData);
