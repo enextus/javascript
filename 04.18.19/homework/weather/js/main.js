@@ -8,7 +8,6 @@ const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
 const saveBtn = document.querySelector('#button-save');
 const formData = document.querySelector('.form');
-
 const noDataMessage = 'undefinned';
 const token = '4d65d788982dca64aefc93b76839fa60';
 const units = 'metric';
@@ -200,13 +199,11 @@ function showData() {
 	hideInput();
 	cityInfo.querySelector('.city-info__name').textContent = `${data.json.name}, ${data.json.sys.country}`;
 	weatherContainer.querySelector('.content_weather_city').innerText = `${data.json.name}, ${data.json.sys.country}`;
-
 	cityInfo.querySelector('.city-info__temp').textContent = `${data.json.main.temp} \xB0C`;
 	cityInfo.querySelector('.city-info__pressure').textContent = `${data.json.main.pressure} mb`;
 	cityInfo.querySelector('.city-info__humidity').textContent = `${data.json.main.humidity} %`;
 	cityInfo.querySelector('.city-info__temp_min').textContent = `${data.json.main.temp_min} \xB0C`;
 	cityInfo.querySelector('.city-info__temp_max').textContent = `${data.json.main.temp_max} \xB0C`;
-
 	mainHead.classList.add('main__title--visible');
 	cityInfo.classList.add('city-info--visible');
 	showInstrumentArrow();
@@ -219,8 +216,6 @@ function getTheWeather() {
 		`https://api.openweathermap.org/data/2.5/weather?q=${city.name}&APPID=${token}&units=${units}`,
 		true,
 	);
-
-	xhr.send();
 	xhr.onreadystatechange = function statement() {
 		if (this.readyState !== 4) {
 			return;
@@ -233,8 +228,8 @@ function getTheWeather() {
 		data.json = false;
 		showWarning();
 	};
+	xhr.send();
 }
-
 
 function getNeedlePressureColor(d) {
 	if (d >= 970 && d <= 1005) {
@@ -249,7 +244,7 @@ function getNeedlePressureColor(d) {
 		const needleColor = '210, 210, 0, .3';
 		return needleColor;
 	}
-	return !1;
+	return false;
 }
 
 function getNeedleTemperatureColor(d) {
@@ -265,7 +260,7 @@ function getNeedleTemperatureColor(d) {
 		const needleColor = '255, 0, 0, .3';
 		return needleColor;
 	}
-	return !1;
+	return false;
 }
 
 function getNeedleHumidityColor(d) {
@@ -285,7 +280,7 @@ function getNeedleHumidityColor(d) {
 		const needleColor = '255, 0, 0, .3';
 		return needleColor;
 	}
-	return !1;
+	return false;
 }
 
 function visualizeData() {
@@ -317,11 +312,9 @@ function visualizeData() {
 					gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(Math.round(data.json.main.humidity))})`;
 			}, 500);
 		};
-
 		gauge_temperature.draw();
 		gauge_pressure.draw();
 		gauge_humidity.draw();
 	}
 }
-
 saveBtn.addEventListener('click', visualizeData);
