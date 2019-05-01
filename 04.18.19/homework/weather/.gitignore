@@ -41,3 +41,8 @@ $RECYCLE.BIN/
 
 .eslintrc.js
 .eslint*
+
+js/t.js
+package.json
+js/t1.js
+js/t2.js
