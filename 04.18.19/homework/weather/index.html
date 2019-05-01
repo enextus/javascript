@@ -47,14 +47,34 @@
 						<form class="form">
 							<div class="form__elements">
 								<label class="form__elements-label" for="name">City:</label>
-								<input class="input__field" type="text" name="name" id="name">
+								<input class="input__field" type="text" name="name" id="city__name">
 							</div>
-							<div class="form__elements" id="div__button-save">
-								<input class="button" type="button" value="Do query by city name" id="button-save">
-							</div>
+							<button class="button" type="button" id="button-save"><i class="fas fa-search"></i></button>
 						</form>
-						<div class="form__elements" id="div__button-show">
-							<input class="button_show" type="button" value="What is Weather?" id="button-show">
+						<div id="menu-cities" style="display: block;">
+							<div class="menu-body">
+								<ul class="menu-items">
+									<li>
+										<a href="https://www.accuweather.com/ru/by/minsk/28580/weather-forecast/28580">Минск,
+											Беларусь<span class="temp">7°</span><span class="icon i-36-s"></span></a>
+									</li>
+									<li>
+										<a href="https://www.accuweather.com/ru/us/new-york-ny/10007/weather-forecast/349727">Нью-йорк,
+											Нью-йорк<span class="temp">12°</span><span class="icon i-7-s"></span></a>
+									</li>
+									<li>
+										<a href="https://www.accuweather.com/ru/us/miami-fl/33128/weather-forecast/347936">Майами,
+											Флорида<span class="temp">26°</span><span class="icon i-6-s"></span></a>
+									</li>
+									<li>
+										<a href="https://www.accuweather.com/ru/us/los-angeles-ca/90012/weather-forecast/347625">Лос-анджелес,
+											Калифорния<span class="temp">20°</span><span class="icon i-1-s"></span></a>
+									</li>
+									<li class="more"><a href="https://www.accuweather.com/ru/browse-locations">Перейти к
+											местоположению<span></span></a></li>
+								</ul>
+								<span class="arrow"></span><span class="arrow-border"></span>
+							</div>
 						</div>
 						<h1 class="main__title">weather data</h1>
 						<article class="city-info">
