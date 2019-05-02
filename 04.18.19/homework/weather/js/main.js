@@ -9,6 +9,7 @@ const cityInfo = document.querySelector('.city-info');
 const saveBtn = document.querySelector('#button-save');
 const formData = document.querySelector('.form');
 const getCityNameForQuery = document.querySelector('#city__name');
+const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
 const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
 const units = 'metric';
@@ -190,7 +191,6 @@ getCityNameForQuery.addEventListener('keyup', function () {
 	}
 });
 
-
 function showWarning() {
 	// eslint-disable-next-line no-alert
 	alert('Please enter a valid city name.');
@@ -226,6 +226,17 @@ function showData() {
 	// showInstrumentArrow();
 }
 
+function displayProposedSities() {
+
+}
+
+function showProposedListOfCities() {
+	menuProposedCities.classList.remove('menu-proposed-cities');
+	menuProposedCities.classList.add('menu-proposed-cities--visible');
+
+
+}
+
 function getListOfProposedCityNames() {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
@@ -239,7 +250,7 @@ function getListOfProposedCityNames() {
 		}
 		if (this.status === 200) {
 			data.json = JSON.parse(this.responseText)
-			showData();
+			showProposedListOfCities();
 			return true;
 		}
 		data.json = false;
@@ -261,7 +272,7 @@ function getListOfProposedCityNames() {
 // 		}
 // 		if (this.status === 200) {
 // 			data.json = JSON.parse(this.responseText);
-// 			showData();
+// 			showProposedListOfCityes();
 // 			return;
 // 		}
 // 		data.json = false;
