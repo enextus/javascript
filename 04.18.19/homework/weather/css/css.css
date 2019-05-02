@@ -190,9 +190,9 @@ div {
     display: block;
     color: #141d26;
     padding: 12px;
-        padding-right: 12px;
-    padding-right: 75px;
+    padding-right: 132px;
     position: relative;
+    margin-left: 50px;
 }
 
 a {

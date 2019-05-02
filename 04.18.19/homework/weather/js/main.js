@@ -226,15 +226,31 @@ function showData() {
 	// showInstrumentArrow();
 }
 
-function displayProposedSities() {
+function showProposedListOfCities(a) {
+	const menuBody = document.createElement('div');
+	menuBody.classList.add('menu-body');
 
-}
+	const menuItems = document.createElement('ul');
+	menuItems.classList.add('menu-items');
 
-function showProposedListOfCities() {
+	for(let i=0; i < a.length; i += 1) {
+		const menuItem = document.createElement('li');
+		const anchorForProposedCity = document.createElement('a');
+		const anchorText = document.createTextNode(`${a[i]}`);
+		anchorForProposedCity.appendChild(anchorText);
+		anchorForProposedCity.title = `${a[i]}`;
+		anchorForProposedCity.href = `http://berliseo.com/${a[i]}`;
+		menuItem.appendChild(anchorForProposedCity);
+		menuItems.appendChild(menuItem);
+	}
+
+	menuBody.appendChild(menuItems);
+	menuProposedCities.appendChild(menuBody);
+
 	menuProposedCities.classList.remove('menu-proposed-cities');
 	menuProposedCities.classList.add('menu-proposed-cities--visible');
 
-
+	// console.log('data.json = ', data.json);
 }
 
 function getListOfProposedCityNames() {
@@ -250,7 +266,13 @@ function getListOfProposedCityNames() {
 		}
 		if (this.status === 200) {
 			data.json = JSON.parse(this.responseText)
-			showProposedListOfCities();
+
+			const proposedCitiesArr = [];
+
+			for (let i=0; i < data.json.length; i += 1 ) {
+				proposedCitiesArr.push(data.json[i].Key);
+			}
+			showProposedListOfCities(proposedCitiesArr);
 			return true;
 		}
 		data.json = false;

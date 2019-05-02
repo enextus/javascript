@@ -4,3 +4,4 @@ node_modules
 =5.4.0/*
 my-app/*
 =5.4.0
+test*
