@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "circular-json": "^0.3.3",
+    "ftp": "^0.3.10",
     "updater-eslint": "^1.0.0"
   }
 }

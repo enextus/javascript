@@ -171,6 +171,7 @@ div {
     position: absolute;
     background: #fff;
     z-index: 9900;
+    margin-left: 50px;
 }
 
 #menu-proposed-cities ul.menu-items li.title {
@@ -190,9 +191,10 @@ div {
     display: block;
     color: #141d26;
     padding: 12px;
-    padding-right: 132px;
+    padding-right: 0px;
+    margin-right: 12px;
     position: relative;
-    margin-left: 50px;
+
 }
 
 a {
