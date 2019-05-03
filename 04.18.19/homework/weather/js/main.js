@@ -14,7 +14,6 @@ const noDataMessage = 'undefinned';
 const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
 // const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
 
-
 // eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
 	renderTo: 'gauge_pressure',
@@ -184,7 +183,11 @@ function getCityDataFromInput() {
 }
 
 function resetTheProposedListOfCities() {
-	//
+	menuProposedCities.classList.remove('menu-proposed-cities--visible');
+	menuProposedCities.classList.add('menu-proposed-cities');
+
+	city.name = "";
+
 }
 
 getCityNameForQuery.addEventListener('keyup', function () {
@@ -251,7 +254,6 @@ function showProposedListOfCities(a) {
 
 	menuBody.appendChild(menuItems);
 	menuProposedCities.appendChild(menuBody);
-
 	menuProposedCities.classList.remove('menu-proposed-cities');
 	menuProposedCities.classList.add('menu-proposed-cities--visible');
 }
