@@ -12,6 +12,8 @@ const getCityNameForQuery = document.querySelector('#city__name');
 const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
 const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
+// const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+
 
 // eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
@@ -213,9 +215,7 @@ function hideInput() {
 
 function showData(n) {
 	hideInput();
-
 	visualizeData();
-
 	cityInfo.querySelector('.city-info__name').textContent = n;
 	weatherContainer.querySelector('.content_weather_city').innerText = n;
 	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
@@ -295,6 +295,11 @@ function makeArrForCityCodes(d) {
 }
 
 function getTheWeather(c, n) {
+
+
+	console.log(c,n);
+
+
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		'GET',
@@ -312,6 +317,30 @@ function getTheWeather(c, n) {
 		}
 		weatherData.json = false;
 		showWarning();
+	};
+	xhr.send();
+}
+
+function getACityCodeForACityName() {
+	const xhr = new XMLHttpRequest();
+	xhr.open(
+		'GET',
+		`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${token}&q=${city.name}&language=en-us&details=false`,
+		true,
+	);
+	xhr.onreadystatechange = function statement() {
+		if (this.readyState !== 4) {
+			return false;
+		}
+		if (this.status === 200) {
+			cityCodes.json = JSON.parse(this.responseText);
+			const arr = makeArrForCityCodes(cityCodes.json);
+			getTheWeather(arr[0].key, city.name)
+			return true;
+		}
+		cityCodes.json = false;
+		showWarning();
+		return false;
 	};
 	xhr.send();
 }
@@ -399,5 +428,5 @@ function visualizeData() {
 }
 searchBtn.addEventListener('click', function () {
 	getCityDataFromInput();
-	getListOfProposedCityNames();
+	getACityCodeForACityName();
 });
