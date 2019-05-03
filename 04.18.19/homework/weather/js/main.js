@@ -183,8 +183,12 @@ function getCityDataFromInput() {
 	}
 }
 
+function resetTheProposedListOfCities() {
+	//
+}
+
 getCityNameForQuery.addEventListener('keyup', function () {
-	// deletionProposedListOfCities();
+	resetTheProposedListOfCities();
 	if (getCityNameForQuery.value.length > 2) {
 		city.name = getCityNameForQuery.value;
 		getListOfProposedCityNames();
@@ -231,18 +235,14 @@ function showData(n) {
 function showProposedListOfCities(a) {
 	const menuBody = document.createElement('div');
 	menuBody.classList.add('menu-body');
-
 	const menuItems = document.createElement('ul');
 	menuItems.classList.add('menu-items');
 
 	for (let i = 0; i < a.length; i += 1) {
-
 		const menuItem = document.createElement('li');
 		const anchorForProposedCity = document.createElement('a');
 		const anchorText = document.createTextNode(`${a[i].localizedName}, ${a[i].administrativeArea.LocalizedName}, ${a[i].country.LocalizedName}, ${a[i].country.ID}`);
-
 		anchorForProposedCity.appendChild(anchorText);
-
 		anchorForProposedCity.title = `${a[i].key}`;
 		anchorForProposedCity.href = '#';
 		menuItem.appendChild(anchorForProposedCity);
@@ -295,11 +295,6 @@ function makeArrForCityCodes(d) {
 }
 
 function getTheWeather(c, n) {
-
-
-	console.log(c,n);
-
-
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		'GET',
