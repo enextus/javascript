@@ -6,13 +6,12 @@ const weatherContainer = document.querySelector('.flex_item_weather_picture');
 const weatherInstruments = document.querySelector('.flex_item_instruments');
 const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
-const saveBtn = document.querySelector('#button-save');
+const searchBtn = document.querySelector('#button-search');
 const formData = document.querySelector('.form');
 const getCityNameForQuery = document.querySelector('#city__name');
 const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
-const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
-const units = 'metric';
+const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
 
 // eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
@@ -299,7 +298,7 @@ function getTheWeather(c, n) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		'GET',
-		`http://dataservice.accuweather.com/currentconditions/v1/${c}?apikey=KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ&language=ru-ru&details=true`,
+		`http://dataservice.accuweather.com/currentconditions/v1/${c}?apikey=${token}&language=ru-ru&details=true`,
 		true,
 	);
 	xhr.onreadystatechange = function statement() {
@@ -398,3 +397,7 @@ function visualizeData() {
 	gauge_pressure.draw();
 	gauge_humidity.draw();
 }
+searchBtn.addEventListener('click', function () {
+	getCityDataFromInput();
+	getListOfProposedCityNames();
+});
