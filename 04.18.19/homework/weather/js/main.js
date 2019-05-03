@@ -183,9 +183,7 @@ function getCityDataFromInput() {
 }
 
 getCityNameForQuery.addEventListener('keyup', function () {
-
 	// deletionProposedListOfCities();
-
 	if (getCityNameForQuery.value.length > 2) {
 		city.name = getCityNameForQuery.value;
 		getListOfProposedCityNames();
@@ -193,7 +191,7 @@ getCityNameForQuery.addEventListener('keyup', function () {
 });
 
 menuProposedCities.addEventListener('click', function () {
-	getTheWeather(event.target.firstChild.parentElement.attributes.title.value);
+	getTheWeather(event.target.firstChild.parentElement.attributes.title.value, event.target.firstChild.parentElement.textContent);
 });
 
 function showWarning() {
@@ -210,24 +208,25 @@ function showInstrumentArrow() {
 function hideInput() {
 	formData.classList.remove('form');
 	formData.classList.add('form--hidden');
+	menuProposedCities.classList.remove('menu-proposed-cities--visible');
+	menuProposedCities.classList.add('menu-proposed-cities');
 }
 
-function showData() {
-	// hideInput();
+function showData(n) {
+	hideInput();
 
+	visualizeData();
 
-	// console.log("data.json = ", cityCodes.json);
-
-	// cityInfo.querySelector('.city-info__name').textContent = `${data.json.name}, ${data.json.sys.country}`;
-	// weatherContainer.querySelector('.content_weather_city').innerText = `${data.json.name}, ${data.json.sys.country}`;
-	// cityInfo.querySelector('.city-info__temp').textContent = `${data.json.main.temp} \xB0C`;
-	// cityInfo.querySelector('.city-info__pressure').textContent = `${data.json.main.pressure} mb`;
-	// cityInfo.querySelector('.city-info__humidity').textContent = `${data.json.main.humidity} %`;
-	// cityInfo.querySelector('.city-info__temp_min').textContent = `${data.json.main.temp_min} \xB0C`;
-	// cityInfo.querySelector('.city-info__temp_max').textContent = `${data.json.main.temp_max} \xB0C`;
-	// mainHead.classList.add('main__title--visible');
-	// cityInfo.classList.add('city-info--visible');
-	// showInstrumentArrow();
+	cityInfo.querySelector('.city-info__name').textContent = n;
+	weatherContainer.querySelector('.content_weather_city').innerText = n;
+	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__pressure').textContent = `${weatherData.json[0].Pressure.Metric.Value} mb`;
+	cityInfo.querySelector('.city-info__humidity').textContent = `${weatherData.json[0].RelativeHumidity} %`;
+	// cityInfo.querySelector('.city-info__temp_min').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Minimum.Metric.Value} \xB0C`;
+	// cityInfo.querySelector('.city-info__temp_max').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Maximum.Metric.Value} \xB0C`;
+	mainHead.classList.add('main__title--visible');
+	cityInfo.classList.add('city-info--visible');
+	showInstrumentArrow();
 }
 
 function showProposedListOfCities(a) {
@@ -242,7 +241,7 @@ function showProposedListOfCities(a) {
 		const menuItem = document.createElement('li');
 		const anchorForProposedCity = document.createElement('a');
 		const anchorText = document.createTextNode(`${a[i].localizedName}, ${a[i].administrativeArea.LocalizedName}, ${a[i].country.LocalizedName}, ${a[i].country.ID}`);
-		
+
 		anchorForProposedCity.appendChild(anchorText);
 
 		anchorForProposedCity.title = `${a[i].key}`;
@@ -283,7 +282,7 @@ function getListOfProposedCityNames() {
 
 function makeArrForCityCodes(d) {
 	const arr = [];
-	for (let i = 0; i < d.length; i += 1 ) {
+	for (let i = 0; i < d.length; i += 1) {
 		arr.push({
 			administrativeArea: d[i].AdministrativeArea,
 			country: d[i].Country,
@@ -296,11 +295,11 @@ function makeArrForCityCodes(d) {
 	return arr;
 }
 
-function getTheWeather(c) {
+function getTheWeather(c, n) {
 	const xhr = new XMLHttpRequest();
 	xhr.open(
 		'GET',
-		`http://dataservice.accuweather.com/forecasts/v1/daily/1day/${c}?apikey=KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ&language=en-us&details=true&metric=true`,
+		`http://dataservice.accuweather.com/currentconditions/v1/${c}?apikey=KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ&language=ru-ru&details=true`,
 		true,
 	);
 	xhr.onreadystatechange = function statement() {
@@ -309,7 +308,7 @@ function getTheWeather(c) {
 		}
 		if (this.status === 200) {
 			weatherData.json = JSON.parse(this.responseText);
-			showProposedListOfCityes();
+			showData(n);
 			return;
 		}
 		weatherData.json = false;
@@ -371,38 +370,31 @@ function getNeedleHumidityColor(d) {
 }
 
 function visualizeData() {
-	getCityDataFromInput();
-
-	if (city.name === 'undefinned') {
-		showWarning();
-	} else {
-		// getTheWeather();
-		citySearch();
-
-		// gauge_pressure.onready = function () {
-		// 	setInterval(function () {
-		// 		gauge_pressure.setValue(Math.round(weatherData.json.main.pressure));
-		// 		gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(Math.round(weatherData.json.main.pressure))})`;
-		// 		gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(Math.round(weatherData.json.main.pressure))})`;
-		// 	}, 500);
-		// }
-		// gauge_temperature.onready = function () {
-		// 	setInterval(function () {
-		// 			gauge_temperature.setValue(Math.round(weatherData.json.main.temp));
-		// 			gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(Math.round(weatherData.json.main.temp))})`;
-		// 			gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(Math.round(weatherData.json.main.temp))})`;
-		// 		}, 500);
-		// };
-		// gauge_humidity.onready = function () {
-		// 	setInterval(function () {
-		// 			gauge_humidity.setValue(Math.round(weatherData.json.main.humidity));
-		// 			gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(Math.round(weatherData.json.main.humidity))})`;
-		// 			gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(Math.round(weatherData.json.main.humidity))})`;
-		// 	}, 500);
-		// };
-		// gauge_temperature.draw();
-		// gauge_pressure.draw();
-		// gauge_humidity.draw();
+	gauge_pressure.onready = function () {
+		setInterval(function () {
+			const p = Math.round(weatherData.json[0].Pressure.Metric.Value);
+			gauge_pressure.setValue(Math.round(p));
+			gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(p)})`;
+			gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(p)})`;
+		}, 500);
 	}
+	gauge_temperature.onready = function () {
+		setInterval(function () {
+			const t = Math.round(weatherData.json[0].ApparentTemperature.Metric.Value);
+			gauge_temperature.setValue(t);
+			gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(t)})`;
+			gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(t)})`;
+		}, 500);
+	};
+	gauge_humidity.onready = function () {
+		setInterval(function () {
+			const h = Math.round(weatherData.json[0].RelativeHumidity);
+			gauge_humidity.setValue(h);
+			gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(h)})`;
+			gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(h)})`;
+		}, 500);
+	};
+	gauge_temperature.draw();
+	gauge_pressure.draw();
+	gauge_humidity.draw();
 }
-saveBtn.addEventListener('click', visualizeData);
