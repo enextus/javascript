@@ -236,15 +236,7 @@ function showData(n) {
 }
 
 function showProposedListOfCities(a) {
-
-
-
 	const menuBody = document.createElement('div');
-
-	if (menuBody) {
-		console.log('1. menuBody = ', menuBody);
-	}
-
 	menuBody.classList.add('menu-body');
 	const menuItems = document.createElement('ul');
 	menuItems.classList.add('menu-items');
@@ -261,11 +253,7 @@ function showProposedListOfCities(a) {
 	}
 
 	menuBody.appendChild(menuItems);
-
-	console.log('after. menuBody = ', menuBody);
-
 	menuProposedCities.appendChild(menuBody);
-
 	menuProposedCities.classList.remove('menu-proposed-cities');
 	menuProposedCities.classList.add('menu-proposed-cities--visible');
 }
