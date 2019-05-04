@@ -11,8 +11,8 @@ const formData = document.querySelector('.form');
 const getCityNameForQuery = document.querySelector('#city__name');
 const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
-const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
-// const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+// const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
+const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
 
 // eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
@@ -182,16 +182,16 @@ function getCityDataFromInput() {
 	}
 }
 
-function resetTheProposedListOfCities() {
-	menuProposedCities.classList.remove('menu-proposed-cities--visible');
-	menuProposedCities.classList.add('menu-proposed-cities');
-
-	city.name = "";
-
+function removeTheProposedListOfCities() {
+	if (menuProposedCities) {
+		if (menuProposedCities.childElementCount) {
+			menuProposedCities.removeChild(menuProposedCities.childNodes[1]);
+		}
+	}
 }
 
 getCityNameForQuery.addEventListener('keyup', function () {
-	resetTheProposedListOfCities();
+	removeTheProposedListOfCities();
 	if (getCityNameForQuery.value.length > 2) {
 		city.name = getCityNameForQuery.value;
 		getListOfProposedCityNames();
@@ -236,7 +236,15 @@ function showData(n) {
 }
 
 function showProposedListOfCities(a) {
+
+
+
 	const menuBody = document.createElement('div');
+
+	if (menuBody) {
+		console.log('1. menuBody = ', menuBody);
+	}
+
 	menuBody.classList.add('menu-body');
 	const menuItems = document.createElement('ul');
 	menuItems.classList.add('menu-items');
@@ -253,7 +261,11 @@ function showProposedListOfCities(a) {
 	}
 
 	menuBody.appendChild(menuItems);
+
+	console.log('after. menuBody = ', menuBody);
+
 	menuProposedCities.appendChild(menuBody);
+
 	menuProposedCities.classList.remove('menu-proposed-cities');
 	menuProposedCities.classList.add('menu-proposed-cities--visible');
 }
@@ -271,6 +283,9 @@ function getListOfProposedCityNames() {
 		}
 		if (this.status === 200) {
 			cityCodes.json = JSON.parse(this.responseText);
+
+
+
 			showProposedListOfCities(makeArrForCityCodes(cityCodes.json));
 			return true;
 		}
