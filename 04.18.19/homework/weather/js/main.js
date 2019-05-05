@@ -2,6 +2,11 @@
 /* eslint-disable max-len */
 /* eslint-disable linebreak-style */
 // const container = document.querySelector('.container');
+
+// const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
+// const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
+const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+
 const weatherContainer = document.querySelector('.flex_item_weather_picture');
 const weatherInstruments = document.querySelector('.flex_item_instruments');
 const mainHead = document.querySelector('.main__title');
@@ -12,9 +17,10 @@ const getCityNameForQuery = document.querySelector('#city__name');
 const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
 
-// const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
-const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
-// const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+window.onload = function () {
+	formData.reset();
+	formData.name.focus();
+}
 
 // eslint-disable-next-line no-undef
 const gauge_pressure = new Gauge({
@@ -434,7 +440,3 @@ searchBtn.addEventListener('click', function () {
 formData.addEventListener('click', function () {
 	formData.reset();
 });
-
-window.onload = function () {
-	formData.reset();
-}

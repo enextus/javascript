@@ -247,7 +247,7 @@ a:focus, a:hover {
     /*
     margin: 1.2em 0em 0em 0.7em;
     padding: 0em 0em 0em 0.5em;
-*/
+*/ 
     text-align: left;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -259,6 +259,7 @@ a:focus, a:hover {
 }
 
 .main__title--visible {
+    margin-top: 25px;
     display: block;
 }
 
@@ -452,7 +453,7 @@ a:focus, a:hover {
     display: flex;
     flex-direction: row;
 
-    justify-content: flex-start;
+    justify-content: center;
     align-items: flex-end;
 
     width: 100%;
@@ -465,20 +466,20 @@ a:focus, a:hover {
 
 .content_weather_city {
     display: block;
-
-    padding-left: 50px;
-
     width: auto;
-    height: 75px;
-
     text-align: left;
+
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
-    color: #000;
+    color: #1e5372;
     font-size: 2em;
     text-transform: uppercase;
     letter-spacing: 1.3px;
     text-decoration: none;
+
+    text-shadow: 1px 1px 0 #f1e9e9, 2px 2px 0 #4e4a4a;
+
+    padding-bottom: 30px;
 }
 
 .flex_item_weather_data {
