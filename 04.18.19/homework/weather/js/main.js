@@ -165,8 +165,8 @@ const gauge_humidity = new Gauge({
 	}
 });
 
-function City(name) {
-	this.name = name || noDataMessage;
+function City(d) {
+	this.name = d || noDataMessage;
 }
 
 const city = new City();
@@ -222,15 +222,21 @@ function hideInput() {
 	menuProposedCities.classList.add('menu-proposed-cities');
 }
 
-function showData(n) {
+function getCityNameWithCountyCode(d){
+	const arr = d.split(',');
+	if(arr.length > 1){
+		return `${arr[0]}, ${arr[arr.length - 1]}`;
+	} else {
+		return `${arr[0]}`;
+	}
+} 
+
+function showData(d) {
 	hideInput();
 	visualizeData();
-
-	const arr = n.split(',');
-
-	weatherContainer.querySelector('.content_weather_city').innerText = `${arr[0]}, ${arr[arr.length - 2]}`;
-
-	cityInfo.querySelector('.city-info__name').textContent = n;
+	const cityNameAndCountyCode = getCityNameWithCountyCode(d);
+	weatherContainer.querySelector('.content_weather_city').innerText = cityNameAndCountyCode;
+	cityInfo.querySelector('.city-info__name').textContent = cityNameAndCountyCode;
 	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
 	cityInfo.querySelector('.city-info__temp_min').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Minimum.Metric.Value} \xB0C`;
 	cityInfo.querySelector('.city-info__temp_max').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Maximum.Metric.Value} \xB0C`;
@@ -433,8 +439,6 @@ searchBtn.addEventListener('click', function () {
 	getCityDataFromInput();
 	getACityCodeForACityName();
 });
-
-
 
 formData.addEventListener('click', function () {
 	formData.reset();
