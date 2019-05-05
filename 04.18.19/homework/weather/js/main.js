@@ -12,9 +12,8 @@ const getCityNameForQuery = document.querySelector('#city__name');
 const menuProposedCities = document.querySelector('#menu-proposed-cities');
 const noDataMessage = 'undefinned';
 
-const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
-
-// const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
+// const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
+const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
 // const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
 
 // eslint-disable-next-line no-undef
@@ -217,8 +216,8 @@ function showInstrumentArrow() {
 }
 
 function hideInput() {
-	formData.classList.remove('form');
-	formData.classList.add('form--hidden');
+	// formData.classList.remove('form');
+	// formData.classList.add('form--hidden');
 	menuProposedCities.classList.remove('menu-proposed-cities--visible');
 	menuProposedCities.classList.add('menu-proposed-cities');
 }
@@ -226,7 +225,8 @@ function hideInput() {
 function showData(n) {
 	hideInput();
 	visualizeData();
-	cityInfo.querySelector('.city-info__name').textContent = n;
+	const arr = n.split(',');
+	cityInfo.querySelector('.city-info__name').textContent = `${arr[0]}, ${arr[arr.length - 1]}`;
 	weatherContainer.querySelector('.content_weather_city').innerText = n;
 	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
 	cityInfo.querySelector('.city-info__pressure').textContent = `${weatherData.json[0].Pressure.Metric.Value} mb`;
@@ -274,9 +274,6 @@ function getListOfProposedCityNames() {
 		}
 		if (this.status === 200) {
 			cityCodes.json = JSON.parse(this.responseText);
-
-
-
 			showProposedListOfCities(makeArrForCityCodes(cityCodes.json));
 			return true;
 		}
@@ -432,4 +429,10 @@ function visualizeData() {
 searchBtn.addEventListener('click', function () {
 	getCityDataFromInput();
 	getACityCodeForACityName();
+});
+
+
+
+formData.addEventListener('click', function () {
+	formData.reset();
 });
