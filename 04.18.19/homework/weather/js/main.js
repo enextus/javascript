@@ -232,10 +232,10 @@ function showData(n) {
 
 	cityInfo.querySelector('.city-info__name').textContent = n;
 	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__temp_min').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Minimum.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__temp_max').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Maximum.Metric.Value} \xB0C`;
 	cityInfo.querySelector('.city-info__pressure').textContent = `${weatherData.json[0].Pressure.Metric.Value} mb`;
 	cityInfo.querySelector('.city-info__humidity').textContent = `${weatherData.json[0].RelativeHumidity} %`;
-	// cityInfo.querySelector('.city-info__temp_min').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Minimum.Metric.Value} \xB0C`;
-	// cityInfo.querySelector('.city-info__temp_max').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Maximum.Metric.Value} \xB0C`;
 	mainHead.classList.add('main__title--visible');
 	cityInfo.classList.add('city-info--visible');
 	showInstrumentArrow();
