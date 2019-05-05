@@ -225,9 +225,12 @@ function hideInput() {
 function showData(n) {
 	hideInput();
 	visualizeData();
+
 	const arr = n.split(',');
-	cityInfo.querySelector('.city-info__name').textContent = `${arr[0]}, ${arr[arr.length - 1]}`;
-	weatherContainer.querySelector('.content_weather_city').innerText = n;
+
+	weatherContainer.querySelector('.content_weather_city').innerText = `${arr[0]}, ${arr[arr.length - 2]}`;
+
+	cityInfo.querySelector('.city-info__name').textContent = n;
 	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
 	cityInfo.querySelector('.city-info__pressure').textContent = `${weatherData.json[0].Pressure.Metric.Value} mb`;
 	cityInfo.querySelector('.city-info__humidity').textContent = `${weatherData.json[0].RelativeHumidity} %`;
