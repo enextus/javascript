@@ -185,10 +185,8 @@ function getCityDataFromInput() {
 }
 
 function removeTheProposedListOfCities() {
-	if (menuProposedCities) {
-		if (menuProposedCities.childElementCount) {
-			menuProposedCities.removeChild(menuProposedCities.childNodes[1]);
-		}
+	if (menuProposedCities.childElementCount) {
+		menuProposedCities.removeChild(menuProposedCities.childNodes[1]);
 	}
 }
 
@@ -216,16 +214,14 @@ function showInstrumentArrow() {
 }
 
 function hideInput() {
-	// formData.classList.remove('form');
-	// formData.classList.add('form--hidden');
 	menuProposedCities.classList.remove('menu-proposed-cities--visible');
 	menuProposedCities.classList.add('menu-proposed-cities');
 }
 
-function getCityNameWithCountyCode(d){
+function getCityNameWithCountyCode(d) {
 	const arr = d.split(',');
-	arr.length > 1 ? `${arr[0]}, ${arr[arr.length - 1]}` : `${arr[0]}`;
-} 
+	return arr.length > 1 ? `${arr[0]}, ${arr[arr.length - 1]}` : `${arr[0]}`;
+}
 
 function showData(d) {
 	hideInput();
@@ -259,7 +255,6 @@ function showProposedListOfCities(a) {
 		menuItem.appendChild(anchorForProposedCity);
 		menuItems.appendChild(menuItem);
 	}
-
 	menuBody.appendChild(menuItems);
 	menuProposedCities.appendChild(menuBody);
 	menuProposedCities.classList.remove('menu-proposed-cities');
