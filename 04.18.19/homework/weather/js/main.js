@@ -219,7 +219,7 @@ function showInstrumentArrow() {
 	weatherInstruments.classList.add('flex_item_instruments--visible');
 }
 
-function hideInput() {
+function hideMenuProposedCities() {
 	menuProposedCities.classList.remove('menu-proposed-cities--visible');
 	menuProposedCities.classList.add('menu-proposed-cities');
 }
@@ -229,9 +229,15 @@ function getCityNameWithCountyCode(d) {
 	return arr.length > 1 ? `${arr[0]}, ${arr[arr.length - 1]}` : `${arr[0]}`;
 }
 
+function getResultCityName(d) {
+	const arr = d.split(',');
+	return `${arr[0]}`;
+}
+
 function showData(d) {
-	hideInput();
+	hideMenuProposedCities();
 	visualizeData();
+	formData.name.value = getResultCityName(d);
 	const cityNameAndCountyCode = getCityNameWithCountyCode(d);
 	weatherContainer.querySelector('.content_weather_city').innerText = cityNameAndCountyCode;
 	cityInfo.querySelector('.city-info__name').textContent = cityNameAndCountyCode;
