@@ -224,11 +224,7 @@ function hideInput() {
 
 function getCityNameWithCountyCode(d){
 	const arr = d.split(',');
-	if(arr.length > 1){
-		return `${arr[0]}, ${arr[arr.length - 1]}`;
-	} else {
-		return `${arr[0]}`;
-	}
+	arr.length > 1 ? `${arr[0]}, ${arr[arr.length - 1]}` : `${arr[0]}`;
 } 
 
 function showData(d) {
@@ -443,3 +439,7 @@ searchBtn.addEventListener('click', function () {
 formData.addEventListener('click', function () {
 	formData.reset();
 });
+
+window.onload = function () {
+	formData.reset();
+}
