@@ -138,7 +138,6 @@ canvas {
 div {
     font-family: helvetica,arial,sans-serif;
     margin: 0;
-    padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
 .button {
@@ -293,13 +292,14 @@ a:focus, a:hover {
     text-transform: uppercase;
     letter-spacing: 0.125em;
     text-decoration: none;
+    padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
 .city-info__name {
     text-decoration: none;
     text-transform: uppercase;
 
-    /*	padding: 0.5em 0em 0.5em 0.5em;*/
+    padding: 0.5em 0em 0.5em 0.5em;
 
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
@@ -313,9 +313,9 @@ a:focus, a:hover {
     text-decoration: none;
     text-transform: uppercase;
     /*
-    margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em; */
     padding: 0.5em 0.5em 0.5em 0.5em;
-*/
+
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -329,9 +329,9 @@ a:focus, a:hover {
     text-decoration: none;
     text-transform: uppercase;
     /*
-    margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em;*/
     padding: 0.5em 0.5em 0.5em 0.5em;
-*/
+
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -344,9 +344,9 @@ a:focus, a:hover {
     text-decoration: none;
     text-transform: uppercase;
     /*
-    margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em;*/
     padding: 0.5em 0.5em 0.5em 0.5em;
-*/
+
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -359,9 +359,9 @@ a:focus, a:hover {
     text-decoration: none;
     text-transform: uppercase;
     /*
-    margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em;*/
     padding: 0.5em 0.5em 0.5em 0.5em;
-*/
+
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -374,9 +374,9 @@ a:focus, a:hover {
     text-decoration: none;
     text-transform: uppercase;
     /*
-    margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em; */
     padding: 0.5em 0.5em 0.5em 0.5em;
-*/
+
     border-radius: 0.1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
