@@ -1,187 +1,561 @@
-const container = document.querySelector('.container');
+/* eslint-disable linebreak-style */
+/* eslint-disable max-len */
+
+const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
+// const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
+// const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+
 const weatherContainer = document.querySelector('.flex_item_weather_picture');
 const weatherInstruments = document.querySelector('.flex_item_instruments');
 const mainHead = document.querySelector('.main__title');
 const cityInfo = document.querySelector('.city-info');
-const saveBtn = document.querySelector('#button-save');
-const showBtn = document.querySelector('#button-show');
+const searchBtn = document.querySelector('#button-search');
 const formData = document.querySelector('.form');
-const noDataMessage = "undefinned";
-const token = '4d65d788982dca64aefc93b76839fa60';
-const units = "metric";
-const maxPosiblePressure = 1051;
-const wholeRangePressure = 75; // max - min  +++ 976 - 1051
-const coefficientScalePressure = 3.6; // 270grad/75 
-const coefficientScalaBeginingPressure = 45;
-const maxPosibleTemperature = 55;
-const wholeRangeTemperature = 90; // max - min 55 - -35
-const coefficientScaleTemperature = 2.78; // 250 grad/90
-const coefficientScalaBeginingTemperature = 55;
-const maxPosibleHumidity = 100;
-const wholeRangeHumidity = 100; // max - min  100 - 0
-const coefficientScaleHumidity = 2.7; // 208grad / 100
-const coefficientScalaBeginingHumidity = 45;
+const getCityNameForQuery = document.querySelector('#city__name');
+const menuProposedCities = document.querySelector('#menu-proposed-cities');
+const labelDivGPSStatus = document.querySelector('.form__elements-gpslabel');
+const noDataMessage = 'undefinned';
 
-let city = new City();
-
-function City(name) {
-    this.name = name || noDataMessage;
+function resetFormFieldName() {
+	formData.reset();
+	formData.name.focus();
 }
 
-let data = new Data();
+const optionsGeoLocation = {
+	enableHighAccuracy: true,
+	timeout: 5000,
+	maximumAge: 0
+};
+
+function getDivForGeolocationStatusOff() {
+	labelDivGPSStatus.classList.add('form__elements-gpslabel--off');
+	let dataGPSStatus = document.createTextNode('GPS off');
+	labelDivGPSStatus.appendChild(dataGPSStatus);
+}
+
+function getDivsForGeolocationStatusOn() {
+	labelDivGPSStatus.classList.add('form__elements-gpslabel--on');
+	let dataGPSStatus = document.createTextNode('GPS on');
+	labelDivGPSStatus.appendChild(dataGPSStatus);
+}
+
+window.onload = function () {
+	resetFormFieldName();
+	formData.name.focus();
+	navigator.geolocation.getCurrentPosition(successGeoLocation, errorGeoLocation, optionsGeoLocation);
+};
+
+function getDivsForCoordinates(d) {
+	let labelDivLatitude = document.createElement('div');
+	labelDivLatitude.classList.add('city-info__field');
+	let nameLabelLatitude = document.createTextNode("Your GPS latitude:");
+	labelDivLatitude.appendChild(nameLabelLatitude);
+
+	let theDivLatitude = document.createElement('div');
+	theDivLatitude.classList.add('city-info__latitude');
+	let dataLatitude = document.createTextNode(`Latitude : ${d.latitude}`);
+	theDivLatitude.appendChild(dataLatitude);
+
+	let labelDivLongitude = document.createElement('div');
+	labelDivLongitude.classList.add('city-info__field');
+	let nameLabelLongitude = document.createTextNode("Your GPS longitude:");
+	labelDivLongitude.appendChild(nameLabelLongitude);
+
+	let theDivLongitude = document.createElement('div');
+	theDivLongitude.classList.add('city-info__longitude');
+	let dataLongitude = document.createTextNode(`Longitude : ${d.longitude}`);
+	theDivLongitude.appendChild(dataLongitude);
+
+	let labelDivAccuracy = document.createElement('div');
+	labelDivAccuracy.classList.add('city-info__field');
+	let nameLabelAccuracy = document.createTextNode("Your GPS accuracy:");
+	labelDivAccuracy.appendChild(nameLabelAccuracy);
+
+	let theDivAccuracy = document.createElement('div');
+	theDivAccuracy.classList.add('city-info__accuracy');
+	let dataAccuracy = document.createTextNode(`More or less ${Math.round(d.accuracy)} meters`);
+	theDivAccuracy.appendChild(dataAccuracy);
+
+	cityInfo.appendChild(labelDivLatitude);
+	cityInfo.appendChild(theDivLatitude);
+
+	cityInfo.appendChild(labelDivLongitude);
+	cityInfo.appendChild(theDivLongitude);
+
+	cityInfo.appendChild(labelDivAccuracy);
+	cityInfo.appendChild(theDivAccuracy);
+}
+
+function successGeoLocation(pos) {
+	getDivsForGeolocationStatusOn();
+	getDivsForCoordinates(pos.coords);
+}
+
+function errorGeoLocation(err) {
+	// eslint-disable-next-line no-console
+	getDivForGeolocationStatusOff();
+	// console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+window.addEventListener('unload', function () {
+	resetFormFieldName();
+});
+
+// eslint-disable-next-line no-undef
+const gauge_pressure = new Gauge({
+	renderTo: 'gauge_pressure',
+	width: 190,
+	height: 190,
+	glow: true,
+	units: 'mP',
+	title: 'Pressure',
+	minValue: 970,
+	maxValue: 1055,
+	majorTicks: ['970', '980', '990', '1000', '1010', '1020', '1030', '1040', '1050'],
+	minorTicks: 10,
+	strokeTicks: false,
+	highlights: [{
+			from: 970,
+			to: 1005,
+			color: 'rgba(0, 0, 255, .3)'
+		},
+		{
+			from: 1006,
+			to: 1020,
+			color: 'rgba(255, 0, 0, .3)'
+		},
+		{
+			from: 1021,
+			to: 1055,
+			color: 'rgba(210, 210, 0, .3)'
+		},
+	],
+	colors: {
+		plate: '#f5f5f5',
+		majorTicks: '#000',
+		minorTicks: '#222',
+		title: '#222',
+		units: '#666',
+		numbers: '#222',
+		needle: {
+			start: 'rgba(240, 128, 128, 1)',
+			end: 'rgba(255, 160, 122, .9)'
+		}
+	},
+	animation: {
+		delay: 25,
+		duration: 500,
+		fn: 'bounce'
+	}
+});
+
+// eslint-disable-next-line no-undef
+const gauge_temperature = new Gauge({
+	renderTo: 'gauge_temperature',
+	width: 190,
+	height: 190,
+	glow: true,
+	units: '°C',
+	title: 'Temperature',
+	minValue: -50,
+	maxValue: 50,
+	majorTicks: ['-50', '-40', '-30', '-20', '-10', '0', '10', '20', '30', '40', '50'],
+	minorTicks: 10,
+	strokeTicks: false,
+	highlights: [{
+			from: -50,
+			to: 16,
+			color: 'rgba(0, 0, 255, .3)'
+		},
+		{
+			from: 17,
+			to: 24,
+			color: 'rgba(153, 204, 0, .3)'
+		},
+		{
+			from: 25,
+			to: 50,
+			color: 'rgba(255, 0, 0, .3)'
+		},
+	],
+	colors: {
+		plate: '#f5f5f5',
+		majorTicks: '#000',
+		minorTicks: '#222',
+		title: '#222',
+		units: '#666',
+		numbers: '#222',
+		needle: {
+			start: 'rgba(240, 128, 128, 1)',
+			end: 'rgba(255, 160, 122, .9)'
+		}
+	},
+	animation: {
+		delay: 25,
+		duration: 500,
+		fn: 'bounce'
+	}
+});
+
+// eslint-disable-next-line no-undef
+const gauge_humidity = new Gauge({
+	renderTo: 'gauge_humidity',
+	width: 190,
+	height: 190,
+	glow: true,
+	units: 'mP',
+	title: 'Humidity',
+	minValue: 0,
+	maxValue: 100,
+	majorTicks: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+	minorTicks: 10,
+	strokeTicks: false,
+	highlights: [{
+			from: 0,
+			to: 35,
+			color: 'rgba(255, 128, 0, .3)'
+		},
+		{
+			from: 36,
+			to: 60,
+			color: 'rgba(0, 128, 0, .3)'
+		},
+		{
+			from: 61,
+			to: 65,
+			color: 'rgba(153, 204, 0, .3)'
+		},
+		{
+			from: 66,
+			to: 100,
+			color: 'rgba(255, 0, 0, .3)'
+		},
+	],
+	colors: {
+		plate: '#f5f5f5',
+		majorTicks: '#000',
+		minorTicks: '#222',
+		title: '#222',
+		units: '#666',
+		numbers: '#222',
+		needle: {
+			start: 'rgba(240, 128, 128, 1)',
+			end: 'rgba(255, 160, 122, .9)'
+		}
+	},
+	animation: {
+		delay: 25,
+		duration: 500,
+		fn: 'bounce'
+	}
+});
+
+function City(d) {
+	this.name = d || noDataMessage;
+}
+
+const city = new City();
 
 function Data(d) {
-    this.json = d || 'undefinned';
+	this.json = d || 'undefinned';
 }
 
-function getCityDataFromInput() {
-    if (formData.name.value) {
-        console.log('formData.name.value', formData.name.value);
-        city.name = formData.name.value;
-    }
+const cityCodes = new Data();
+const weatherData = new Data();
+
+function getResultCityName(d) {
+	const arr = d.split(',');
+	return `${arr[0]}`;
 }
 
-function saveData() {
-    hideData();
-    getCityDataFromInput();
+function showData(d) {
+	hideMenuProposedCities();
+	visualizeData();
+	formData.name.value = getResultCityName(d);
 
-    if (city.name === "undefinned") {
-        showWarning();
-    } else {
-        getTheWeather();
-        showShowButton();
-    }
+	formData.addEventListener('click', function () {
+		if ('undefinned' != city.name) {
+			resetFormFieldName();
+		}
+	});
+
+	const cityNameAndCountyCode = getArrCityNameWithEachCountyCode(d);
+	weatherContainer.querySelector('.content_weather_city').innerText = cityNameAndCountyCode;
+	cityInfo.querySelector('.city-info__name').textContent = cityNameAndCountyCode;
+	cityInfo.querySelector('.city-info__temp').textContent = `${weatherData.json[0].ApparentTemperature.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__temp_min').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Minimum.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__temp_max').textContent = `${weatherData.json[0].TemperatureSummary.Past6HourRange.Maximum.Metric.Value} \xB0C`;
+	cityInfo.querySelector('.city-info__pressure').textContent = `${weatherData.json[0].Pressure.Metric.Value} mb`;
+	cityInfo.querySelector('.city-info__humidity').textContent = `${weatherData.json[0].RelativeHumidity} %`;
+	mainHead.classList.add('main__title--visible');
+	cityInfo.classList.add('city-info--visible');
+	showInstrumentArrow();
 }
+
+function removeProposedListOfCities() {
+	if (menuProposedCities.childElementCount) {
+		menuProposedCities.removeChild(menuProposedCities.childNodes[1]);
+	}
+}
+
+menuProposedCities.addEventListener('click', function () {
+	getTheWeather(event.target.firstChild.parentElement.attributes.title.value, event.target.firstChild.parentElement.textContent)
+		.then(function (arr) {
+			weatherData.json = JSON.parse(arr[0]);
+			showData(arr[1]);
+		})
+		.catch(function (err) {
+			weatherData.json = err;
+			showWarning();
+		});
+});
 
 function showWarning() {
-    alert('Please enter a valid city name!');
-    formData.name.focus();
-    return false;
-}
-
-function getTheWeather() {
-    let xhr = new XMLHttpRequest();
-    xhr.open(
-        'GET',
-        'https://api.openweathermap.org/data/2.5/weather?q=' + city.name + '&APPID=' + token + '&units=' + units,
-        true
-    );
-
-    xhr.send();
-    xhr.onreadystatechange = function () {
-        if (this.readyState != 4) {
-            return
-        }
-        if (this.status === 200) {
-            return data.json = JSON.parse(this.responseText);
-        } else {
-            return data.json = false;
-        }
-    };
-}
-
-function showShowButton() {
-    showBtn.classList.add('button_show--visible');
-}
-
-function calculateInstrumentsArrowAngle(...arguments) {
-    return Math.round(((arguments[1] - (arguments[2] - arguments[0])) * arguments[3]) + arguments[4]);
-}
-
-function calculatePressureColor(p) {
-    if (p < 1005) {
-        return "dodgerblue";
-    }
-    if (p >= 1005 && p <= 1020) {
-        return "red";
-    }
-    if (p > 1020) {
-        return "gold";
-    }
-}
-
-function calculateTemperatureColor(t) {
-    if (t < 17) {
-        return "dodgerblue";
-    }
-    if (t >= 17 && t <= 23) {
-        return "green";
-    }
-    if (t > 23) {
-        return "red";
-    }
-}
-
-function calculateHumidityColor(h) {
-    if (h < 35) {
-        return "orange";
-    }
-    if (h >= 35 && h <= 60) {
-        return "green";
-    }
-    if (h > 60 && h <= 65) {
-        return "LightGreen";
-    }
-    if (h > 65) {
-        return "dodgerblue";
-    }
+	// eslint-disable-next-line no-alert
+	alert('Please enter a valid city name!!**');
+	resetFormFieldName();
 }
 
 function showInstrumentArrow() {
-    let rotatePressure = container.querySelector('.pointer_01').lastElementChild;
-    let gradRotatePressure = calculateInstrumentsArrowAngle(data.json.main.pressure, wholeRangePressure, maxPosiblePressure, coefficientScalePressure, coefficientScalaBeginingPressure);
-    rotatePressure.style.transform = 'rotateZ(' + gradRotatePressure + 'deg)';
-    rotatePressure.style.color = calculatePressureColor(data.json.main.pressure);
-    rotatePressure.style.textShadow = '2px 2px 0 grey';
-
-    let rotateTemperature = container.querySelector('.pointer_02').lastElementChild;
-    let gradTemperatureInstrument = calculateInstrumentsArrowAngle(data.json.main.temp, wholeRangeTemperature, maxPosibleTemperature, coefficientScaleTemperature, coefficientScalaBeginingTemperature);
-    rotateTemperature.style.transform = 'rotateZ(' + gradTemperatureInstrument + 'deg)';
-    rotateTemperature.style.color = calculateTemperatureColor(data.json.main.temp);
-    rotateTemperature.style.textShadow = '2px 2px 0 grey';
-
-    let rotateHumidity = container.querySelector('.pointer_03').lastElementChild;
-    let procHumidityInstrument = calculateInstrumentsArrowAngle(data.json.main.humidity, wholeRangeHumidity, maxPosibleHumidity, coefficientScaleHumidity, coefficientScalaBeginingHumidity);
-    rotateHumidity.style.transform = 'rotateZ(' + procHumidityInstrument + 'deg)';
-    rotateHumidity.style.color = calculateHumidityColor(data.json.main.humidity);
-    rotateHumidity.style.textShadow = '2px 2px 0 grey';
-
-    weatherInstruments.classList.add('flex_item_instruments--visible');
+	weatherInstruments.classList.add('flex_item_instruments--visible');
 }
 
-function showData() {
-    hideInput();
-    hideButtonShowData();
-    cityInfo.querySelector('.city-info__name').textContent = data.json.name + ', ' + data.json.sys.country;
-    weatherContainer.querySelector('.content_weather_city').innerText = data.json.name + ', ' + data.json.sys.country;
-
-    cityInfo.querySelector('.city-info__temp').textContent = data.json.main.temp + ' \xB0C';
-    cityInfo.querySelector('.city-info__pressure').textContent = data.json.main.pressure + ' \mb';
-    cityInfo.querySelector('.city-info__humidity').textContent = data.json.main.humidity + ' \%';
-    cityInfo.querySelector('.city-info__temp_min').textContent = data.json.main.temp_min + ' \xB0C';
-    cityInfo.querySelector('.city-info__temp_max').textContent = data.json.main.temp_max + ' \xB0C';
-
-    mainHead.classList.add('main__title--visible');
-    cityInfo.classList.add('city-info--visible');
-    showInstrumentArrow();
+function hideMenuProposedCities() {
+	menuProposedCities.classList.remove('menu-proposed-cities--visible');
+	menuProposedCities.classList.add('menu-proposed-cities');
 }
 
-function hideInput() {
-    formData.classList.remove('form');
-    formData.classList.add('form--hidden');
+function getArrCityNameWithEachCountyCode(d) {
+	const arr = d.split(',');
+	return arr.length > 1 ? `${arr[0]}, ${arr[arr.length - 1]}` : `${arr[0]}`;
 }
 
-function hideButtonShowData() {
-    showBtn.classList.remove('button_show--visible');
-    showBtn.classList.add('button_show');
+function showProposedListOfCities(a) {
+	const menuBody = document.createElement('div');
+	menuBody.classList.add('menu-body');
+	const menuItems = document.createElement('ul');
+	menuItems.classList.add('menu-items');
+
+	for (let i = 0; i < a.length; i += 1) {
+		const menuItem = document.createElement('li');
+		const anchorForProposedCity = document.createElement('a');
+		const anchorText = document.createTextNode(`${a[i].localizedName}, ${a[i].administrativeArea.LocalizedName}, ${a[i].country.LocalizedName}, ${a[i].country.ID}`);
+		anchorForProposedCity.appendChild(anchorText);
+		anchorForProposedCity.title = `${a[i].key}`;
+		anchorForProposedCity.href = '#';
+		menuItem.appendChild(anchorForProposedCity);
+		menuItems.appendChild(menuItem);
+	}
+	menuBody.appendChild(menuItems);
+	menuProposedCities.appendChild(menuBody);
+	menuProposedCities.classList.remove('menu-proposed-cities');
+	menuProposedCities.classList.add('menu-proposed-cities--visible');
 }
 
-function hideData() {
-    mainHead.classList.remove('main__title--visible');
-    cityInfo.classList.remove('city-info--visible');
-    mainHead.classList.add('main__title');
-    cityInfo.classList.add('city-info');
+function getListOfProposedCityNames() {
+	return new Promise(function (resolve, reject) {
+		const xhr = new XMLHttpRequest();
+		xhr.open(
+			'GET',
+			`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${token}&q=${city.name}&language=en-us&details=false`,
+			true,
+		);
+		xhr.onload = function () {
+			if (xhr.status == 200) {
+				resolve(xhr.responseText);
+			} else {
+				reject(Error(xhr.statusText));
+			}
+		};
+		xhr.onerror = function () {
+			reject(Error('Network Error'));
+		};
+		xhr.send();
+	});
 }
 
-saveBtn.addEventListener('click', saveData);
-showBtn.addEventListener('click', showData);
+function makeArrForCityCodes(d) {
+	const arr = [];
+	for (let i = 0; i < d.length; i += 1) {
+		arr.push({
+			administrativeArea: d[i].AdministrativeArea,
+			country: d[i].Country,
+			key: d[i].Key,
+			localizedName: d[i].LocalizedName,
+			rank: d[i].Rank,
+			type: d[i].Type,
+		});
+	}
+	return arr;
+}
+
+getCityNameForQuery.addEventListener('keyup', function () {
+	removeProposedListOfCities();
+	if (getCityNameForQuery.value.length > 1) {
+		city.name = getCityNameForQuery.value;
+		getListOfProposedCityNames()
+			.then(function (response) {
+				cityCodes.json = JSON.parse(response);
+				showProposedListOfCities(makeArrForCityCodes(cityCodes.json));
+			})
+			.catch(function (err) {
+				cityCodes.json = err;
+				showWarning();
+			});
+	}
+});
+
+function getTheWeather(c, n) {
+	return new Promise(function (resolve, reject) {
+		const xhr = new XMLHttpRequest();
+		xhr.open(
+			'GET',
+			`https://dataservice.accuweather.com/currentconditions/v1/${c}?apikey=${token}&language=ru-ru&details=true`,
+			true,
+		);
+		xhr.onload = function () {
+			if (xhr.status == 200) {
+				resolve([xhr.responseText, n]);
+			} else {
+				reject(Error(xhr.statusText));
+			}
+		};
+		xhr.onerror = function () {
+			reject(Error('Network Error'));
+		};
+		xhr.send();
+	});
+}
+
+function getCityCodeForCityName() {
+	return new Promise(function (resolve, reject) {
+		const xhr = new XMLHttpRequest();
+		xhr.open(
+			'GET',
+			`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${token}&q=${city.name}&language=en-us&details=false`,
+			true,
+		);
+		xhr.onload = function () {
+			if (xhr.status == 200) {
+				resolve(xhr.responseText);
+			} else {
+				reject(Error(xhr.statusText));
+			}
+		};
+		xhr.onerror = function () {
+			reject(Error('Network Error'));
+		};
+		xhr.send();
+	});
+}
+
+function getCityDataFromInput() {
+	return (formData.name.value > 1 ? city.name = formData.name.value : resetFormFieldName());
+}
+
+searchBtn.addEventListener('click', function () {
+	getCityDataFromInput();
+	getCityCodeForCityName()
+		.then(function (response) {
+			if ([] != response) {
+				return JSON.parse(response);
+			}
+		})
+		.then(function (codes) {
+			cityCodes.json = codes;
+			const arr = makeArrForCityCodes(cityCodes.json);
+			return getTheWeather(arr[0].key, city.name)
+		})
+		.then(function (response) {
+			weatherData.json = JSON.parse(response[0]);
+			showData(response[1]);
+		})
+		.catch(function (err) {
+			cityCodes.json = err;
+			showWarning();
+		});
+});
+
+function getNeedlePressureColor(d) {
+	if (d >= 970 && d <= 1005) {
+		const needleColor = '0, 0, 255, .3';
+		return needleColor;
+	}
+	if (d > 1005 && d <= 1020) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	if (d > 1020 && d <= 1055) {
+		const needleColor = '210, 210, 0, .3';
+		return needleColor;
+	}
+	return false;
+}
+
+function getNeedleTemperatureColor(d) {
+	if (d >= -50 && d <= 17) {
+		const needleColor = '0, 0, 255, .3';
+		return needleColor;
+	}
+	if (d > 17 && d <= 23) {
+		const needleColor = '153, 204, 0, .3';
+		return needleColor;
+	}
+	if (d > 23 && d <= 50) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	return false;
+}
+
+function getNeedleHumidityColor(d) {
+	if (d >= 0 && d <= 35) {
+		const needleColor = '255, 128, 0, .3';
+		return needleColor;
+	}
+	if (d > 35 && d <= 60) {
+		const needleColor = '0, 128, 0, .3';
+		return needleColor;
+	}
+	if (d > 60 && d <= 65) {
+		const needleColor = '153, 204, 0, .3';
+		return needleColor;
+	}
+	if (d > 65 && d <= 100) {
+		const needleColor = '255, 0, 0, .3';
+		return needleColor;
+	}
+	return false;
+}
+
+function visualizeData() {
+	gauge_pressure.onready = function () {
+		setInterval(function () {
+			const p = Math.round(weatherData.json[0].Pressure.Metric.Value);
+			gauge_pressure.setValue(Math.round(p));
+			gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(p)})`;
+			gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(p)})`;
+		}, 500);
+	}
+	gauge_temperature.onready = function () {
+		setInterval(function () {
+			const t = Math.round(weatherData.json[0].ApparentTemperature.Metric.Value);
+			gauge_temperature.setValue(t);
+			gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(t)})`;
+			gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(t)})`;
+		}, 500);
+	};
+	gauge_humidity.onready = function () {
+		setInterval(function () {
+			const h = Math.round(weatherData.json[0].RelativeHumidity);
+			gauge_humidity.setValue(h);
+			gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(h)})`;
+			gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(h)})`;
+		}, 500);
+	};
+	gauge_temperature.draw();
+	gauge_pressure.draw();
+	gauge_humidity.draw();
+}
+
+// ...
