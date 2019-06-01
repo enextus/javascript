@@ -3,9 +3,9 @@
 /* eslint-disable linebreak-style */
 // const container = document.querySelector('.container');
 
-// const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
+const token = 'Vb5axw0rm7l9UMOQE224pej8RVFxlb1V';
 // const token = 'nJ60nUuoOiQ555BzTZUIDqcruSObGSN4';
-const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
+// const token = 'KhtLWM0R2Rxuj95cJGzAu8y9pqPfawiJ';
 
 const weatherContainer = document.querySelector('.flex_item_weather_picture');
 const weatherInstruments = document.querySelector('.flex_item_instruments');
