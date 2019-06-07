@@ -97,15 +97,18 @@ window.onload = function loadPage() {
   navigator.geolocation.getCurrentPosition(successGeoLocation, errorGeoLocation, optionsGeoLocation);
 };
 
+// eslint-disable-next-line no-unused-vars
 window.addEventListener('beforeunload', (event) => {
   resetFormFieldName();
 });
 
+// eslint-disable-next-line no-unused-vars
 window.addEventListener('unload', (event) => {
   resetFormFieldName();
 });
 
 // eslint-disable-next-line no-undef
+// eslint-disable-next-line camelcase
 const gauge_pressure = new Gauge({
   renderTo: 'gauge_pressure',
   width: 190,
@@ -154,6 +157,7 @@ const gauge_pressure = new Gauge({
 });
 
 // eslint-disable-next-line no-undef
+// eslint-disable-next-line camelcase
 const gauge_temperature = new Gauge({
   renderTo: 'gauge_temperature',
   width: 190,
@@ -202,6 +206,7 @@ const gauge_temperature = new Gauge({
 });
 
 // eslint-disable-next-line no-undef
+// eslint-disable-next-line camelcase
 const gauge_humidity = new Gauge({
   renderTo: 'gauge_humidity',
   width: 190,
@@ -254,6 +259,58 @@ const gauge_humidity = new Gauge({
   },
 });
 
+function getNeedlePressureColor(d) {
+  if (d >= 970 && d <= 1005) {
+    const needleColor = '0, 0, 255, .3';
+    return needleColor;
+  }
+  if (d > 1005 && d <= 1020) {
+    const needleColor = '255, 0, 0, .3';
+    return needleColor;
+  }
+  if (d > 1020 && d <= 1055) {
+    const needleColor = '210, 210, 0, .3';
+    return needleColor;
+  }
+  return false;
+}
+
+function getNeedleTemperatureColor(d) {
+  if (d >= -50 && d <= 17) {
+    const needleColor = '0, 0, 255, .3';
+    return needleColor;
+  }
+  if (d > 17 && d <= 23) {
+    const needleColor = '153, 204, 0, .3';
+    return needleColor;
+  }
+  if (d > 23 && d <= 50) {
+    const needleColor = '255, 0, 0, .3';
+    return needleColor;
+  }
+  return false;
+}
+
+function getNeedleHumidityColor(d) {
+  if (d >= 0 && d <= 35) {
+    const needleColor = '255, 128, 0, .3';
+    return needleColor;
+  }
+  if (d > 35 && d <= 60) {
+    const needleColor = '0, 128, 0, .3';
+    return needleColor;
+  }
+  if (d > 60 && d <= 65) {
+    const needleColor = '153, 204, 0, .3';
+    return needleColor;
+  }
+  if (d > 65 && d <= 100) {
+    const needleColor = '255, 0, 0, .3';
+    return needleColor;
+  }
+  return false;
+}
+
 function City(d) {
   this.name = d || noDataMessage;
 }
@@ -272,13 +329,51 @@ function getResultCityName(d) {
   return `${arr[0]}`;
 }
 
+function hideMenuProposedCities() {
+  menuProposedCities.classList.remove('menu-proposed-cities--visible');
+  menuProposedCities.classList.add('menu-proposed-cities');
+}
+
+function visualizeData() {
+  gauge_pressure.onready = () => {
+    setInterval(() => {
+      const p = Math.round(weatherData.json[0].Pressure.Metric.Value);
+      gauge_pressure.setValue(Math.round(p));
+      gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(p)})`;
+      gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(p)})`;
+    }, 500);
+  };
+
+  gauge_temperature.onready = () => {
+    setInterval(() => {
+      const t = Math.round(weatherData.json[0].ApparentTemperature.Metric.Value);
+      gauge_temperature.setValue(t);
+      gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(t)})`;
+      gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(t)})`;
+    }, 500);
+  };
+
+  gauge_humidity.onready = () => {
+    setInterval(() => {
+      const h = Math.round(weatherData.json[0].RelativeHumidity);
+      gauge_humidity.setValue(h);
+      gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(h)})`;
+      gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(h)})`;
+    }, 500);
+  };
+
+  gauge_temperature.draw();
+  gauge_pressure.draw();
+  gauge_humidity.draw();
+}
+
 function showData(d) {
   hideMenuProposedCities();
   visualizeData();
   formData.name.value = getResultCityName(d);
 
-  formData.addEventListener('click', function () {
-    if ('undefinned' != city.name) {
+  formData.addEventListener('click', () => {
+    if (city.name !== 'undefinned') {
       resetFormFieldName();
     }
   });
@@ -322,11 +417,6 @@ function showWarning() {
 
 function showInstrumentArrow() {
   weatherInstruments.classList.add('flex_item_instruments--visible');
-}
-
-function hideMenuProposedCities() {
-  menuProposedCities.classList.remove('menu-proposed-cities--visible');
-  menuProposedCities.classList.add('menu-proposed-cities');
 }
 
 function getArrCityNameWithEachCountyCode(d) {
@@ -461,7 +551,7 @@ searchBtn.addEventListener('click', function () {
   getCityDataFromInput();
   getCityCodeForCityName()
     .then(function (response) {
-      if ([] != response) {
+      if ([] !== response) {
         return JSON.parse(response);
       }
     })
@@ -480,86 +570,6 @@ searchBtn.addEventListener('click', function () {
     });
 });
 
-function getNeedlePressureColor(d) {
-  if (d >= 970 && d <= 1005) {
-    const needleColor = '0, 0, 255, .3';
-    return needleColor;
-  }
-  if (d > 1005 && d <= 1020) {
-    const needleColor = '255, 0, 0, .3';
-    return needleColor;
-  }
-  if (d > 1020 && d <= 1055) {
-    const needleColor = '210, 210, 0, .3';
-    return needleColor;
-  }
-  return false;
-}
 
-function getNeedleTemperatureColor(d) {
-  if (d >= -50 && d <= 17) {
-    const needleColor = '0, 0, 255, .3';
-    return needleColor;
-  }
-  if (d > 17 && d <= 23) {
-    const needleColor = '153, 204, 0, .3';
-    return needleColor;
-  }
-  if (d > 23 && d <= 50) {
-    const needleColor = '255, 0, 0, .3';
-    return needleColor;
-  }
-  return false;
-}
-
-function getNeedleHumidityColor(d) {
-  if (d >= 0 && d <= 35) {
-    const needleColor = '255, 128, 0, .3';
-    return needleColor;
-  }
-  if (d > 35 && d <= 60) {
-    const needleColor = '0, 128, 0, .3';
-    return needleColor;
-  }
-  if (d > 60 && d <= 65) {
-    const needleColor = '153, 204, 0, .3';
-    return needleColor;
-  }
-  if (d > 65 && d <= 100) {
-    const needleColor = '255, 0, 0, .3';
-    return needleColor;
-  }
-  return false;
-}
-
-function visualizeData() {
-  gauge_pressure.onready = function () {
-    setInterval(function () {
-      const p = Math.round(weatherData.json[0].Pressure.Metric.Value);
-      gauge_pressure.setValue(Math.round(p));
-      gauge_pressure.config.colors.needle.start = `rgba(${getNeedlePressureColor(p)})`;
-      gauge_pressure.config.colors.needle.end = `rgba(${getNeedlePressureColor(p)})`;
-    }, 500);
-  }
-  gauge_temperature.onready = function () {
-    setInterval(function () {
-      const t = Math.round(weatherData.json[0].ApparentTemperature.Metric.Value);
-      gauge_temperature.setValue(t);
-      gauge_temperature.config.colors.needle.start = `rgba(${getNeedleTemperatureColor(t)})`;
-      gauge_temperature.config.colors.needle.end = `rgba(${getNeedleTemperatureColor(t)})`;
-    }, 500);
-  };
-  gauge_humidity.onready = function () {
-    setInterval(function () {
-      const h = Math.round(weatherData.json[0].RelativeHumidity);
-      gauge_humidity.setValue(h);
-      gauge_humidity.config.colors.needle.start = `rgba(${getNeedleHumidityColor(h)})`;
-      gauge_humidity.config.colors.needle.end = `rgba(${getNeedleHumidityColor(h)})`;
-    }, 500);
-  };
-  gauge_temperature.draw();
-  gauge_pressure.draw();
-  gauge_humidity.draw();
-}
 
 // ...
